@@ -8,12 +8,32 @@ import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
+import { ResetPasswordComponent } from './views/reset-password/reset-password.component';
+import { ForgotPasswordComponent } from './views/forgot-password/forgot-password.component';
 
 export const routes: Routes = [
+
+  //  routing added by oumaima
   {
-    path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full',
+    path: 'login',
+    component: LoginComponent,
+    data: {
+      title: 'Login Page'
+    }
+  },
+  {
+    path: 'reset-password',
+    component: ResetPasswordComponent,
+    data: {
+      title: 'Reset password Page'
+    }
+  },
+  {
+    path: 'forgot-password',
+    component: ForgotPasswordComponent,
+    data: {
+      title: 'Forgot password Page'
+    }
   },
   {
     path: '404',
@@ -29,12 +49,11 @@ export const routes: Routes = [
       title: 'Page 500'
     }
   },
+  // end routing
   {
-    path: 'login',
-    component: LoginComponent,
-    data: {
-      title: 'Login Page'
-    }
+    path: '',
+    redirectTo: 'dashboard',
+    pathMatch: 'full',
   },
   {
     path: 'register',
