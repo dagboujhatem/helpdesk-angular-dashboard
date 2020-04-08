@@ -3,17 +3,20 @@ import { Routes, RouterModule } from '@angular/router';
 
 // Import Containers
 import { DefaultLayoutComponent } from './containers';
-
-import { P404Component } from './views/error/404.component';
-import { P500Component } from './views/error/500.component';
-import { LoginComponent } from './views/login/login.component';
-import { RegisterComponent } from './views/register/register.component';
-import { ResetPasswordComponent } from './views/reset-password/reset-password.component';
-import { ForgotPasswordComponent } from './views/forgot-password/forgot-password.component';
+import { LoginComponent } from './views/common/login/login.component';
+import { ResetPasswordComponent } from './views/common/reset-password/reset-password.component';
+import { ForgotPasswordComponent } from './views/common/forgot-password/forgot-password.component';
+import { P404Component } from './views/common/error/404.component';
+import { P500Component } from './views/common/error/500.component';
 
 export const routes: Routes = [
 
   //  routing added by oumaima
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full',
+  },
   {
     path: 'login',
     component: LoginComponent,
@@ -47,21 +50,10 @@ export const routes: Routes = [
     component: P500Component,
     data: {
       title: 'Page 500'
+      
     }
   },
   // end routing
-  {
-    path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full',
-  },
-  {
-    path: 'register',
-    component: RegisterComponent,
-    data: {
-      title: 'Register Page'
-    }
-  },
   {
     path: '',
     component: DefaultLayoutComponent,
