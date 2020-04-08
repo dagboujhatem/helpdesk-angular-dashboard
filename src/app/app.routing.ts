@@ -8,6 +8,7 @@ import { ResetPasswordComponent } from './views/common/reset-password/reset-pass
 import { ForgotPasswordComponent } from './views/common/forgot-password/forgot-password.component';
 import { P404Component } from './views/common/error/404.component';
 import { P500Component } from './views/common/error/500.component';
+import { AccesIndexComponent } from './views/acces/acces-index/acces-index.component';
 
 export const routes: Routes = [
 
@@ -62,6 +63,10 @@ export const routes: Routes = [
     },
     children: [
       {
+        path:'accès', 
+        component: AccesIndexComponent
+      },
+      {
         path: 'base',
         loadChildren: () => import('./views/base/base.module').then(m => m.BaseModule)
       },
@@ -84,10 +89,6 @@ export const routes: Routes = [
       {
         path: 'notifications',
         loadChildren: () => import('./views/notifications/notifications.module').then(m => m.NotificationsModule)
-      },
-      {
-        path: 'theme',
-        loadChildren: () => import('./views/theme/theme.module').then(m => m.ThemeModule)
       },
       {
         path: 'widgets',

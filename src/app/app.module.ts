@@ -42,6 +42,10 @@ import { ChartsModule } from 'ng2-charts';
 import { ResetPasswordComponent } from './views/common/reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './views/common/forgot-password/forgot-password.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { AccesIndexComponent } from './views/acces/acces-index/acces-index.component';
+import { AccesAddComponent } from './views/acces/acces-add/acces-add.component';
+import { AccesUpdateComponent } from './views/acces/acces-update/acces-update.component';
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   imports: [
@@ -58,7 +62,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     TabsModule.forRoot(),
     ChartsModule, 
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DataTablesModule
   ],
   declarations: [
     AppComponent,
@@ -67,7 +72,10 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     P500Component,
     LoginComponent, 
     ResetPasswordComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    AccesIndexComponent,
+    AccesAddComponent,
+    AccesUpdateComponent
   ],
   providers: [{
     provide: LocationStrategy,

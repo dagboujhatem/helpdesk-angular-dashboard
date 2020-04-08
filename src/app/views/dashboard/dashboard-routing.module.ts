@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { DashboardComponent } from './dashboard.component';
+import { AccesIndexComponent } from '../acces/acces-index/acces-index.component';
 
 const routes: Routes = [
   {
@@ -9,7 +10,16 @@ const routes: Routes = [
     component: DashboardComponent,
     data: {
       title: 'Dashboard'
-    }
+    }/*,
+    children: [
+      {
+        path: 'accès', 
+        component: AccesIndexComponent, 
+        data: {
+          title: 'Accès'
+        }
+      }
+    ]*/
   }
 ];
 
