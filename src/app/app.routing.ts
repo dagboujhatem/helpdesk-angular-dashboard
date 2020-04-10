@@ -9,6 +9,13 @@ import { ForgotPasswordComponent } from './views/common/forgot-password/forgot-p
 import { P404Component } from './views/common/error/404.component';
 import { P500Component } from './views/common/error/500.component';
 import { AccesIndexComponent } from './views/acces/acces-index/acces-index.component';
+import { AccesAddComponent } from './views/acces/acces-add/acces-add.component';
+import { AccesUpdateComponent } from './views/acces/acces-update/acces-update.component';
+import { MissionComponent } from './views/mission/mission.component';
+import { TicketIndexComponent } from './views/ticket/ticket-index/ticket-index.component';
+import { TicketAddComponent } from './views/ticket/ticket-add/ticket-add.component';
+import { TicketAdminPrioriteComponent } from './views/ticket/ticket-admin-priorite/ticket-admin-priorite.component';
+import { TicketUpdateComponent } from './views/ticket/ticket-update/ticket-update.component';
 
 export const routes: Routes = [
 
@@ -64,8 +71,35 @@ export const routes: Routes = [
     children: [
       {
         path:'accès', 
-        component: AccesIndexComponent
+        component: AccesIndexComponent, 
+        children: [
+       
+        ]
       },
+      {
+        path: 'accès/add', 
+        component: AccesAddComponent
+      },
+      {
+        path: 'accès/update', 
+        component: AccesUpdateComponent
+      },
+      {
+        path: 'mission', 
+        component: MissionComponent
+
+      },
+      {
+        path: 'ticket', 
+        component: TicketAddComponent
+
+      },
+      {
+        path: 'priorite', 
+        component:  TicketAdminPrioriteComponent
+
+      },
+      
       {
         path: 'base',
         loadChildren: () => import('./views/base/base.module').then(m => m.BaseModule)

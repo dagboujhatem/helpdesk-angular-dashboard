@@ -1,0 +1,167 @@
+<div class="fade-in">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <form [formGroup]="ticketAdminPrioriteForm" (ngSubmit)="onSubmit()">
+                    <div class="card-header"><strong>Affecter la priorité </strong> </div>
+                    <div class="card-body">
+
+                        <div class="row">
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="numero">Numéro ticket:</label>
+                                    <input class="form-control" id="numero" type="number" readonly="true">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="demandeur">demandeur</label>
+                                    <input class="form-control" id="demandeur" type="text">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="objet">Objet:</label>
+                                    <input class="form-control" id="objet" type="text">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="element">Élément:</label>
+                                    <input class="form-control" id="element" type="text">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="date_d_ouverture">Date d'ouverture:</label>
+                                    <input class="form-control" id="date_d_ouverture" type="date">
+                                </div>
+                            </div>
+
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="date_d_echeance">Date d'écheance:</label>
+                                    <input class="form-control" id="date_d_echeance" type="date">
+                                </div>
+                            </div>
+
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="categorie">Catégorie:</label>
+                                    <select class="form-control" id="categorie">
+                                        <option value="applicatif"> Applicatif</option>
+                                        <option value="materiel"> Matériel</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="impact">Impact:</label>
+                                    <select class="form-control" id="impact">
+                                        <option value="eleve"> Élevé</option>
+                                        <option value="normale"> Normale</option>
+                                        <option value="bas"> Bas</option>
+                                        <option value="tres_bas"> Trés bas</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="etat">Etat:</label>
+                                    <select class="form-control" id="etat">
+                                        <option value="ouvert"> Ouvret</option>
+                                        <option value="en_traitement"> En traitement</option>
+                                        <option value="clos"> clos </option>
+                                        <option value="en_retard"> En retard</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="departement">Département:</label>
+                                    <input class="form-control" id="departement" type="text">
+                                </div>
+                            </div>
+
+                            <label class="col-md-3 col-form-label">Lieu:</label>
+                            <div class="col-md-9 col-form-label">
+                                <div class="form-check">
+                                    <input class="form-check-input" id="agence" type="radio" value="agence"
+                                        name="agence">
+                                    <label class="form-check-label" for="agence">Agence</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" id="siege" type="radio" value="siege" name="siege">
+                                    <label class="form-check-label" for="siege">Siége</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="num">Numéro d'agence:</label>
+                                    <input class="form-control" id="num" type="number">
+                                </div>
+                            </div>
+
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="commentaire">Commentaire:</label>
+                                    <input class="form-control" id="departement" type="text">
+                                </div>
+                            </div>
+
+                            <label class="col-md-12 col-form-label" for="description">Description:</label>
+                            <div class="col-md-12">
+                                <textarea class="form-control" id="description" name="description" rows="12">
+                                </textarea>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="photo">Piéce-joint:</label>
+                                    <input class="form-control-file" id="photo" type="file" #file accept='image/*'
+                                        (change)="preview(file.files)">
+
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="priorite">priorité:</label>
+                                    <select class="form-control" formControlName="priorite" id="priorite"
+                                        [ngClass]="{ 'is-invalid': submitted && f.priorite.errors }">
+                                        <option value="eleve"> Élevé</option>
+                                        <option value="moyenne"> Moyenne </option>
+                                        <option value="basse"> basse </option>
+                                        <option value="tres_basse"> trés basse </option>
+                                    </select>
+                                    <div *ngIf="submitted && f.priorite.errors" class="invalid-feedback d-block">
+                                        <div *ngIf="f.priorite.errors.required">Le champ priorité est obligatoire.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="offset-sm-9 col-sm-3">
+                                <div class="form-group form-actions">
+                                    <button type="submit" class="btn btn-success btn-block">
+                                        <i class="cui-save icons mt-4"></i>Envoyer
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>

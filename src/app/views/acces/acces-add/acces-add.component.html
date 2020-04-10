@@ -1,1 +1,180 @@
-<p>acces-add works!</p>
+<div class="fade-in">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <form [formGroup]="accesAddForm" (ngSubmit)="onSubmit()">
+                    <div class="card-header"><strong>Ajouter un utilisateur</strong> </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="photo">Photo de profil:</label>
+                                    <input class="form-control-file" id="photo" type="file" #file accept='image/*' formControlName="photo"
+                                        (change)="preview(file.files)" [ngClass]="{ 'is-invalid': submitted && f.photo.errors }">
+                                        <div *ngIf="submitted && f.photo.errors" class="invalid-feedback d-block">
+                                            <div *ngIf="f.photo.errors.required">Le champ photo dde profil est obligatoire.</div>
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <span style="color:red;" *ngIf="message">{{message}}</span>
+                                <img *ngIf="imgURL" [src]="imgURL" class="rounded float-right img-h-200 img-thumbnail">
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="identifiant">Identifiant:</label>
+                                    <input class="form-control" formControlName="identifiant" id="identifiant"
+                                        type="number" placeholder="Saisissez l'identifiant ici"
+                                        [ngClass]="{ 'is-invalid': submitted && f.identifiant.errors }">
+                                    <div *ngIf="submitted && f.identifiant.errors" class="invalid-feedback d-block">
+                                        <div *ngIf="f.identifiant.errors.required">L'identifiant est obligatoire.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="role">Rôle:</label>
+                                    <select class="form-control" id="role" formControlName="role"  
+                                    [ngClass]="{ 'is-invalid': submitted && f.role.errors }">
+                                        <option value="Personnel"> Personnel</option>
+                                        <option value="Informaticien">Informaticien</option>
+                                        <option value="Administrateur">Administrateur</option>
+                                        <option value="Founisseur">Fournisseur</option>
+                                    
+                                    </select>
+                                    <div *ngIf="submitted && f.role.errors" class="invalid-feedback d-block">
+                                        <div *ngIf="f.role.errors.required"> rôle est obligatoire.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="nom">Nom:</label>
+                                    <input class="form-control"formControlName="nom"   id="nom" type="text"
+                                     placeholder="Saisissez le nom ici"
+                                    [ngClass]="{ 'is-invalid': submitted && f.nom.errors }">
+                                    <div *ngIf="submitted && f.nom.errors" class="invalid-feedback d-block">
+                                        <div *ngIf="f.nom.errors.required">Le champ nom est obligatoire.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="prenom">Prénom:</label>
+                                    <input class="form-control" formControlName="prenom"   id="prenom" type="text"
+                                     placeholder="Saisissez le prénom ici"
+                                    [ngClass]="{ 'is-invalid': submitted && f.prenom.errors }">
+                                    <div *ngIf="submitted && f.prenom.errors" class="invalid-feedback d-block">
+                                        <div *ngIf="f.prenom.errors.required">Le champ prénom est obligatoire.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="email">E-mail:</label>
+                                    <input class="form-control" formControlName="email" id="email" type="text"
+                                        placeholder="Saisissez l'e-mail ici"
+                                        [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback d-block">
+                                        <div *ngIf="f.email.errors.required">Le champ adresse e-mail est obligatoire.</div>
+                                        <div *ngIf="f.email.errors.email">Le champ e-mail doit être une adresse e-mail
+                                            valide.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="password">Mot de passe:</label>
+                                    <input class="form-control" formControlName="password" id="password" type="password"
+                                        placeholder="Saisissez le mot de passe ici"
+                                        [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback d-block">
+                                        <div *ngIf="f.password.errors.required">Le champ mot de passe est obligatoire.
+                                        </div>
+                                        <div *ngIf="f.password.errors.minlength">Le mot de passe doit être au moins de 6
+                                            caractères.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="cin">Numéro CIN:</label>
+                                    <input class="form-control" formControlName="cin" id="cin" type="number"
+                                     placeholder="Saisissez le numéro CIN ici"    [ngClass]="{ 'is-invalid': submitted && f.cin.errors }">
+                                     <div *ngIf="submitted && f.cin.errors" class="invalid-feedback d-block">
+                                        <div *ngIf="f.cin.errors.required">Le champ numéro de cin  est obligatoire.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="telephone">Téléphone:</label>
+                                    <input class="form-control"  formControlName="telephone" id="telephone" type="text"
+                                        placeholder="Saisissez le téléphone ici" [ngClass]="{ 'is-invalid': submitted && f.telephone.errors }">
+                                        <div *ngIf="submitted && f.telephone.errors" class="invalid-feedback d-block">
+                                            <div *ngIf="f.telephone.errors.required">Le champ téléphone est obligatoire.</div>
+                                        </div> 
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="adresse">Adresse:</label>
+                                    <input class="form-control" formControlName="adresse"  id="adresse" type="text"
+                                        placeholder="Saisissez l'adresse ici"  [ngClass]="{ 'is-invalid': submitted && f.adresse.errors }">
+                                        <div *ngIf="submitted && f.adresse.errors" class="invalid-feedback d-block">
+                                            <div *ngIf="f.adresse.errors.required"> Le champ adresse est obligatoire.</div>
+                                        </div> 
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="departement">Département:</label>
+                                    <input class="form-control" formControlName="departement" id="departement" type="text"
+                                     placeholder="Saisissez le département ici"  [ngClass]="{ 'is-invalid': submitted && f.departement.errors }">
+                                     <div *ngIf="submitted && f.departement.errors" class="invalid-feedback d-block">
+                                        <div *ngIf="f.departement.errors.required">Le champ département est obligatoire.</div>
+                                    </div> 
+                                    </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="lieux_de_travail">Lieu de travail:</label>
+                                    <select class="form-control" id="lieux_de_travail"  formControlName="lieux_de_travail" 
+                                    [ngClass]="{ 'is-invalid': submitted && f.lieux_de_travail.errors }">
+                                        <option value="Siége"> Siége</option>
+                                        <option value="Agence"> Agence</option>
+                                    </select> 
+                                    <div *ngIf="submitted && f.lieux_de_travail.errors" class="invalid-feedback d-block">
+                                        <div *ngIf="f.lieux_de_travail.errors.required">
+                                           Le champ lieu de travail est obligatoire.
+                                        </div>
+                                    </div> 
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="date_d_embauche">Date d'embauche:</label>
+                                    <input class="form-control" id="date_d_embauche" type="date" formControlName="date_d_embauche"
+                                        placeholder="Saisissez la date d'embauche ici" [ngClass]="{ 'is-invalid': submitted && f.date_d_embauche.errors }">
+                                        <div *ngIf="submitted && f.date_d_embauche.errors" class="invalid-feedback d-block">
+                                            <div *ngIf="f.date_d_embauche.errors.required">
+                                                Le champ date d'embauche est obligatoire.
+                                            </div>
+                                        </div> 
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="offset-sm-9 col-sm-3">
+                        <div class="form-group form-actions">
+                            <button type="submit" class="btn btn-success btn-block">
+                                <i class="cui-save icons mt-4"></i> Ajouter
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

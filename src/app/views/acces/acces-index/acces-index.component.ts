@@ -6,14 +6,14 @@ import { Component, OnInit, ViewChild } from '@angular/core';
   styleUrls: ['./acces-index.component.css']
 })
 export class AccesIndexComponent implements OnInit {
-  @ViewChild('dataTable') table;
-  dataTable: any;
+//@ViewChild('dataTable') table;
+  //dataTable: any;
   
   constructor() { }
 
   ngOnInit(): void {
-    this.dataTable = $(this.table.nativeElement);
-    this.dataTable.DataTable();
+    //this.dataTable = $(this.table.nativeElement);
+    //this.dataTable.DataTable();
   }
 
 }

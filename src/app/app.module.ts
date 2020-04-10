@@ -45,7 +45,13 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AccesIndexComponent } from './views/acces/acces-index/acces-index.component';
 import { AccesAddComponent } from './views/acces/acces-add/acces-add.component';
 import { AccesUpdateComponent } from './views/acces/acces-update/acces-update.component';
-import { DataTablesModule } from 'angular-datatables';
+import { MissionComponent } from './views/mission/mission.component';
+import { TicketIndexComponent } from './views/ticket/ticket-index/ticket-index.component';
+import { TicketAddComponent } from './views/ticket/ticket-add/ticket-add.component';
+import { TicketAdminPrioriteComponent } from './views/ticket/ticket-admin-priorite/ticket-admin-priorite.component';
+import { TicketUpdateComponent } from './views/ticket/ticket-update/ticket-update.component';
+import { CategorieAddComponent } from './views/categorie/categorie-add/categorie-add.component';
+//import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   imports: [
@@ -62,8 +68,8 @@ import { DataTablesModule } from 'angular-datatables';
     TabsModule.forRoot(),
     ChartsModule, 
     FormsModule,
-    ReactiveFormsModule,
-    DataTablesModule
+    ReactiveFormsModule
+    //DataTablesModule
   ],
   declarations: [
     AppComponent,
@@ -75,7 +81,13 @@ import { DataTablesModule } from 'angular-datatables';
     ForgotPasswordComponent,
     AccesIndexComponent,
     AccesAddComponent,
-    AccesUpdateComponent
+    AccesUpdateComponent,
+    MissionComponent,
+    TicketIndexComponent,
+    TicketAddComponent,
+    TicketAdminPrioriteComponent,
+    TicketUpdateComponent,
+    CategorieAddComponent
   ],
   providers: [{
     provide: LocationStrategy,
