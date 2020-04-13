@@ -29,6 +29,16 @@
                                 </div>
                             </div>
 
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="mission">Mission:</label>
+                                    <input class="form-control" formControlName="mission" id="mission" type="text"
+                                        [ngClass]="{ 'is-invalid': submitted && f.mission.errors }">
+                                    <div *ngIf="submitted && f.mission.errors" class="invalid-feedback d-block">
+                                        <div *ngIf="f.mission.errors.required">Le champ mission est obligatoire.</div>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="col-sm-4">
                                 <div class="form-group">
@@ -42,7 +52,6 @@
                                 </div>
                             </div>
 
-
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="date_fin">Date fin:</label>
@@ -54,18 +63,6 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-4">
-                                <div class="form-group">
-                                    <label for="mission">mission:</label>
-                                    <input class="form-control" formControlName="mission" id="mission" type="text"
-                                        [ngClass]="{ 'is-invalid': submitted && f.mission.errors }">
-                                    <div *ngIf="submitted && f.mission.errors" class="invalid-feedback d-block">
-                                        <div *ngIf="f.mission.errors.required">Le champ mission est obligatoire.</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <label for="description">Description:</label>

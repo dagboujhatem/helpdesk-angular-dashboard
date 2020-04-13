@@ -5,15 +5,7 @@
                 <form [formGroup]="ticketAddForm" (ngSubmit)="onSubmit()">
                     <div class="card-header"><strong>Créer un ticket </strong> </div>
                     <div class="card-body">
-
                         <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="numero">Numéro ticket:</label>
-                                    <input class="form-control" id="numero" type="number" placeholder="">
-                                </div>
-                            </div>
-
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="nom">Créer par:</label>
@@ -25,8 +17,6 @@
                                     </div>
                                 </div>
                             </div>
-
-
 
                             <div class="col-sm-6">
                                 <div class="form-group">
@@ -130,17 +120,7 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label for="departement">Département:</label>
-                                    <input class="form-control" formControlName="departement" id="departement" 
-                                    type="text" placeholder="Saisissez le département ici">
-                                </div>
-                            </div>
-
-                            
-                            <div class="col-sm-6 col-form-label">
+                            <div class="col-sm-12 col-form-label">
                                 <div class="form-check">
                                     <label >Lieu:</label>
                                     <!--  -->
@@ -155,6 +135,16 @@
                                       <!--  -->
                                 </div>
                             </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="departement">Département:</label>
+                                    <input class="form-control" formControlName="departement" id="departement" 
+                                    type="text" placeholder="Saisissez le département ici">
+                                </div>
+                            </div>
+
+                            
                             
                             <div class="col-sm-6">
                                 <div class="form-group">

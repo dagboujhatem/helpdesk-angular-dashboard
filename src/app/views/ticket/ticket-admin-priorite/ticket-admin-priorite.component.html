@@ -5,41 +5,39 @@
                 <form [formGroup]="ticketAdminPrioriteForm" (ngSubmit)="onSubmit()">
                     <div class="card-header"><strong>Affecter la priorité </strong> </div>
                     <div class="card-body">
-
                         <div class="row">
-
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="numero">Numéro ticket:</label>
+                                    <label for="numero">Identifiant du ticket:</label>
                                     <input class="form-control" id="numero" type="number" readonly="true">
                                 </div>
                             </div>
 
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="demandeur">demandeur</label>
-                                    <input class="form-control" id="demandeur" type="text">
+                                    <label for="demandeur">Demandeur</label>
+                                    <input class="form-control" id="demandeur" type="text" readonly="true">
                                 </div>
                             </div>
 
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="objet">Objet:</label>
-                                    <input class="form-control" id="objet" type="text">
+                                    <input class="form-control" id="objet" type="text" readonly="true">
                                 </div>
                             </div>
 
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="element">Élément:</label>
-                                    <input class="form-control" id="element" type="text">
+                                    <input class="form-control" id="element" type="text" readonly="true">
                                 </div>
                             </div>
 
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="date_d_ouverture">Date d'ouverture:</label>
-                                    <input class="form-control" id="date_d_ouverture" type="date">
+                                    <input class="form-control" id="date_d_ouverture" type="date" readonly="true">
                                 </div>
                             </div>
 
@@ -47,7 +45,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="date_d_echeance">Date d'écheance:</label>
-                                    <input class="form-control" id="date_d_echeance" type="date">
+                                    <input class="form-control" id="date_d_echeance" type="date" readonly="true">
                                 </div>
                             </div>
 
@@ -55,7 +53,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="categorie">Catégorie:</label>
-                                    <select class="form-control" id="categorie">
+                                    <select class="form-control" id="categorie" readonly="true">
                                         <option value="applicatif"> Applicatif</option>
                                         <option value="materiel"> Matériel</option>
                                     </select>
@@ -66,7 +64,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="impact">Impact:</label>
-                                    <select class="form-control" id="impact">
+                                    <select class="form-control" id="impact" readonly="true">
                                         <option value="eleve"> Élevé</option>
                                         <option value="normale"> Normale</option>
                                         <option value="bas"> Bas</option>
@@ -76,8 +74,8 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="etat">Etat:</label>
-                                    <select class="form-control" id="etat">
+                                    <label for="etat">État:</label>
+                                    <select class="form-control" id="etat" readonly="true">
                                         <option value="ouvert"> Ouvret</option>
                                         <option value="en_traitement"> En traitement</option>
                                         <option value="clos"> clos </option>
@@ -86,58 +84,64 @@
                                 </div>
                             </div>
 
+                            <div class="col-sm-12 col-form-label">
+                                <div class="form-check">
+                                    <label>Lieu:</label>
+                                    <!--  -->
+                                    <label>
+                                        <input type="radio" value="Agence" readonly="true">
+                                        <span>Agence</span>
+                                    </label>
+                                    <label>
+                                        <input type="radio" value="Siége" readonly="true">
+                                        <span>Siége</span>
+                                    </label>
+                                    <!--  -->
+                                </div>
+                            </div>
+
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="departement">Département:</label>
-                                    <input class="form-control" id="departement" type="text">
+                                    <input class="form-control" id="departement" type="text" readonly="true">
                                 </div>
                             </div>
 
-                            <label class="col-md-3 col-form-label">Lieu:</label>
-                            <div class="col-md-9 col-form-label">
-                                <div class="form-check">
-                                    <input class="form-check-input" id="agence" type="radio" value="agence"
-                                        name="agence">
-                                    <label class="form-check-label" for="agence">Agence</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" id="siege" type="radio" value="siege" name="siege">
-                                    <label class="form-check-label" for="siege">Siége</label>
-                                </div>
-                            </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="num">Numéro d'agence:</label>
-                                    <input class="form-control" id="num" type="number">
+                                    <input class="form-control" id="num" type="number" readonly="true">
                                 </div>
                             </div>
 
-
-                            <div class="col-sm-6">
+                            <div class="col-sm-12">
                                 <div class="form-group">
                                     <label for="commentaire">Commentaire:</label>
-                                    <input class="form-control" id="departement" type="text">
+                                    <textarea class="form-control" id="departement" type="text" readonly="true">
+                                       </textarea>
                                 </div>
                             </div>
 
-                            <label class="col-md-12 col-form-label" for="description">Description:</label>
-                            <div class="col-md-12">
-                                <textarea class="form-control" id="description" name="description" rows="12">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label for="description">Description:</label>
+                                    <textarea class="form-control" id="description" name="description" rows="12"
+                                        readonly="true">
                                 </textarea>
+                                </div>
                             </div>
 
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="photo">Piéce-joint:</label>
-                                    <input class="form-control-file" id="photo" type="file" #file accept='image/*'
-                                        (change)="preview(file.files)">
-
+                                    <input class="form-control-file" id="photo" type="file" readonly="true" #file
+                                        accept='image/*' (change)="preview(file.files)">
                                 </div>
                             </div>
 
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="priorite">priorité:</label>
+                                    <label for="priorite">Priorité:</label>
                                     <select class="form-control" formControlName="priorite" id="priorite"
                                         [ngClass]="{ 'is-invalid': submitted && f.priorite.errors }">
                                         <option value="eleve"> Élevé</option>
@@ -146,10 +150,12 @@
                                         <option value="tres_basse"> trés basse </option>
                                     </select>
                                     <div *ngIf="submitted && f.priorite.errors" class="invalid-feedback d-block">
-                                        <div *ngIf="f.priorite.errors.required">Le champ priorité est obligatoire.</div>
+                                        <div *ngIf="f.priorite.errors.required">Le champ priorité est obligatoire.
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
                             <div class="offset-sm-9 col-sm-3">
                                 <div class="form-group form-actions">
                                     <button type="submit" class="btn btn-success btn-block">
