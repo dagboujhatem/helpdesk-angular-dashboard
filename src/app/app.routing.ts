@@ -16,6 +16,7 @@ import { TicketIndexComponent } from './views/ticket/ticket-index/ticket-index.c
 import { TicketAddComponent } from './views/ticket/ticket-add/ticket-add.component';
 import { TicketAdminPrioriteComponent } from './views/ticket/ticket-admin-priorite/ticket-admin-priorite.component';
 import { TicketUpdateComponent } from './views/ticket/ticket-update/ticket-update.component';
+import { CategorieAddComponent } from './views/categorie/categorie-add/categorie-add.component';
 
 export const routes: Routes = [
 
@@ -84,6 +85,11 @@ export const routes: Routes = [
       {
         path: 'priorite',
         component:  TicketAdminPrioriteComponent
+
+      },
+      {
+        path: 'categorie',
+        component:  CategorieAddComponent
 
       },
 
