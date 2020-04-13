@@ -1,18 +1,21 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {ToasterService} from 'angular2-toaster';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: 'login.component.html'
 })
-export class LoginComponent { 
+export class LoginComponent {
 
   loginForm: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,
+              private toasterService: ToasterService) { }
 
 
+  // tslint:disable-next-line:use-lifecycle-interface
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
         email: ['', [Validators.required, Validators.email]],
@@ -32,7 +35,11 @@ export class LoginComponent {
     }
 
     // display form values on success
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.loginForm.value, null, 4));
+    // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.loginForm.value, null, 4));
+    this.toasterService.pop('success', 'Args Title', 'Args Body');
+    this.toasterService.pop('error', 'Args Title', 'Args Body');
+    this.toasterService.pop('warning', 'Args Title', 'Args Body');
+    this.toasterService.pop('info', 'Args Title', 'Args Body');
   }
 
 }

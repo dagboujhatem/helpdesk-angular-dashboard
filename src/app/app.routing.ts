@@ -27,79 +27,66 @@ export const routes: Routes = [
   },
   {
     path: 'login',
-    component: LoginComponent,
-    data: {
-      title: 'Login Page'
-    }
+    component: LoginComponent
   },
   {
     path: 'reset-password',
-    component: ResetPasswordComponent,
-    data: {
-      title: 'Reset password Page'
-    }
+    component: ResetPasswordComponent
   },
   {
     path: 'forgot-password',
-    component: ForgotPasswordComponent,
-    data: {
-      title: 'Forgot password Page'
-    }
+    component: ForgotPasswordComponent
   },
   {
     path: '404',
-    component: P404Component,
-    data: {
-      title: 'Page 404'
-    }
+    component: P404Component
   },
   {
     path: '500',
-    component: P500Component,
-    data: {
-      title: 'Page 500'
-      
-    }
+    component: P500Component
   },
   // end routing
   {
     path: '',
     component: DefaultLayoutComponent,
     data: {
-      title: 'Home'
+      title: 'Tableau de bord'
     },
     children: [
       {
-        path:'accès', 
-        component: AccesIndexComponent, 
+        path:'accès',
+        component: AccesIndexComponent,
+        data: {
+          title: 'Gestion des accès'
+        },
         children: [
-       
+
         ]
       },
       {
-        path: 'accès/add', 
+        path: 'accès/add',
         component: AccesAddComponent
       },
       {
-        path: 'accès/update', 
+        path: 'accès/update',
         component: AccesUpdateComponent
       },
       {
-        path: 'mission', 
+        path: 'mission',
         component: MissionComponent
 
       },
       {
-        path: 'ticket', 
+        path: 'ticket',
         component: TicketAddComponent
 
       },
       {
-        path: 'priorite', 
+        path: 'priorite',
         component:  TicketAdminPrioriteComponent
 
       },
-      
+
       {
         path: 'base',
         loadChildren: () => import('./views/base/base.module').then(m => m.BaseModule)
@@ -130,7 +117,10 @@ export const routes: Routes = [
       }
     ]
   },
-  { path: '**', component: P404Component }
+  {
+    path: '**',
+    redirectTo: '404'
+  }
 ];
 
 @NgModule({

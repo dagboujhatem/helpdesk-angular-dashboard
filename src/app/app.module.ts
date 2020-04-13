@@ -18,7 +18,7 @@ import { DefaultLayoutComponent } from './containers';
 
 import { P404Component } from './views/common/error/404.component';
 import { P500Component } from './views/common/error/500.component';
-import { LoginComponent } from './views/common/login/login.component'; 
+import { LoginComponent } from './views/common/login/login.component';
 
 const APP_CONTAINERS = [
   DefaultLayoutComponent
@@ -51,7 +51,9 @@ import { TicketAddComponent } from './views/ticket/ticket-add/ticket-add.compone
 import { TicketAdminPrioriteComponent } from './views/ticket/ticket-admin-priorite/ticket-admin-priorite.component';
 import { TicketUpdateComponent } from './views/ticket/ticket-update/ticket-update.component';
 import { CategorieAddComponent } from './views/categorie/categorie-add/categorie-add.component';
-//import { DataTablesModule } from 'angular-datatables';
+import { CommonRightColComponent } from './views/common/common-right-col/common-right-col.component';
+import {ToasterModule} from 'angular2-toaster';
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   imports: [
@@ -66,17 +68,18 @@ import { CategorieAddComponent } from './views/categorie/categorie-add/categorie
     PerfectScrollbarModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-    ChartsModule, 
+    ChartsModule,
     FormsModule,
-    ReactiveFormsModule
-    //DataTablesModule
+    ReactiveFormsModule,
+    ToasterModule.forRoot(),
+    DataTablesModule
   ],
   declarations: [
     AppComponent,
     ...APP_CONTAINERS,
     P404Component,
     P500Component,
-    LoginComponent, 
+    LoginComponent,
     ResetPasswordComponent,
     ForgotPasswordComponent,
     AccesIndexComponent,
@@ -87,7 +90,8 @@ import { CategorieAddComponent } from './views/categorie/categorie-add/categorie
     TicketAddComponent,
     TicketAdminPrioriteComponent,
     TicketUpdateComponent,
-    CategorieAddComponent
+    CategorieAddComponent,
+    CommonRightColComponent
   ],
   providers: [{
     provide: LocationStrategy,

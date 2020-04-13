@@ -6,14 +6,23 @@ import { Component, OnInit, ViewChild } from '@angular/core';
   styleUrls: ['./acces-index.component.css']
 })
 export class AccesIndexComponent implements OnInit {
-//@ViewChild('dataTable') table;
-  //dataTable: any;
-  
+
   constructor() { }
 
-  ngOnInit(): void {
-    //this.dataTable = $(this.table.nativeElement);
-    //this.dataTable.DataTable();
+  public data = [
+    {name: 'therichpost', email: 'therichpost@gmail.com', website:'therichpost.com'},
+    {name: 'therichpost', email: 'therichpost@gmail.com', website:'therichpost.com'},
+    {name: 'therichpost', email: 'therichpost@gmail.com', website:'therichpost.com'},
+    {name: 'therichpost', email: 'therichpost@gmail.com', website:'therichpost.com'},
+  ];
+  title = 'angulardatatables';
+  dtOptions: DataTables.Settings = {};
+  ngOnInit() {
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 5,
+      processing: true
+    };
   }
 
 }
