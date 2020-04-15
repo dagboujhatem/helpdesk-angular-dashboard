@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {ToasterService} from 'angular2-toaster';
+import {AuthenticationService} from '../security/authentication.service';
+import {Router} from '@angular/router';
+import {AuthorizationService} from '../security/authorization.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,7 +15,10 @@ export class LoginComponent {
   submitted = false;
 
   constructor(private formBuilder: FormBuilder,
-              private toasterService: ToasterService) { }
+              private toasterService: ToasterService,
+              private authentificationService: AuthenticationService,
+              private authorizationService: AuthorizationService,
+              private router: Router) { }
 
 
   // tslint:disable-next-line:use-lifecycle-interface
@@ -24,7 +30,7 @@ export class LoginComponent {
   }
 
   // convenience getter for easy access to form fields
-  get f() { return this.loginForm.controls;}
+  get f() { return this.loginForm.controls; }
 
   onSubmit() {
     this.submitted = true;
@@ -34,12 +40,39 @@ export class LoginComponent {
         return;
     }
 
-    // display form values on success
-    // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.loginForm.value, null, 4));
-    this.toasterService.pop('success', 'Args Title', 'Args Body');
-    this.toasterService.pop('error', 'Args Title', 'Args Body');
-    this.toasterService.pop('warning', 'Args Title', 'Args Body');
-    this.toasterService.pop('info', 'Args Title', 'Args Body');
+    // Send data to REST API
+    this.authentificationService.login(this.loginForm.value).subscribe(
+      bodyResponse => {
+        this.loginSuccess(bodyResponse);
+      }, error => {
+        this.loginError(error);
+      }
+    );
   }
 
+  loginSuccess(bodyResponse) {
+    const responseData = bodyResponse.data;
+    // Save data in localStorage
+    this.authorizationService.setRole(responseData.role);
+    this.authorizationService.setAvatar(responseData.avatar);
+    this.authorizationService.setTokenType(responseData.token_type);
+    // save authenticationObject in localStorage
+    const token = responseData.access_token;
+    const expiredTokenDate = responseData.expires_at;
+    const authenticationObject = {
+      accessToken: token,
+      expiredTokenDate: expiredTokenDate,
+    };
+    localStorage.setItem('authenticationObject', JSON.stringify(authenticationObject));
+    // Show toast message
+    this.toasterService.pop('success', 'logged in successfully!', bodyResponse.message);
+    // redirection  to dashboard
+    this.router.navigate(['/home/dashboard']);
+  }
+
+  private loginError(error) {
+    if (error.status === 401) {
+      this.toasterService.pop('error', 'Please verify your e-mail or password!', error.error.message);
+    }
+  }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import {AccesService} from '../acces.service';
 
 @Component({
   selector: 'app-acces-index',
@@ -7,15 +8,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 })
 export class AccesIndexComponent implements OnInit {
 
-  constructor() { }
+  public usersData: any = null ;
 
-  public data = [
-    {name: 'therichpost', email: 'therichpost@gmail.com', website:'therichpost.com'},
-    {name: 'therichpost', email: 'therichpost@gmail.com', website:'therichpost.com'},
-    {name: 'therichpost', email: 'therichpost@gmail.com', website:'therichpost.com'},
-    {name: 'therichpost', email: 'therichpost@gmail.com', website:'therichpost.com'},
-  ];
-  title = 'angulardatatables';
+  constructor(private accesService: AccesService) { }
+
   dtOptions: DataTables.Settings = {};
   ngOnInit() {
     this.dtOptions = {
@@ -23,6 +19,13 @@ export class AccesIndexComponent implements OnInit {
       pageLength: 5,
       processing: true
     };
+    this.getAllUsers();
   }
 
+  private getAllUsers() {
+    this.accesService.getAllUsers().subscribe(
+      responseBody => { this.usersData = responseBody.data; },
+      error => { console.log(error); }
+    );
+  }
 }

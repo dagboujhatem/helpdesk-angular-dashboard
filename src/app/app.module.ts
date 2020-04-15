@@ -42,18 +42,12 @@ import { ChartsModule } from 'ng2-charts';
 import { ResetPasswordComponent } from './views/common/reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './views/common/forgot-password/forgot-password.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { AccesIndexComponent } from './views/acces/acces-index/acces-index.component';
-import { AccesAddComponent } from './views/acces/acces-add/acces-add.component';
-import { AccesUpdateComponent } from './views/acces/acces-update/acces-update.component';
-import { MissionComponent } from './views/mission/mission.component';
-import { TicketIndexComponent } from './views/ticket/ticket-index/ticket-index.component';
-import { TicketAddComponent } from './views/ticket/ticket-add/ticket-add.component';
-import { TicketAdminPrioriteComponent } from './views/ticket/ticket-admin-priorite/ticket-admin-priorite.component';
-import { TicketUpdateComponent } from './views/ticket/ticket-update/ticket-update.component';
-import { CategorieAddComponent } from './views/categorie/categorie-add/categorie-add.component';
 import { CommonRightColComponent } from './views/common/common-right-col/common-right-col.component';
 import {ToasterModule} from 'angular2-toaster';
 import { DataTablesModule } from 'angular-datatables';
+import { RegisterComponent } from './views/common/register/register.component';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {TokenInterceptor} from './views/common/security/token-interceptor';
 
 @NgModule({
   imports: [
@@ -72,7 +66,8 @@ import { DataTablesModule } from 'angular-datatables';
     FormsModule,
     ReactiveFormsModule,
     ToasterModule.forRoot(),
-    DataTablesModule
+    DataTablesModule,
+    HttpClientModule
   ],
   declarations: [
     AppComponent,
@@ -82,21 +77,20 @@ import { DataTablesModule } from 'angular-datatables';
     LoginComponent,
     ResetPasswordComponent,
     ForgotPasswordComponent,
-    AccesIndexComponent,
-    AccesAddComponent,
-    AccesUpdateComponent,
-    MissionComponent,
-    TicketIndexComponent,
-    TicketAddComponent,
-    TicketAdminPrioriteComponent,
-    TicketUpdateComponent,
-    CategorieAddComponent,
-    CommonRightColComponent
+    CommonRightColComponent,
+    RegisterComponent
   ],
-  providers: [{
-    provide: LocationStrategy,
-    useClass: HashLocationStrategy
-  }],
+  providers: [
+    {
+      provide: LocationStrategy,
+      useClass: HashLocationStrategy
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

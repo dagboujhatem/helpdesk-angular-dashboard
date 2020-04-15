@@ -8,19 +8,12 @@ import { ResetPasswordComponent } from './views/common/reset-password/reset-pass
 import { ForgotPasswordComponent } from './views/common/forgot-password/forgot-password.component';
 import { P404Component } from './views/common/error/404.component';
 import { P500Component } from './views/common/error/500.component';
-import { AccesIndexComponent } from './views/acces/acces-index/acces-index.component';
-import { AccesAddComponent } from './views/acces/acces-add/acces-add.component';
-import { AccesUpdateComponent } from './views/acces/acces-update/acces-update.component';
-import { MissionComponent } from './views/mission/mission.component';
-import { TicketIndexComponent } from './views/ticket/ticket-index/ticket-index.component';
-import { TicketAddComponent } from './views/ticket/ticket-add/ticket-add.component';
-import { TicketAdminPrioriteComponent } from './views/ticket/ticket-admin-priorite/ticket-admin-priorite.component';
-import { TicketUpdateComponent } from './views/ticket/ticket-update/ticket-update.component';
-import { CategorieAddComponent } from './views/categorie/categorie-add/categorie-add.component';
+import {RegisterComponent} from './views/common/register/register.component';
+import {AuthorizationService} from './views/common/security/authorization.service';
 
 export const routes: Routes = [
 
-  //  routing added by oumaima
+  //  routing front
   {
     path: '',
     redirectTo: 'login',
@@ -39,6 +32,13 @@ export const routes: Routes = [
     component: ForgotPasswordComponent
   },
   {
+    path: 'register',
+    component: RegisterComponent,
+    data: {
+      title: 'Register Page'
+    }
+  },
+  {
     path: '404',
     component: P404Component
   },
@@ -46,53 +46,15 @@ export const routes: Routes = [
     path: '500',
     component: P500Component
   },
-  // end routing
+  // end front routing
   {
-    path: '',
+    path: 'home',
     component: DefaultLayoutComponent,
     data: {
       title: 'Tableau de bord'
     },
+    canActivate: [AuthorizationService],
     children: [
-      {
-        path:'accès',
-        component: AccesIndexComponent,
-        data: {
-          title: 'Gestion des accès'
-        },
-        children: [
-
-        ]
-      },
-      {
-        path: 'accès/add',
-        component: AccesAddComponent
-      },
-      {
-        path: 'accès/update',
-        component: AccesUpdateComponent
-      },
-      {
-        path: 'mission',
-        component: MissionComponent
-
-      },
-      {
-        path: 'ticket',
-        component: TicketAddComponent
-
-      },
-      {
-        path: 'priorite',
-        component:  TicketAdminPrioriteComponent
-
-      },
-      {
-        path: 'categorie',
-        component:  CategorieAddComponent
-
-      },
-
       {
         path: 'base',
         loadChildren: () => import('./views/base/base.module').then(m => m.BaseModule)
@@ -120,6 +82,23 @@ export const routes: Routes = [
       {
         path: 'widgets',
         loadChildren: () => import('./views/widgets/widgets.module').then(m => m.WidgetsModule)
+      },
+      // Angular Lazy loading
+      {
+        path: 'accès',
+        loadChildren: () => import('./views/acces/acces.module').then(m => m.AccesModule)
+      },
+      {
+        path: 'missions',
+        loadChildren: () => import('./views/missions/missions.module').then(m => m.MissionsModule)
+      },
+      {
+        path: 'tickets',
+        loadChildren: () => import('./views/tickets/tickets.module').then(m => m.TicketsModule)
+      },
+      {
+        path: 'catégories',
+        loadChildren: () => import('./views/categories/categories.module').then(m => m.CategoriesModule)
       }
     ]
   },

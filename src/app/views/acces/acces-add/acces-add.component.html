@@ -34,13 +34,13 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="role">Rôle:</label>
-                                    <select class="form-control" id="role" formControlName="role"  
+                                    <select class="form-control" id="role" formControlName="role"
                                     [ngClass]="{ 'is-invalid': submitted && f.role.errors }">
                                         <option value="Personnel"> Personnel</option>
                                         <option value="Informaticien">Informaticien</option>
                                         <option value="Administrateur">Administrateur</option>
                                         <option value="Founisseur">Fournisseur</option>
-                                    
+
                                     </select>
                                     <div *ngIf="submitted && f.role.errors" class="invalid-feedback d-block">
                                         <div *ngIf="f.role.errors.required"> rôle est obligatoire.</div>
@@ -113,7 +113,7 @@
                                         placeholder="Saisissez le téléphone ici" [ngClass]="{ 'is-invalid': submitted && f.telephone.errors }">
                                         <div *ngIf="submitted && f.telephone.errors" class="invalid-feedback d-block">
                                             <div *ngIf="f.telephone.errors.required">Le champ téléphone est obligatoire.</div>
-                                        </div> 
+                                        </div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -123,7 +123,7 @@
                                         placeholder="Saisissez l'adresse ici"  [ngClass]="{ 'is-invalid': submitted && f.adresse.errors }">
                                         <div *ngIf="submitted && f.adresse.errors" class="invalid-feedback d-block">
                                             <div *ngIf="f.adresse.errors.required"> Le champ adresse est obligatoire.</div>
-                                        </div> 
+                                        </div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -133,22 +133,22 @@
                                      placeholder="Saisissez le département ici"  [ngClass]="{ 'is-invalid': submitted && f.departement.errors }">
                                      <div *ngIf="submitted && f.departement.errors" class="invalid-feedback d-block">
                                         <div *ngIf="f.departement.errors.required">Le champ département est obligatoire.</div>
-                                    </div> 
+                                    </div>
                                     </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="lieux_de_travail">Lieu de travail:</label>
-                                    <select class="form-control" id="lieux_de_travail"  formControlName="lieux_de_travail" 
+                                    <select class="form-control" id="lieux_de_travail"  formControlName="lieux_de_travail"
                                     [ngClass]="{ 'is-invalid': submitted && f.lieux_de_travail.errors }">
                                         <option value="Siége"> Siége</option>
                                         <option value="Agence"> Agence</option>
-                                    </select> 
+                                    </select>
                                     <div *ngIf="submitted && f.lieux_de_travail.errors" class="invalid-feedback d-block">
                                         <div *ngIf="f.lieux_de_travail.errors.required">
                                            Le champ lieu de travail est obligatoire.
                                         </div>
-                                    </div> 
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -160,7 +160,7 @@
                                             <div *ngIf="f.date_d_embauche.errors.required">
                                                 Le champ date d'embauche est obligatoire.
                                             </div>
-                                        </div> 
+                                        </div>
                                 </div>
                             </div>
                         </div>
@@ -168,8 +168,8 @@
                     </div>
                     <div class="offset-sm-9 col-sm-3">
                         <div class="form-group form-actions">
-                            <button type="submit" class="btn btn-success btn-block">
-                                <i class="cui-save icons mt-4"></i> Ajouter
+                            <button type="submit" class="btn btn-success btn-pill btn-block">
+                              <i class="cil-save"></i> Ajouter
                             </button>
                         </div>
                     </div>

@@ -10,16 +10,7 @@ const routes: Routes = [
     component: DashboardComponent,
     data: {
       title: 'Dashboard'
-    }/*,
-    children: [
-      {
-        path: 'accès', 
-        component: AccesIndexComponent, 
-        data: {
-          title: 'Accès'
-        }
-      }
-    ]*/
+    }
   }
 ];
 

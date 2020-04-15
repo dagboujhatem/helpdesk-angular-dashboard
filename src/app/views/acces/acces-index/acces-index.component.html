@@ -20,16 +20,18 @@
       <table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions">
         <thead>
         <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Website</th>
+          <th>Identifiant</th>
+          <th>Nom</th>
+          <th>Prénom</th>
+          <th>Rôle</th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let group of data">
-          <td>{{group.name}}</td>
-          <td>{{group.email}}</td>
-          <td>{{group.website}}</td>
+        <tr *ngFor="let group of usersData">
+          <td>{{group.id}}</td>
+          <td>{{group.nom}}</td>
+          <td>{{group.prenom}}</td>
+          <td>{{group.role}}</td>
         </tr>
         </tbody>
       </table>
