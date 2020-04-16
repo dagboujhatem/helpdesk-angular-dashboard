@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {AccesService} from '../acces.service';
+import {Router} from '@angular/router';
+import {ToasterService} from 'angular2-toaster';
 
 @Component({
   selector: 'app-acces-add',
@@ -8,35 +11,43 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class AccesAddComponent implements OnInit {
 
-  //  image preview 
+  constructor(private formBuilder: FormBuilder,
+              private accesService: AccesService,
+              private toasterService: ToasterService,
+              private router: Router) { }
+
+  // convenience getter for easy access to form fields
+  get f() { return this.accesAddForm.controls; }
+
+  //  image preview
   public imagePath;
   imgURL: any;
   public message: string;
- 
+  // form validation
+  accesAddForm: FormGroup;
+  submitted = false;
+
   preview(files) {
-    if (files.length === 0)
+    if (files.length === 0) {
       return;
- 
-    var mimeType = files[0].type;
+    }
+
+    const mimeType = files[0].type;
     if (mimeType.match(/image\/*/) == null) {
       this.message = 'Only images are supported.';
+      this.toasterService.pop('error', 'Photo de profil:', 'Only images are supported.');
       return;
     } else {
       this.message = '';
     }
- 
-    var reader = new FileReader();
-    this.imagePath = files;
-    reader.readAsDataURL(files[0]); 
-    reader.onload = (_event) => { 
-      this.imgURL = reader.result; 
-    }
-  }
-  // form validation 
-  accesAddForm: FormGroup;
-  submitted = false;
 
-  constructor(private formBuilder: FormBuilder) { }
+    const reader = new FileReader();
+    this.imagePath = files;
+    reader.readAsDataURL(files[0]);
+    reader.onload = (_event) => {
+      this.imgURL = reader.result;
+    };
+  }
 
 
   ngOnInit() {
@@ -54,12 +65,9 @@ export class AccesAddComponent implements OnInit {
         departement: ['', [Validators.required]],
         lieux_de_travail: ['', [Validators.required]],
         date_d_embauche: ['', [Validators.required]],
-        
+
     });
   }
-
-  // convenience getter for easy access to form fields
-  get f() { return this.accesAddForm.controls;}
 
   onSubmit() {
     this.submitted = true;
@@ -69,8 +77,27 @@ export class AccesAddComponent implements OnInit {
         return;
     }
 
-    // display form values on success
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.accesAddForm.value, null, 4));
+    const requestBody = {
+      identifiant : this.accesAddForm.get('identifiant').value ,
+      nom : this.accesAddForm.get('nom').value ,
+      prenom : this.accesAddForm.get('prenom').value ,
+      email : this.accesAddForm.get('email').value ,
+      password : this.accesAddForm.get('password').value ,
+      cin : this.accesAddForm.get('cin').value ,
+      telephone : this.accesAddForm.get('telephone').value ,
+      adresse : this.accesAddForm.get('adresse').value ,
+      departement : this.accesAddForm.get('departement').value ,
+      lieu_de_travail : this.accesAddForm.get('lieux_de_travail').value ,
+      date_d_embauche : this.accesAddForm.get('date_d_embauche').value ,
+      photo : this.accesAddForm.get('photo').value ,
+      role : this.accesAddForm.get('role').value
+    };
+    this.accesService.addUser(requestBody).subscribe(responseBody => {
+      this.toasterService.pop('success', 'User added successfully!', '');
+      this.router.navigate(['/home/accès/index']);
+    }, error => {
+      this.toasterService.pop('error', 'Please verify your e-mail or password!', '');
+    });
   }
 
 }

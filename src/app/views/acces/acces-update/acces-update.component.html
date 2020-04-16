@@ -13,7 +13,7 @@
                                         formControlName="photo" (change)="preview(file.files)"
                                         [ngClass]="{ 'is-invalid': submitted && f.photo.errors }">
                                     <div *ngIf="submitted && f.photo.errors" class="invalid-feedback d-block">
-                                        <div *ngIf="f.photo.errors.required">Le champ photo dde profil est obligatoire.
+                                        <div *ngIf="f.photo.errors.required">Le champ photo de profil est obligatoire.
                                         </div>
                                     </div>
                                 </div>
