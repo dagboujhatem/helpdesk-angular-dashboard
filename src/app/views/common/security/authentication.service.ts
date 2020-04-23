@@ -15,7 +15,7 @@ export class AuthenticationService {
     return this.http.post(this.url + 'login', credentials );
   }
 
-  logout(bodyData) {
-    return this.http.post(this.url + 'users/logout', bodyData);
+  logout() {
+    return this.http.get(this.url + 'users/logout');
   }
 }

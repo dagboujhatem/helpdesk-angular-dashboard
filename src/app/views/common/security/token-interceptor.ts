@@ -12,11 +12,15 @@ export class TokenInterceptor implements HttpInterceptor {
     constructor(public injector: Injector) {}
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const  authenticationService = this.injector.get(AuthorizationService);
-        request = request.clone({
+        const token = authenticationService.getAccesToken();
+        const tokenType = authenticationService.getTokenType();
+        if (token !== null && token !== undefined) {
+          request = request.clone({
             setHeaders: {
-                Authorization: `Bearer ${authenticationService.getAccesToken()}`
+              Authorization: `${tokenType} ${token}`
             }
-        });
+          });
+        }
         return next.handle(request);
     }
 }

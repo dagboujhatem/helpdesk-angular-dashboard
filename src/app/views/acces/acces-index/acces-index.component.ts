@@ -24,12 +24,20 @@ export class AccesIndexComponent implements OnInit {
 
   private getAllUsers() {
     this.accesService.getAllUsers().subscribe(
+<<<<<<< HEAD
       responseBody => {  this.loadUsersFromResponseBody(responseBody);},
+=======
+      responseBody => { this.loadUsersData(responseBody); },
+>>>>>>> 12be8d858847cf9c62465521c85b32bd775a1c2d
       error => { console.log(error); }
     );
   }
 
+<<<<<<< HEAD
   private loadUsersFromResponseBody(responseBody){
+=======
+  private loadUsersData(responseBody) {
+>>>>>>> 12be8d858847cf9c62465521c85b32bd775a1c2d
     this.usersData = responseBody.data;
   }
 }
