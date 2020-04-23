@@ -27,31 +27,22 @@ export class AccesIndexComponent implements OnInit {
 
   private getAllUsers() {
     this.accesService.getAllUsers().subscribe(
-<<<<<<< HEAD
-      responseBody => {  this.loadUsersFromResponseBody(responseBody);},
-=======
-      responseBody => { this.loadUsersData(responseBody); },
->>>>>>> 12be8d858847cf9c62465521c85b32bd775a1c2d
+      responseBody => {  this.loadUsersFromResponseBody(responseBody); },
       error => { console.log(error); }
     );
   }
 
-<<<<<<< HEAD
-  private loadUsersFromResponseBody(responseBody){
-=======
-  private loadUsersData(responseBody) {
->>>>>>> 12be8d858847cf9c62465521c85b32bd775a1c2d
+  private loadUsersFromResponseBody(responseBody) {
     this.usersData = responseBody.data;
   }
 
   private deleteUser(userId) {
     this.accesService.deleteUser(userId).subscribe(responseBody => {
       this.deleteResponseBody(responseBody);
-      }
-    , error => {});
+      }, error => {});
   }
 
-  private deleteResponseBody(responseBody){
+  private deleteResponseBody(responseBody) {
     this.toasterService.pop('success', 'User deleted successfully!', responseBody.message);
   }
 }
