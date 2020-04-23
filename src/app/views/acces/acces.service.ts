@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
+import {FileUploader} from 'ng2-file-upload';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccesService {
 
+  uploader: FileUploader;
   url = environment.serverUrl;
 
   constructor(private http: HttpClient) { }
@@ -23,7 +25,12 @@ export class AccesService {
 
   // Add a user from the REST API
   addUser(userData) {
-    return this.http.post(this.url + 'users', userData);
+    this.uploader = new FileUploader({
+      url: this.url + 'users',
+      additionalParameter:  userData
+    });
+
+   return this.uploader.response;
   }
 
   // Update a user from the REST API
@@ -32,7 +39,7 @@ export class AccesService {
   }
 
   // Delete a user from the REST API
-  addUsers(userID) {
-    return this.http.delete(this.url + 'users' + userID);
+  deleteUser(userID) {
+    return this.http.delete(this.url + 'users/' + userID);
   }
 }

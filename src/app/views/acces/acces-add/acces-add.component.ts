@@ -22,7 +22,6 @@ export class AccesAddComponent implements OnInit {
   //  image preview
   public imagePath;
   imgURL: any;
-  public message: string;
   // form validation
   accesAddForm: FormGroup;
   submitted = false;
@@ -34,11 +33,9 @@ export class AccesAddComponent implements OnInit {
 
     const mimeType = files[0].type;
     if (mimeType.match(/image\/*/) == null) {
-      this.message = 'Only images are supported.';
-      this.toasterService.pop('error', 'Photo de profil:', 'Only images are supported.');
+      this.imgURL = null;
+      this.toasterService.pop('error', 'Erreur dans la photo de profil:', 'Seules les images sont prises en charge.');
       return;
-    } else {
-      this.message = '';
     }
 
     const reader = new FileReader();
@@ -93,11 +90,18 @@ export class AccesAddComponent implements OnInit {
       role : this.accesAddForm.get('role').value
     };
     this.accesService.addUser(requestBody).subscribe(responseBody => {
-      this.toasterService.pop('success', 'User added successfully!', '');
-      this.router.navigate(['/home/accès/index']);
+      this.responseBodyProcess(responseBody);
     }, error => {
-      this.toasterService.pop('error', 'Please verify your e-mail or password!', '');
+      this.errorProccess(error);
     });
   }
 
+  private responseBodyProcess(responseBody: any) {
+    this.toasterService.pop('success', 'User added successfully!', responseBody.message);
+    this.router.navigate(['/home/accès/index']);
+  }
+
+  private errorProccess(error: any) {
+    this.toasterService.pop('error', 'Please verify your e-mail or password!', error.error.message);
+  }
 }

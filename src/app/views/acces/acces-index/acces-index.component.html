@@ -20,18 +20,28 @@
       <table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions">
         <thead>
         <tr>
+          <th>Photo</th>
           <th>Identifiant</th>
           <th>Nom</th>
           <th>Prénom</th>
+          <th>E-mail</th>
           <th>Rôle</th>
+          <th>Actions</th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let group of usersData">
-          <td>{{group.id}}</td>
-          <td>{{group.nom}}</td>
-          <td>{{group.prenom}}</td>
-          <td>{{group.role}}</td>
+        <tr *ngFor="let user of usersData">
+          <td></td>
+          <td>{{user.identifiant}}</td>
+          <td>{{user.nom}}</td>
+          <td>{{user.prenom}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.role}}</td>
+          <td>
+              <a [routerLink]="['/home/accès/show/', user.id]" class="btn btn-info btn-sm">Consulter</a>
+              <a [routerLink]="['/home/accès/update/', user.id]" class="btn btn-warning btn-sm">Modifier</a>
+              <button class="btn btn-danger btn-sm" (click)="deleteUser(user.id)">Supprimer</button>
+          </td>
         </tr>
         </tbody>
       </table>

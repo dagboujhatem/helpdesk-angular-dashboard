@@ -65,14 +65,14 @@ export class LoginComponent {
     };
     localStorage.setItem('authenticationObject', JSON.stringify(authenticationObject));
     // Show toast message
-    this.toasterService.pop('success', 'logged in successfully!', bodyResponse.message);
+    this.toasterService.pop('success', 'Connecté avec succès!', bodyResponse.message);
     // redirection  to dashboard
     this.router.navigate(['/home/dashboard']);
   }
 
   private loginError(error) {
     if (error.status === 401) {
-      this.toasterService.pop('error', 'Please verify your e-mail or password!', error.error.message);
+      this.toasterService.pop('error', 'Veuillez vérifier votre e-mail ou votre mot de passe!', error.error.message);
     }
   }
 }

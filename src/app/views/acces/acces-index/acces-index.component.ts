@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {AccesService} from '../acces.service';
+import {ToasterService} from 'angular2-toaster';
 
 @Component({
   selector: 'app-acces-index',
@@ -10,7 +11,9 @@ export class AccesIndexComponent implements OnInit {
 
   public usersData: any = null ;
 
-  constructor(private accesService: AccesService) { }
+  constructor(private accesService: AccesService,
+              private toasterService: ToasterService,
+              ) { }
 
   dtOptions: DataTables.Settings = {};
   ngOnInit() {
@@ -31,5 +34,16 @@ export class AccesIndexComponent implements OnInit {
 
   private loadUsersData(responseBody) {
     this.usersData = responseBody.data;
+  }
+
+  private deleteUser(userId) {
+    this.accesService.deleteUser(userId).subscribe(responseBody => {
+      this.deleteResponseBody(responseBody);
+      }
+    , error => {});
+  }
+
+  private deleteResponseBody(responseBody){
+    this.toasterService.pop('success', 'User deleted successfully!', responseBody.message);
   }
 }
