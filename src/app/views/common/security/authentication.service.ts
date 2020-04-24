@@ -18,4 +18,15 @@ export class AuthenticationService {
   logout() {
     return this.http.get(this.url + 'users/logout');
   }
+
+  forgetPassword(email: string) {
+    return this.http.post(this.url + 'forgot-password', {email: email});
+  }
+
+  resetPassword(newPassword: string, accessToken: string) {
+    return this.http.post(this.url + 'reset-password', {
+      newPassword: newPassword,
+      accessToken: accessToken
+    });
+  }
 }
