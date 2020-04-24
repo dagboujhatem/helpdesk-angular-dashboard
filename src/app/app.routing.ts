@@ -8,7 +8,6 @@ import { ResetPasswordComponent } from './views/common/reset-password/reset-pass
 import { ForgotPasswordComponent } from './views/common/forgot-password/forgot-password.component';
 import { P404Component } from './views/common/error/404.component';
 import { P500Component } from './views/common/error/500.component';
-import {RegisterComponent} from './views/common/register/register.component';
 import {AuthorizationService} from './views/common/security/authorization.service';
 
 export const routes: Routes = [
@@ -30,13 +29,6 @@ export const routes: Routes = [
   {
     path: 'forgot-password',
     component: ForgotPasswordComponent
-  },
-  {
-    path: 'register',
-    component: RegisterComponent,
-    data: {
-      title: 'Register Page'
-    }
   },
   {
     path: '404',

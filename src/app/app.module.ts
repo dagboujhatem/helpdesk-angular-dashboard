@@ -45,7 +45,6 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonRightColComponent } from './views/common/common-right-col/common-right-col.component';
 import {ToasterModule} from 'angular2-toaster';
 import { DataTablesModule } from 'angular-datatables';
-import { RegisterComponent } from './views/common/register/register.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {TokenInterceptor} from './views/common/security/token-interceptor';
 
@@ -77,8 +76,7 @@ import {TokenInterceptor} from './views/common/security/token-interceptor';
     LoginComponent,
     ResetPasswordComponent,
     ForgotPasswordComponent,
-    CommonRightColComponent,
-    RegisterComponent
+    CommonRightColComponent
   ],
   providers: [
     {
