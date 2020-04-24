@@ -8,6 +8,7 @@ import {AccesUpdateComponent} from './acces-update/acces-update.component';
 import {DataTablesModule} from 'angular-datatables';
 import {FileUploadModule} from 'ng2-file-upload';
 import { AccesShowComponent } from './acces-show/acces-show.component';
+import {RxReactiveFormsModule} from '@rxweb/reactive-form-validators';
 
 
 
@@ -22,6 +23,7 @@ import { AccesShowComponent } from './acces-show/acces-show.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    RxReactiveFormsModule,
     AccesRoutingModule,
     DataTablesModule,
     FileUploadModule

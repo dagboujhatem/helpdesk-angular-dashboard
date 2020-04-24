@@ -21,20 +21,29 @@ const routes: Routes = [
         path: 'index',
         component: AccesIndexComponent,
         data: {
-          title: 'Cards'
+          title: 'Liste des utilisateurs'
         }
       },
       {
         path: 'add',
-        component: AccesAddComponent
+        component: AccesAddComponent,
+        data: {
+          title: 'Ajouter un utilisateur'
+        }
       },
       {
         path: 'update/:id',
-        component: AccesUpdateComponent
+        component: AccesUpdateComponent,
+        data: {
+          title: 'Modifier un utilisateur'
+        }
       },
       {
         path: 'show/:id',
-        component: AccesShowComponent
+        component: AccesShowComponent,
+        data: {
+          title: 'Afficher un utilisateur'
+        }
       },
     ]
   }

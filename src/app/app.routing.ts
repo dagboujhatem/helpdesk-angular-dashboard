@@ -53,7 +53,7 @@ export const routes: Routes = [
         loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
       },
       {
-        path: 'accès',
+        path: 'users',
         loadChildren: () => import('./views/acces/acces.module').then(m => m.AccesModule)
       },
       {
