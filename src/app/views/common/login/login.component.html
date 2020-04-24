@@ -7,7 +7,8 @@
             <div class="card p-4">
               <div class="card-body">
                 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                  <h1>S'authentifier</h1>
+                  <h1 class="text-center">S'authentifier</h1>
+                  <hr>
                   <p class="text-muted">Saisissez votre e-mail et mot de passe</p>
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -32,12 +33,12 @@
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-6">
-                      <button type="submit" class="btn btn-primary px-4" [disabled]="loginForm.invalid">
+                    <div class="col-lg-12 col-xl-6">
+                      <button type="submit" class="btn btn-primary px-4 btn-block" [disabled]="loginForm.invalid">
                         Se connecter
                       </button>
                     </div>
-                    <div class="col-6 text-right">
+                    <div class="col-lg-12 col-xl-6 text-right">
                       <a routerLink="/forgot-password" class="btn btn-link px-0">Mot de passe oublié?</a>
                     </div>
                   </div>
