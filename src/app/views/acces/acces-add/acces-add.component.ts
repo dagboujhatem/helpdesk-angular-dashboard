@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {AccesService} from '../acces.service';
 import {Router} from '@angular/router';
 import {ToasterService} from 'angular2-toaster';
+import {RxwebValidators} from '@rxweb/reactive-form-validators';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-acces-add',
@@ -25,6 +27,7 @@ export class AccesAddComponent implements OnInit {
   // form validation
   accesAddForm: FormGroup;
   submitted = false;
+  selectedFile = null;
 
   preview(files) {
     if (files.length === 0) {
@@ -37,7 +40,7 @@ export class AccesAddComponent implements OnInit {
       this.toasterService.pop('error', 'Erreur dans la photo de profil:', 'Seules les images sont prises en charge.');
       return;
     }
-
+    this.selectedFile = files[0];
     const reader = new FileReader();
     this.imagePath = files;
     reader.readAsDataURL(files[0]);
@@ -49,7 +52,7 @@ export class AccesAddComponent implements OnInit {
 
   ngOnInit() {
     this.accesAddForm = this.formBuilder.group({
-        photo: ['', [Validators.required]],
+        photo: ['', [Validators.required, RxwebValidators.extension({extensions: ['jpg', 'png', 'gif']})]],
         identifiant: ['', [Validators.required]],
         role: ['', [Validators.required]],
         nom: ['', [Validators.required]],
@@ -74,21 +77,22 @@ export class AccesAddComponent implements OnInit {
         return;
     }
 
-    const requestBody = {
-      identifiant : this.accesAddForm.get('identifiant').value ,
-      nom : this.accesAddForm.get('nom').value ,
-      prenom : this.accesAddForm.get('prenom').value ,
-      email : this.accesAddForm.get('email').value ,
-      password : this.accesAddForm.get('password').value ,
-      cin : this.accesAddForm.get('cin').value ,
-      telephone : this.accesAddForm.get('telephone').value ,
-      adresse : this.accesAddForm.get('adresse').value ,
-      departement : this.accesAddForm.get('departement').value ,
-      lieu_de_travail : this.accesAddForm.get('lieux_de_travail').value ,
-      date_d_embauche : this.accesAddForm.get('date_d_embauche').value ,
-      photo : this.accesAddForm.get('photo').value ,
-      role : this.accesAddForm.get('role').value
-    };
+    // Create a request body data
+    const requestBody = new FormData();
+    requestBody.append('photo', this.selectedFile, this.selectedFile.name);
+    requestBody.append('role', this.accesAddForm.get('role').value);
+    requestBody.append('identifiant', this.accesAddForm.get('identifiant').value);
+    requestBody.append('nom', this.accesAddForm.get('nom').value);
+    requestBody.append('prenom', this.accesAddForm.get('prenom').value);
+    requestBody.append('email', this.accesAddForm.get('email').value);
+    requestBody.append('password', this.accesAddForm.get('password').value);
+    requestBody.append('cin', this.accesAddForm.get('cin').value);
+    requestBody.append('telephone', this.accesAddForm.get('telephone').value);
+    requestBody.append('adresse', this.accesAddForm.get('adresse').value);
+    requestBody.append('departement', this.accesAddForm.get('departement').value);
+    requestBody.append('lieu_de_travail', this.accesAddForm.get('lieux_de_travail').value);
+    requestBody.append('date_d_embauche', this.accesAddForm.get('date_d_embauche').value);
+
     this.accesService.addUser(requestBody).subscribe(responseBody => {
       this.responseBodyProcess(responseBody);
     }, error => {
@@ -98,10 +102,19 @@ export class AccesAddComponent implements OnInit {
 
   private responseBodyProcess(responseBody: any) {
     this.toasterService.pop('success', 'User added successfully!', responseBody.message);
-    this.router.navigate(['/home/accès/index']);
+    this.router.navigate(['/home/users/index']);
   }
 
-  private errorProccess(error: any) {
-    this.toasterService.pop('error', 'Please verify your e-mail or password!', error.error.message);
+  private errorProccess(err: any) {
+    if (err instanceof HttpErrorResponse) {
+      const errorMessages = new Array<{ propName: string; errors: string }>();
+      //  if validation error: 244 status means ==> la requête est incompréhensible ou incomplète.
+      if (err.status === 422) {
+        // TODO: extract errors here and match onto the form
+
+      }
+      // show the validation errors
+      this.toasterService.pop('error', 'Please verify your e-mail or password!', err.error.message);
+    }
   }
 }

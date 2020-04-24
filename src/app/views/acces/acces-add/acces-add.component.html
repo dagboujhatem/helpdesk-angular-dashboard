@@ -10,9 +10,10 @@
                                 <div class="form-group">
                                     <label for="photo">Photo de profil:</label>
                                     <input class="form-control-file" id="photo" type="file" #file accept='image/*' formControlName="photo"
-                                        (change)="preview(file.files)" [ngClass]="{ 'is-invalid': submitted && f.photo.errors }">
+                                        (change)="preview(file.files)" [ngClass]="{ 'is-invalid': submitted && f.photo.errors }" [writeFile]="true">
                                         <div *ngIf="submitted && f.photo.errors" class="invalid-feedback d-block">
                                             <div *ngIf="f.photo.errors.required">Le champ photo de profil est obligatoire.</div>
+                                            <div *ngIf="f.photo.errors.extension">Le champ photo de profil doit être une image (JPG, PNG, GIF).</div>
                                         </div>
                                 </div>
                             </div>

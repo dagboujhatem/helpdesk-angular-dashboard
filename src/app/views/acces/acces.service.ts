@@ -8,7 +8,6 @@ import {FileUploader} from 'ng2-file-upload';
 })
 export class AccesService {
 
-  uploader: FileUploader;
   url = environment.serverUrl;
 
   constructor(private http: HttpClient) { }
@@ -24,13 +23,9 @@ export class AccesService {
   }
 
   // Add a user from the REST API
-  addUser(userData) {
-    this.uploader = new FileUploader({
-      url: this.url + 'users',
-      additionalParameter:  userData
-    });
-
-   return this.uploader.response;
+  addUser(userData: FormData) {
+    return this.http.post(this.url + 'users',
+      userData);
   }
 
   // Update a user from the REST API

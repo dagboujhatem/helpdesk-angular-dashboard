@@ -1,1 +1,123 @@
-<p>acces-show works!</p>
+<div class="fade-in">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <form *ngIf="userInfo !== null && userInfo !== undefined">
+          <div class="card-header">
+            <strong>Détails d'un utilisateur</strong>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-12">
+                <label for="photo">Photo:</label>
+                <img src="{{ userInfo.photo }}" class="rounded float-right img-thumbnail" id="photo">
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="identifiant">Identifiant:</label>
+                  <input class="form-control" value="{{ userInfo.identifiant }}" id="identifiant" readonly>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="role">Rôle:</label>
+                  <select class="form-control" id="role" value="{{ userInfo.role }}" disabled>
+                    <option value="Personnel" se> Personnel</option>
+                    <option value="Informaticien">Informaticien</option>
+                    <option value="Administrateur">Administrateur</option>
+                    <option value="Fournisseur">Fournisseur</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="nom">Nom:</label>
+                  <input class="form-control" value="{{ userInfo.nom }}" id="nom" type="text" readonly>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="prenom">Prénom:</label>
+                  <input class="form-control" value="{{ userInfo.prenom }}" id="prenom" type="text" readonly>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="email">E-mail:</label>
+                  <input class="form-control" value="{{ userInfo.email }}" id="email" type="text" readonly>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="password">Mot de passe:</label>
+                  <input class="form-control" value="******" id="password" type="password" readonly>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="cin">Numéro CIN:</label>
+                  <input class="form-control" value="{{ userInfo.cin }}" id="cin" type="number" readonly>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="telephone">Téléphone:</label>
+                  <input class="form-control" value="{{ userInfo.telephone }}" id="telephone" type="text" readonly>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="adresse">Adresse:</label>
+                  <input class="form-control" value="{{ userInfo.adresse }}" id="adresse" type="text" readonly>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="departement">Département:</label>
+                  <input class="form-control" value="{{ userInfo.departement }}" id="departement" type="text" readonly>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="lieu_de_travail">Lieu de travail:</label>
+                  <select class="form-control" id="lieu_de_travail" value="{{ userInfo.lieu_de_travail }}" disabled>
+                    <option value="Siége"> Siége</option>
+                    <option value="Agence"> Agence</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="date_d_embauche">Date d'embauche:</label>
+                  <input class="form-control" id="date_d_embauche" type="text"
+                         value="{{ userInfo.date_d_embauche | date :'shortDate'}}" readonly>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="created_at">Utilisateur crée le:</label>
+                  <input class="form-control" id="created_at" type="text"
+                         value="{{ userInfo.created_at | date :'medium'}}" readonly>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="updated_at">Date de dernier modification:</label>
+                  <input class="form-control" id="updated_at" type="text"
+                         value="{{ userInfo.updated_at | date :'medium'}}" readonly>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="offset-sm-9 col-sm-3">
+            <div class="form-group form-actions">
+              <a routerLink="/home/users/index" class="btn btn-primary btn-pill btn-block">
+                <i class="cil-save"></i> Retour
+              </a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
