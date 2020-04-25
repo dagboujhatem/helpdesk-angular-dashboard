@@ -11,13 +11,13 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'index'
+        redirectTo: 'add'
       },
       {
-        path: 'index',
+        path: 'add',
         component: MissionComponent,
         data: {
-          title: 'Cards'
+          title: 'Ajouter une mission'
         }
       }
     ]

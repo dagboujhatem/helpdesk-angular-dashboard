@@ -65,7 +65,7 @@ export const routes: Routes = [
         loadChildren: () => import('./views/tickets/tickets.module').then(m => m.TicketsModule)
       },
       {
-        path: 'catégories',
+        path: 'categories',
         loadChildren: () => import('./views/categories/categories.module').then(m => m.CategoriesModule)
       }
     ]
