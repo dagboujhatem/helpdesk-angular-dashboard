@@ -21,28 +21,28 @@ const routes: Routes = [
         path: 'index',
         component: TicketIndexComponent,
         data: {
-          title: 'Cards'
+          title: 'Liste des tickets'
         }
       },
       {
         path: 'add',
         component: TicketAddComponent,
         data: {
-          title: 'Cards'
+          title: 'Ajouter un ticket'
         }
       },
       {
         path: 'update',
         component: TicketUpdateComponent,
         data: {
-          title: 'Cards'
+          title: 'Modifier un ticket'
         }
       },
       {
         path: 'priorité',
         component: TicketAdminPrioriteComponent,
         data: {
-          title: 'Cards'
+          title: 'Affecter la priorité'
         }
       }
     ]

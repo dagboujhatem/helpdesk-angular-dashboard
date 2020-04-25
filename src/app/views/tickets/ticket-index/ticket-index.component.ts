@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ToasterService} from 'angular2-toaster';
+import {TiketsService} from '../tikets.service';
 
 @Component({
   selector: 'app-ticket-index',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TicketIndexComponent implements OnInit {
 
-  constructor() { }
+  public ticketsData: any = null ;
+  dtOptions: DataTables.Settings = {};
+
+  constructor(private ticketService: TiketsService,
+              private toasterService: ToasterService) { }
 
   ngOnInit(): void {
+  }
+
+  deleteTicket(ticketID) {
   }
 
 }

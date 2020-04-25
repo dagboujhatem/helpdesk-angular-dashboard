@@ -7,19 +7,23 @@ import {TicketAdminPrioriteComponent} from './ticket-admin-priorite/ticket-admin
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 // Import routing module
 import { TicketsRoutingModule } from './tickets-routing.module';
+import { TicketShowComponent } from './ticket-show/ticket-show.component';
+import {DataTablesModule} from 'angular-datatables';
 
 @NgModule({
   declarations: [
     TicketIndexComponent,
     TicketAddComponent,
     TicketUpdateComponent,
-    TicketAdminPrioriteComponent
+    TicketAdminPrioriteComponent,
+    TicketShowComponent
   ],
   imports: [
     CommonModule,
     TicketsRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    DataTablesModule,
   ]
 })
 export class TicketsModule { }

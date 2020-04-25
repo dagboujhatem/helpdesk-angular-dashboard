@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { FileUploader } from 'ng2-file-upload';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 
@@ -8,14 +7,12 @@ import { environment } from '../../../environments/environment';
 })
 export class TiketsService {
 
-  
-  uploader: FileUploader;
   url = environment.serverUrl;
 
   constructor(private http: HttpClient) { }
 
   // Get all tickets from the REST API
-  getAlLTickets() {
+  getAllTickets() {
     return this.http.get(this.url + 'tickets');
   }
 
@@ -26,12 +23,7 @@ export class TiketsService {
 
   // Add a ticket from the REST API
   addTicket(ticketData) {
-    this.uploader = new FileUploader({
-      url: this.url + 'tickets',
-      additionalParameter: ticketData
-    });
-
-   return this.uploader.response;
+   return  this.http.post(this.url + 'tickets', ticketData);
   }
 
   // Update a ticket from the REST API
@@ -42,5 +34,10 @@ export class TiketsService {
   // Delete a ticket from the REST API
   deleteTicket(ticketID) {
     return this.http.delete(this.url + 'tickets/' + ticketID);
+  }
+
+  // Add priorité to the ticket
+  addPrioriteToTicket(ticketId, priorite: string) {
+    return this.http.post(this.url + 'tickets/' + ticketId , { priorite : priorite });
   }
 }

@@ -10,12 +10,12 @@ import {ToasterService} from 'angular2-toaster';
 export class AccesIndexComponent implements OnInit {
 
   public usersData: any = null ;
+  dtOptions: DataTables.Settings = {};
 
   constructor(private accesService: AccesService,
-              private toasterService: ToasterService,
-              ) { }
+              private toasterService: ToasterService) { }
 
-  dtOptions: DataTables.Settings = {};
+
   ngOnInit() {
     // @ts-ignore
     // @ts-ignore
