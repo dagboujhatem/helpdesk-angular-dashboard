@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {MissionComponent} from './mission/mission.component';
+import {MissionAddComponent} from './mission-add/mission-add.component';
+import {MissionIndexComponent} from './mission-index/mission-index.component';
 
 const routes: Routes = [
   {
@@ -11,13 +12,20 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'add'
+        redirectTo: 'index'
+      },
+      {
+        path: 'index',
+        component: MissionIndexComponent,
+        data: {
+          title: 'Liste des missions'
+        }
       },
       {
         path: 'add',
-        component: MissionComponent,
+        component: MissionAddComponent,
         data: {
-          title: 'Ajouter une mission'
+          title: 'Ajouter une mission-add'
         }
       }
     ]

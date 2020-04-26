@@ -3,10 +3,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-mission',
-  templateUrl: './mission.component.html',
-  styleUrls: ['./mission.component.css']
+  templateUrl: './mission-add.component.html',
+  styleUrls: ['./mission-add.component.css']
 })
-export class MissionComponent implements OnInit {
+export class MissionAddComponent implements OnInit {
 
   missionForum: FormGroup;
   submitted = false;
