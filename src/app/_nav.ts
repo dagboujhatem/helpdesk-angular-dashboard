@@ -43,5 +43,22 @@ export const navItems: INavData[] = [
         icon: 'icon-plus'
       }
     ]
+  },
+  {
+    name: 'Catégories',
+    url: '/home/categories',
+    icon: 'icon-list',
+    children: [
+      {
+        name: 'Catégories applicatifs',
+        url: '/home/categories/applicatif/index',
+        icon: 'icon-list'
+      },
+      {
+        name: 'Catégories matériels',
+        url: '/home/categories/materiel/index',
+        icon: 'icon-list'
+      }
+    ]
   }
 ];
