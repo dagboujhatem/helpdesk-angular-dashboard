@@ -1,1 +1,72 @@
-<p>categorie-applicatif-add works!</p>
+<div class="fade-in">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <form [formGroup]="categorieApplicatifAddForm" (ngSubmit)="onSubmit()">
+                    <div class="card-header"><strong>Ajouter une catégorie applicatif:</strong> </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="type">Type:</label>
+                                    <select class="form-control" formControlName="type" id="type"
+                                    [ngClass]="{ 'is-invalid': submitted && f.type.errors }">
+                                        <option value="Emission">Emission</option>
+                                        <option value="Affiliation">Affiliation</option>
+                                    </select>
+                                    <div *ngIf="submitted && f.type.errors" class="invalid-feedback d-block">
+                                        <div *ngIf="f.type.errors.required"> Type est obligatoire.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="probleme">Probléme:</label>
+                                    <select class="form-control" formControlName="probleme" id="probleme"
+                                    [ngClass]="{ 'is-invalid': submitted && f.probleme.errors }">
+                                        <option value="Creation">Creation </option>
+                                        <option value="Remplacement"> Remplacement </option>
+                                        <option value="Annulation">Annulation</option>
+                                        <option value="Opposition">Opposition</option>
+                                        <option value="Acceptation">Acceptation</option>
+                                        <option value="Retrait">Retrait</option>
+                                        <option value="Achat">Achat</option>
+                                    </select>
+                                    <div *ngIf="submitted && f.probleme.errors" class="invalid-feedback d-block">
+                                        <div *ngIf="f.role.probleme.required"> Probléme est obligatoire.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label for="description">Description:</label>
+                                    <textarea class="form-control" formControlName="description" id="description"
+                                        name="description" rows="6" placeholder="Description" name="description"
+                                        rows="12" placeholder="Description" [ngClass]="{ 'is-invalid': submitted && f.description.errors }">
+                                </textarea>
+                                </div>
+                                <div *ngIf="submitted && f.description.errors" class="invalid-feedback d-block">
+                                    <div *ngIf="f.description.errors.required">Le champ description est obligatoire.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="file">Solution de probléme:</label>
+                            <input class="form-control-file" formControlName="file" id="file" type="file">
+                        </div>
+                    </div>
+                    <div class="offset-sm-9 col-sm-3">
+                        <div class="form-group form-actions">
+                            <button type="submit" class="btn btn-success btn-pill btn-block">
+                                <i class="cui-save icons mt-4"></i> Ajouter
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

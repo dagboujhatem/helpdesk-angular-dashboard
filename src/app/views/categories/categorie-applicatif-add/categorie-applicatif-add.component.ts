@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-categorie-applicatif-add',
@@ -6,10 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./categorie-applicatif-add.component.css']
 })
 export class CategorieApplicatifAddComponent implements OnInit {
+  categorieApplicatifAddForm: FormGroup;
+  submitted = false;
+  constructor(private formBuilder: FormBuilder
 
-  constructor() { }
+  ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {this.categorieApplicatifAddForm = this.formBuilder.group({
+    description: ['', [Validators.required],
+    ]
+});
   }
+  onSubmit() {
+    this.submitted = true;
 
-}
+    // stop here if form is invalid
+    if (this.categorieApplicatifAddForm.invalid) {
+        return;
+    }}}
