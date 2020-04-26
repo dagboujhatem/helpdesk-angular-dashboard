@@ -47,6 +47,8 @@ import {ToasterModule} from 'angular2-toaster';
 import { DataTablesModule } from 'angular-datatables';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {TokenInterceptor} from './views/common/security/token-interceptor';
+import {ResponseInterceptor} from './views/common/security/response-interceptor';
+import {ValidationInterceptor} from './views/common/security/validation-interceptor';
 
 @NgModule({
   imports: [
@@ -86,6 +88,16 @@ import {TokenInterceptor} from './views/common/security/token-interceptor';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ResponseInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ValidationInterceptor,
       multi: true
     }
   ],

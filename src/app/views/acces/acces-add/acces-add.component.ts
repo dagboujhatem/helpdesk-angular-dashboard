@@ -95,26 +95,11 @@ export class AccesAddComponent implements OnInit {
 
     this.accesService.addUser(requestBody).subscribe(responseBody => {
       this.responseBodyProcess(responseBody);
-    }, error => {
-      this.errorProccess(error);
     });
   }
 
   private responseBodyProcess(responseBody: any) {
     this.toasterService.pop('success', 'User added successfully!', responseBody.message);
     this.router.navigate(['/home/users/index']);
-  }
-
-  private errorProccess(err: any) {
-    if (err instanceof HttpErrorResponse) {
-      const errorMessages = new Array<{ propName: string; errors: string }>();
-      //  if validation error: 244 status means ==> la requête est incompréhensible ou incomplète.
-      if (err.status === 422) {
-        // TODO: extract errors here and match onto the form
-
-      }
-      // show the validation errors
-      this.toasterService.pop('error', 'Please verify your e-mail or password!', err.error.message);
-    }
   }
 }
