@@ -9,19 +9,28 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class CategorieApplicatifAddComponent implements OnInit {
   categorieApplicatifAddForm: FormGroup;
   submitted = false;
-  constructor(private formBuilder: FormBuilder
 
-  ) { }
+  constructor(private formBuilder: FormBuilder) { }
 
-  ngOnInit() {this.categorieApplicatifAddForm = this.formBuilder.group({
-    description: ['', [Validators.required],
-    ]
-});
+  ngOnInit() {
+    this.categorieApplicatifAddForm = this.formBuilder.group({
+      type: ['', Validators.required],
+      probleme: ['', Validators.required],
+      description: ['', Validators.required],
+      solutionFile: ['', Validators.required]
+      });
   }
+
+  // convenience getter for easy access to form fields
+  get f() { return this.categorieApplicatifAddForm.controls; }
+
+  // on submit
   onSubmit() {
     this.submitted = true;
 
     // stop here if form is invalid
     if (this.categorieApplicatifAddForm.invalid) {
         return;
-    }}}
+    }
+  }
+}
