@@ -1,1 +1,57 @@
-<p>categorie-materiel-add works!</p>
+<div class="fade-in">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <form [formGroup]="categorieMaterielAddForm" (ngSubmit)="onSubmit()">
+                    <div class="card-header"><strong>Ajouter une catégorie matériel:</strong> </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="Objet">Objet:</label>
+                                    <input class="form-control" formControlName="objet" id="objet" type="text"
+                                        placeholder="Saisissez le l'objet ici"
+                                        [ngClass]="{ 'is-invalid': submitted && f.objet.errors }">
+                                    <div *ngIf="submitted && f.objet.errors" class="invalid-feedback d-block">
+                                        <div *ngIf="f.objet.errors.required">L'objet est obligatoire.</div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="probleme">Probléme:</label>
+                                    <input class="form-control" formControlName="probleme" id="probleme" type="text"
+                                        placeholder="Saisissez le probléme ici"
+                                        [ngClass]="{ 'is-invalid': submitted && f.probleme.errors }">
+
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label for="description">Description:</label>
+                                    <textarea class="form-control" formControlName="description" id="description"
+                                        name="description" rows="6" placeholder="Description"
+                                        [ngClass]="{ 'is-invalid': submitted && f.identifiant.errors }">  </textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="file">Solution de probléme:</label>
+                                <input class="form-control-file" formControlName="file" id="file" type="file">
+                            </div>
+                        </div>
+                        <div class="offset-sm-9 col-sm-3">
+                            <div class="form-group form-actions">
+                                <button type="submit" class="btn btn-success btn-pill btn-block">
+                                    <i class="cui-save icons mt-4"></i> Ajouter
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
