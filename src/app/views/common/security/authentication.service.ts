@@ -23,10 +23,7 @@ export class AuthenticationService {
     return this.http.post(this.url + 'forgot-password', {email: email});
   }
 
-  resetPassword(newPassword: string, accessToken: string) {
-    return this.http.post(this.url + 'reset-password', {
-      newPassword: newPassword,
-      accessToken: accessToken
-    });
+  resetPassword(bodyData) {
+    return this.http.post(this.url + 'reset-password', bodyData);
   }
 }
