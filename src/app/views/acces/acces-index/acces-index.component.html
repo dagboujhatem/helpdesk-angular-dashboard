@@ -29,9 +29,11 @@
           <th>Actions</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody *ngIf="usersData !== null">
         <tr *ngFor="let user of usersData">
-          <td class="text-center"><img src="{{ user.photo}}" width="30" height="30"></td>
+          <td class="text-center">
+            <img src="{{ user.photo}}" width="30" height="30">
+          </td>
           <td>{{user.identifiant}}</td>
           <td>{{user.nom}}</td>
           <td>{{user.prenom}}</td>
