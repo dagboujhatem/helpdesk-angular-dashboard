@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {ToasterService} from 'angular2-toaster';
 import {AuthenticationService} from '../security/authentication.service';
-import {AuthorizationService} from '../security/authorization.service';
-import {Router} from '@angular/router';
 import {HttpErrorResponse} from '@angular/common/http';
+import {ValidationService} from '../utils/validation.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -18,6 +17,7 @@ export class ForgotPasswordComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private toasterService: ToasterService,
+              private validationService: ValidationService,
               private authentificationService: AuthenticationService) { }
 
 
@@ -62,6 +62,8 @@ export class ForgotPasswordComponent implements OnInit {
       if (err.status === 400) {
         // show the error message in toaster
         this.toasterService.pop('error', 'Veuillez vérifier votre adresse e-mail!', err.error.message);
+      } else {
+        this.validationService.showValidationsMessagesInToast(err);
       }
     }
   }

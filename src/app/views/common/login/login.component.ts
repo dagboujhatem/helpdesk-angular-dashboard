@@ -4,6 +4,7 @@ import {ToasterService} from 'angular2-toaster';
 import {AuthenticationService} from '../security/authentication.service';
 import {Router} from '@angular/router';
 import {AuthorizationService} from '../security/authorization.service';
+import {ValidationService} from '../utils/validation.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,6 +17,7 @@ export class LoginComponent {
 
   constructor(private formBuilder: FormBuilder,
               private toasterService: ToasterService,
+              private validationService: ValidationService,
               private authentificationService: AuthenticationService,
               private authorizationService: AuthorizationService,
               private router: Router) { }
@@ -73,6 +75,8 @@ export class LoginComponent {
   private loginError(error) {
     if (error.status === 401) {
       this.toasterService.pop('error', 'Veuillez vérifier votre e-mail ou votre mot de passe!', error.error.message);
+    } else {
+      this.validationService.showValidationsMessagesInToast(error);
     }
   }
 }
