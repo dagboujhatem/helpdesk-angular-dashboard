@@ -48,7 +48,6 @@ import { DataTablesModule } from 'angular-datatables';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {TokenInterceptor} from './views/common/security/token-interceptor';
 import {ResponseInterceptor} from './views/common/security/response-interceptor';
-import {ValidationInterceptor} from './views/common/security/validation-interceptor';
 
 @NgModule({
   imports: [
@@ -93,11 +92,6 @@ import {ValidationInterceptor} from './views/common/security/validation-intercep
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ResponseInterceptor,
-      multi: true
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: ValidationInterceptor,
       multi: true
     }
   ],
