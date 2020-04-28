@@ -38,7 +38,8 @@ export class AccesAddComponent implements OnInit {
     const mimeType = files[0].type;
     if (mimeType.match(/image\/*/) == null) {
       this.imgURL = null;
-      this.toasterService.pop('error', 'Erreur dans la photo de profil:', 'Seules les images sont prises en charge.');
+      this.toasterService.pop('error', 'Erreur dans la photo de profil:',
+        'Seules les images sont prises en charge.');
       return;
     }
     this.selectedFile = files[0];
@@ -53,7 +54,7 @@ export class AccesAddComponent implements OnInit {
 
   ngOnInit() {
     this.accesAddForm = this.formBuilder.group({
-        photo: ['', [Validators.required, RxwebValidators.extension({extensions: ['jpg', 'png', 'gif']})]],
+        photo: ['', [Validators.required, RxwebValidators.extension({extensions: ['jpg', 'png', 'jpeg']})]],
         identifiant: ['', [Validators.required]],
         role: ['', [Validators.required]],
         nom: ['', [Validators.required]],

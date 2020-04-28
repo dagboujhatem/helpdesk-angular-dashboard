@@ -13,7 +13,7 @@
                                         (change)="preview(file.files)" [ngClass]="{ 'is-invalid': submitted && f.photo.errors }" [writeFile]="true">
                                         <div *ngIf="submitted && f.photo.errors" class="invalid-feedback d-block">
                                             <div *ngIf="f.photo.errors.required">Le champ photo de profil est obligatoire.</div>
-                                            <div *ngIf="f.photo.errors.extension">Le champ photo de profil doit être une image (JPG, PNG, GIF).</div>
+                                            <div *ngIf="f.photo.errors.extension">Le champ photo de profil doit être une image (JPG, PNG, JPEG).</div>
                                         </div>
                                 </div>
                             </div>
