@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterStateSnapshot} from '@angular/router';
-import {isNullOrUndefined} from 'util';
 import * as crypto from 'crypto-js';
 
 @Injectable({
@@ -153,9 +152,9 @@ export class AuthorizationService implements CanActivate, CanActivateChild {
 
     const role = this.getRole();
     const routeUrl = state.url;
-    if (!isNullOrUndefined(routeUrl)) {
-      if (routeUrl.startsWith('/dashboard/users')) {
-        return this.authorizeRouteByRoles(role, ['ROLE_SUPERADMIN']);
+    if (routeUrl !== null && routeUrl !== undefined) {
+      if (routeUrl.startsWith('/home/users')) {
+        return this.authorizeRouteByRoles(role, ['Administrateur']);
       } else if (routeUrl.startsWith('/dashboard/zonemanager') ||
         routeUrl.startsWith('/dashboard/midmile/admin') ||
         routeUrl.startsWith('/dashboard/humanitypositions') ||
