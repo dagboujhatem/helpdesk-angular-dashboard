@@ -38,11 +38,12 @@
                                 <div class="form-group">
                                     <label for="role">Rôle:</label>
                                     <select class="form-control" id="role" formControlName="role"
+                                            value="{{ userInfo.role }}"
                                         [ngClass]="{ 'is-invalid': submitted && f.role.errors }">
                                         <option value="Personnel"> Personnel</option>
                                         <option value="Informaticien">Informaticien</option>
                                         <option value="Administrateur">Administrateur</option>
-                                        <option value="Founisseur">Fournisseur</option>
+                                        <option value="Fournisseur">Fournisseur</option>
 
                                     </select>
                                     <div *ngIf="submitted && f.role.errors" class="invalid-feedback d-block">
@@ -150,7 +151,7 @@
                                 <div class="form-group">
                                     <label for="lieux_de_travail">Lieu de travail:</label>
                                     <select class="form-control" id="lieux_de_travail"
-                                        formControlName="lieux_de_travail"
+                                        formControlName="lieux_de_travail" value="{{ userInfo.lieu_de_travail }}"
                                         [ngClass]="{ 'is-invalid': submitted && f.lieux_de_travail.errors }">
                                         <option value="Siége"> Siége</option>
                                         <option value="Agence"> Agence</option>
@@ -167,7 +168,8 @@
                                 <div class="form-group">
                                     <label for="date_d_embauche">Date d'embauche:</label>
                                     <input class="form-control" id="date_d_embauche" type="date"
-                                        formControlName="date_d_embauche" placeholder="Saisissez la date d'embauche ici"
+                                        formControlName="date_d_embauche"
+                                           value="{{ userInfo.date_d_embauche | date :'shortDate'}}"
                                         [ngClass]="{ 'is-invalid': submitted && f.date_d_embauche.errors }">
                                     <div *ngIf="submitted && f.date_d_embauche.errors" class="invalid-feedback d-block">
                                         <div *ngIf="f.date_d_embauche.errors.required">
@@ -179,13 +181,20 @@
                         </div>
 
                     </div>
-                    <div class="offset-sm-9 col-sm-3">
-                        <div class="form-group form-actions">
-                            <button type="submit" class="btn btn-success btn-block">
-                                <i class="cui-save icons mt-4"></i> Modifier
-                            </button>
-                        </div>
+                  <!--  Button retour & submit -->
+                  <div class="row">
+                    <div class="offset-sm-5 col-sm-3 offset-md-7 col-md-2">
+                      <a routerLink="/home/users/index" class="btn btn-primary btn-pill btn-block">
+                        <i class="cui-arrow-left icons"></i> Retour
+                      </a>
                     </div>
+                    <div class="col-sm-3 col-md-2 form-group form-actions">
+                      <button type="submit" class="btn btn-success btn-pill btn-block">
+                        <i class="cui-circle-check icons"></i> Modifier
+                      </button>
+                    </div>
+                  </div>
+                  <!-- / Button retour & submit-->
                 </form>
             </div>
         </div>

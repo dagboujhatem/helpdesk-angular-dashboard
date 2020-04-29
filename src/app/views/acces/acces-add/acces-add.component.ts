@@ -95,9 +95,9 @@ export class AccesAddComponent implements OnInit {
     requestBody.append('lieu_de_travail', this.accesAddForm.get('lieux_de_travail').value);
     requestBody.append('date_d_embauche', this.accesAddForm.get('date_d_embauche').value);
 
-    this.accesService.addUser(requestBody).subscribe(responseBody => {
-      this.responseBodyProcess(responseBody);
-    }, error => { this.validationService.showValidationsMessagesInToast(error); });
+    this.accesService.addUser(requestBody).subscribe(
+      (responseBody) => {this.responseBodyProcess(responseBody); },
+      (error) => { this.validationService.showValidationsMessagesInToast(error); });
   }
 
   private responseBodyProcess(responseBody: any) {

@@ -21,16 +21,12 @@ export class AccesShowComponent implements OnInit {
 
   private loadUserInfos() {
     this.accesService.getUserById(this.userID).subscribe(
-      responseBody => { this.processResponseBody(responseBody); },
-      error => { this.processResponseError(error); }
+      (responseBody) => { this.processResponseBody(responseBody); },
+      (error) => {  console.log(error); }
     );
   }
 
   private processResponseBody(responseBody) {
     this.userInfo = responseBody.data;
-  }
-
-  private processResponseError(error) {
-    console.log(error);
   }
 }

@@ -25,8 +25,8 @@ export class AccesIndexComponent implements OnInit {
 
   private getAllUsers() {
     this.accesService.getAllUsers().subscribe(
-      responseBody => {  this.loadUsersFromResponseBody(responseBody); },
-      error => { console.log(error); }
+      (responseBody) => {  this.loadUsersFromResponseBody(responseBody); },
+      (error) => { console.log(error); }
     );
   }
 
@@ -35,9 +35,9 @@ export class AccesIndexComponent implements OnInit {
   }
 
   private deleteUser(userId) {
-    this.accesService.deleteUser(userId).subscribe(responseBody => {
-      this.deleteResponseBody(responseBody);
-      }, error => {});
+    this.accesService.deleteUser(userId).subscribe(
+      (responseBody) => { this.deleteResponseBody(responseBody); },
+        (error) => {});
   }
 
   private deleteResponseBody(responseBody) {
