@@ -44,13 +44,12 @@ export class ForgotPasswordComponent implements OnInit {
     const email = this.forgotPasswordForm.get('email').value;
     // Send to REST API
     this.authentificationService.forgetPassword(email).subscribe(
-      bodyResponse => {
+      (bodyResponse) => {
         this.processBodyResponse(bodyResponse);
         // save email in localStorage
         localStorage.setItem('email', email);
         },
-      error => { this.errorProccess(error); }
-    );
+      (error) => { this.errorProccess(error); });
   }
 
   private processBodyResponse(bodyResponse) {

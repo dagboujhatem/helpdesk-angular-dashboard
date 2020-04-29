@@ -66,9 +66,8 @@ export class ResetPasswordComponent implements OnInit {
 
     // send data to Rest API
     this.authentificationService.resetPassword(bodyData).subscribe(
-      bodyResponse => { this.processBodyResponse(bodyResponse); },
-      error => { this.errorProccess(error); }
-    );
+      (bodyResponse) => { this.processBodyResponse(bodyResponse); },
+      (error) => { this.errorProccess(error); });
   }
 
   private processBodyResponse(bodyResponse) {

@@ -44,12 +44,8 @@ export class LoginComponent {
 
     // Send data to REST API
     this.authentificationService.login(this.loginForm.value).subscribe(
-      bodyResponse => {
-        this.loginSuccess(bodyResponse);
-      }, error => {
-        this.loginError(error);
-      }
-    );
+      (bodyResponse) => {this.loginSuccess(bodyResponse); },
+        (error) => { this.loginError(error); });
   }
 
   loginSuccess(bodyResponse) {
