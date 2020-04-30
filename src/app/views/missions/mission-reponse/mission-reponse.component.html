@@ -1,1 +1,153 @@
-<p>mission-reponse works!</p>
+<div class="fade-in">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header"><strong>BNA bank</strong> </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="nom">Organisé par:</label>
+                                <input class="form-control" id="nom" type="text" readonly>
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="collaborateurs">collaborateurs:</label>
+                                <input class="form-control" id="collaborateurs" type="text" readonly>
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="mission">Mission:</label>
+                                <input class="form-control" id="mission" type="text" readonly>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="date_debut">Date début:</label>
+                                <input class="form-control" id="date_debut" type="date" readonly>
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="date_fin">Date fin:</label>
+                                <input class="form-control" id="date_fin" type="date" readonly>
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="reponse">reponse:</label>
+                                <textarea class="form-control" id="reponse" name="reponse" rows="8" readonly>
+                                </textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="fade-in">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <form [formGroup]="missionReponseForm" (ngSubmit)="onSubmit()">
+                    <div class="card-header"><strong></strong> </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="nom">Nom:</label>
+                                    <input class="form-control" formControlName="nom" id="nom" type="text"
+                                        [ngClass]="{ 'is-invalid': submitted && f.nom.errors }">
+                                    <div *ngIf="submitted && f.nom.errors" class="invalid-feedback d-block">
+                                        <div *ngIf="f.nom.errors.required">Le nom champ est obligatoire.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="collaborateurs">Collaborateurs:</label>
+                                    <input class="form-control" formControlName="collaborateurs" id="collaborateurs" type="text"
+                                        [ngClass]="{ 'is-invalid': submitted && f.collaborateurs.errors }">
+                                    <div *ngIf="submitted && f.collaborateurs.errors" class="invalid-feedback d-block">
+                                        <div *ngIf="f.collaborateurs.errors.required">Le champ collaborateurs est obligatoire.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="mission">Mission:</label>
+                                    <input class="form-control" formControlName="mission" id="mission" type="text"
+                                        [ngClass]="{ 'is-invalid': submitted && f.mission.errors }">
+                                    <div *ngIf="submitted && f.mission.errors" class="invalid-feedback d-block">
+                                        <div *ngIf="f.mission.errors.required">Le champ mission est obligatoire.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="date_debut">Date début:</label>
+                                    <input class="form-control" formControlName="date_debut" id="date_debut" type="date"
+                                        [ngClass]="{ 'is-invalid': submitted && f.date_debut.errors }">
+                                    <div *ngIf="submitted && f.date_debut.errors" class="invalid-feedback d-block">
+                                        <div *ngIf="f.date_debut.errors.required">Le champ date début est obligatoire.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                    <label for="date_fin">Date fin:</label>
+                                    <input class="form-control" formControlName="date_fin" id="date_fin" type="date"
+                                        [ngClass]="{ 'is-invalid': submitted && f.date_fin.errors }">
+                                    <div *ngIf="submitted && f.date_fin.errors" class="invalid-feedback d-block">
+                                        <div *ngIf="f.date_fin.errors.required">Le champ date fin est obligatoire.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label for="reponse">Réponse:</label>
+                                    <textarea class="form-control" formControlName="reponse" id="reponse"
+                                        name="reponse" rows="8"
+                                        [ngClass]="{ 'is-invalid': submitted && f.reponse.errors }">
+                                    </textarea>
+                                     <div *ngIf="submitted && f.reponse.errors" class="invalid-feedback d-block">
+                                        <div *ngIf="f.reponse.errors.required">Le champ réponse est obligatoire.</div>
+                                    </div> 
+                                </div>
+                            </div>
+
+                            <div class="offset-sm-9 col-sm-3">
+                                <div class="form-group form-actions">
+                                    <button type="submit" class="btn btn-success btn-block">
+                                        <i class="cui-save icons mt-4"></i>Répondre
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
