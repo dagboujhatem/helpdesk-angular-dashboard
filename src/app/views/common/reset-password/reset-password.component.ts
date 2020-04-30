@@ -6,6 +6,7 @@ import {HttpErrorResponse} from '@angular/common/http';
 import {ToasterService} from 'angular2-toaster';
 import {AuthenticationService} from '../security/authentication.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {ValidationService} from '../utils/validation.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -21,6 +22,7 @@ export class ResetPasswordComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private toasterService: ToasterService,
+              private validationService: ValidationService,
               private authentificationService: AuthenticationService,
               private route: ActivatedRoute, // for get the token from URL
               private router: Router) { }   // for redirection to login
@@ -82,6 +84,8 @@ export class ResetPasswordComponent implements OnInit {
       if (err.status === 400) {
         // show the error message in toaster
         this.toasterService.pop('error', 'Invalid token!', err.error.message);
+      } else {
+        this.validationService.showValidationsMessagesInToast(err);
       }
     }
   }

@@ -4,7 +4,7 @@ import {AccesService} from '../acces.service';
 import {Router} from '@angular/router';
 import {ToasterService} from 'angular2-toaster';
 import {RxwebValidators} from '@rxweb/reactive-form-validators';
-import {HttpErrorResponse} from '@angular/common/http';
+import {ValidationService} from '../../common/utils/validation.service';
 
 @Component({
   selector: 'app-acces-add',
@@ -16,6 +16,7 @@ export class AccesAddComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private accesService: AccesService,
               private toasterService: ToasterService,
+              private validationService: ValidationService,
               private router: Router) { }
 
   // convenience getter for easy access to form fields
@@ -95,7 +96,7 @@ export class AccesAddComponent implements OnInit {
 
     this.accesService.addUser(requestBody).subscribe(responseBody => {
       this.responseBodyProcess(responseBody);
-    });
+    }, error => { this.validationService.showValidationsMessagesInToast(error); });
   }
 
   private responseBodyProcess(responseBody: any) {
