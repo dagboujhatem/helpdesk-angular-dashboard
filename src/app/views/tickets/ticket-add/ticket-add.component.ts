@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {ToasterService} from 'angular2-toaster';
 import {Router} from '@angular/router';
 import {TiketsService} from '../tikets.service';
+import {ValidationService} from '../../common/utils/validation.service';
 
 @Component({
   selector: 'app-ticket-add',
@@ -16,14 +17,14 @@ export class TicketAddComponent implements OnInit {
   selectedFile = null;
 
   constructor(private formBuilder: FormBuilder,
-  private ticketService: TiketsService,
-  private toasterService: ToasterService,
-  private router: Router) { }
+              private ticketService: TiketsService,
+              private toasterService: ToasterService,
+              private validationService: ValidationService,
+              private router: Router) { }
 
 
   ngOnInit() {
-    this.
-    ticketAddForm = this.formBuilder.group({
+    this.ticketAddForm = this.formBuilder.group({
         objet: ['', [Validators.required]],
         element: ['', [Validators.required]],
         nom: ['', [Validators.required]],
@@ -76,18 +77,14 @@ export class TicketAddComponent implements OnInit {
     ticketData.append(' lieu', this.ticketAddForm.get('lieu').value);
     ticketData.append(' description', this.ticketAddForm.get('description').value);
 
-    this.ticketService.addTicket(ticketData).subscribe(responseBody => {
-      this.responseBodyProcess(responseBody);
-    }, error => {
-      this.errorProcess(error);
-    });
+    this.ticketService.addTicket(ticketData).subscribe(
+      (responseBody) => {
+      this.responseBodyProcess(responseBody); },
+      (error) => {  this.validationService.showValidationsMessagesInToast(error); });
   }
 
   private responseBodyProcess(responseBody) {
     this.toasterService.pop('success', 'ticket added successfully!', responseBody.message);
     this.router.navigate(['/home/tickets/index']);
-  }
-
-  private errorProcess(error) {
   }
 }

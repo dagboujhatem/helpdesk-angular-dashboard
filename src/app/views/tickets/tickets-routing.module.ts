@@ -4,6 +4,7 @@ import {TicketIndexComponent} from './ticket-index/ticket-index.component';
 import {TicketAddComponent} from './ticket-add/ticket-add.component';
 import {TicketUpdateComponent} from './ticket-update/ticket-update.component';
 import {TicketAdminPrioriteComponent} from './ticket-admin-priorite/ticket-admin-priorite.component';
+import {TicketShowComponent} from './ticket-show/ticket-show.component';
 
 
 const routes: Routes = [
@@ -32,14 +33,21 @@ const routes: Routes = [
         }
       },
       {
-        path: 'update',
+        path: 'show/:id',
+        component: TicketShowComponent,
+        data: {
+          title: 'Afficher un utilisateur'
+        }
+      },
+      {
+        path: 'update/:id',
         component: TicketUpdateComponent,
         data: {
           title: 'Modifier un ticket'
         }
       },
       {
-        path: 'priorité',
+        path: 'priorite/:id',
         component: TicketAdminPrioriteComponent,
         data: {
           title: 'Affecter la priorité'
