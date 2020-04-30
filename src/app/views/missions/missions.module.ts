@@ -6,12 +6,14 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MissionsRoutingModule } from './missions-routing.module';
 import { MissionIndexComponent } from './mission-index/mission-index.component';
 import { MissionReponseComponent } from './mission-reponse/mission-reponse.component';
+import { MissionConfirmerComponent } from './mission-confirmer/mission-confirmer.component';
 
 @NgModule({
   declarations: [
     MissionAddComponent,
     MissionIndexComponent,
-    MissionReponseComponent
+    MissionReponseComponent,
+    MissionConfirmerComponent
   ],
   imports: [
     CommonModule,

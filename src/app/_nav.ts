@@ -36,5 +36,10 @@ export const navItems: INavData[] = [
         icon: 'icon-list'
       }
     ]
+  },
+  {
+    name: 'Gestion des missions',
+    url: '/home/missions',
+    icon: 'icon-list',
   }
 ];
