@@ -29,7 +29,7 @@ export class AccesService {
   }
 
   // Update a user from the REST API
-  updateUser(userID , userNewData) {
+  updateUser(userID , userNewData: FormData) {
     return this.http.put(this.url + 'users/' + userID, userNewData);
   }
 

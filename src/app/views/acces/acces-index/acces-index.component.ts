@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import {AccesService} from '../acces.service';
 import {ToasterService} from 'angular2-toaster';
 import {DataTableService} from '../../common/utils/data-table.service';
+import {DataTableDirective} from 'angular-datatables';
 
 @Component({
   selector: 'app-acces-index',
@@ -9,8 +10,8 @@ import {DataTableService} from '../../common/utils/data-table.service';
   styleUrls: ['./acces-index.component.css']
 })
 export class AccesIndexComponent implements OnInit {
-
-  public usersData: any = null;
+  @ViewChild(DataTableDirective)
+  public usersData: Array<any> = [];
   dtOptions: DataTables.Settings = {};
 
   constructor(private accesService: AccesService,
@@ -20,6 +21,9 @@ export class AccesIndexComponent implements OnInit {
 
   ngOnInit() {
     // this.dtOptions = this.dataTableService.getDataTableOptions();
+    this.dtOptions = {
+      pagingType: 'full_numbers'
+    };
     this.getAllUsers();
   }
 

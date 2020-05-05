@@ -16,6 +16,10 @@ export class AccesUpdateComponent implements OnInit {
   submitted = false;
   userInfo: any = null;
   userID: any;
+  //  image preview
+  public imagePath;
+  imgURL: any;
+  selectedFile = null;
 
   constructor(private formBuilder: FormBuilder,
               private route: ActivatedRoute,
@@ -32,18 +36,18 @@ export class AccesUpdateComponent implements OnInit {
     this.loadUserInfos();
     // form validation angular
     this.accesUpdateForm = this.formBuilder.group({
-      photo: ['', [Validators.required]],
+      photo: ['', ],
       identifiant: ['', [Validators.required]],
       role: ['', [Validators.required]],
       nom: ['', [Validators.required]],
       prenom: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', ],
       cin: ['', [Validators.required]],
       telephone: ['', [Validators.required]],
       adresse: ['', [Validators.required]],
       departement: ['', [Validators.required]],
-      lieux_de_travail: ['', [Validators.required]],
+      lieu_de_travail: ['', [Validators.required]],
       date_d_embauche: ['', [Validators.required]],
     });
   }
@@ -55,10 +59,33 @@ export class AccesUpdateComponent implements OnInit {
   }
   private processResponseBody(responseBody) {
     this.userInfo = responseBody.data;
+    // Reset password value
+    this.userInfo.password = '';
+    // Reset date d'embauche value
+    this.userInfo.date_d_embauche = new Date();
     // set all fields of the form with new values
     this.accesUpdateForm.patchValue(this.userInfo);
-    // Reset password value
-    // Reset date d'embauche value
+  }
+
+  preview(files) {
+    if (files.length === 0) {
+      return;
+    }
+
+    const mimeType = files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+      this.imgURL = null;
+      this.toasterService.pop('error', 'Erreur dans la photo de profil:',
+        'Seules les images sont prises en charge.');
+      return;
+    }
+    this.selectedFile = files[0];
+    const reader = new FileReader();
+    this.imagePath = files;
+    reader.readAsDataURL(files[0]);
+    reader.onload = (_event) => {
+      this.imgURL = reader.result;
+    };
   }
 
   // convenience getter for easy access to form fields
@@ -73,8 +100,28 @@ export class AccesUpdateComponent implements OnInit {
     }
 
     // send updated info to REST API
-    const userUpdatedInfo = {};
-    this.accesService.updateUser(this.userID, userUpdatedInfo).subscribe(
+    const requestBody = new FormData();
+    requestBody.append('role', this.accesUpdateForm.get('role').value);
+    requestBody.append('identifiant', this.accesUpdateForm.get('identifiant').value);
+    requestBody.append('nom', this.accesUpdateForm.get('nom').value);
+    requestBody.append('prenom', this.accesUpdateForm.get('prenom').value);
+    requestBody.append('email', this.accesUpdateForm.get('email').value);
+    requestBody.append('cin', this.accesUpdateForm.get('cin').value);
+    requestBody.append('telephone', this.accesUpdateForm.get('telephone').value);
+    requestBody.append('adresse', this.accesUpdateForm.get('adresse').value);
+    requestBody.append('departement', this.accesUpdateForm.get('departement').value);
+    requestBody.append('lieu_de_travail', this.accesUpdateForm.get('lieu_de_travail').value);
+    requestBody.append('date_d_embauche', this.accesUpdateForm.get('date_d_embauche').value);
+
+    const password = this.accesUpdateForm.get('password').value;
+    if (this.selectedFile !== null && this.selectedFile !== undefined) {
+      requestBody.append('photo', this.selectedFile, this.selectedFile.name);
+    }
+    if (password !== null && password !== undefined) {
+      requestBody.append('password', password );
+    }
+
+    this.accesService.updateUser(this.userID, requestBody).subscribe(
       (responseBody) => {this.responseBodyProcess(responseBody); },
       (error) => { this.validationService.showValidationsMessagesInToast(error); });
   }

@@ -138,14 +138,14 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="lieux_de_travail">Lieu de travail:</label>
-                                    <select class="form-control" id="lieux_de_travail"  formControlName="lieux_de_travail"
-                                    [ngClass]="{ 'is-invalid': submitted && f.lieux_de_travail.errors }">
-                                        <option value="Siége"> Siége</option>
-                                        <option value="Agence"> Agence</option>
+                                    <label for="lieu_de_travail">Lieu de travail:</label>
+                                    <select class="form-control" id="lieu_de_travail"  formControlName="lieu_de_travail"
+                                    [ngClass]="{ 'is-invalid': submitted && f.lieu_de_travail.errors }">
+                                        <option value="Siège">Siège</option>
+                                        <option value="Agence">Agence</option>
                                     </select>
-                                    <div *ngIf="submitted && f.lieux_de_travail.errors" class="invalid-feedback d-block">
-                                        <div *ngIf="f.lieux_de_travail.errors.required">
+                                    <div *ngIf="submitted && f.lieu_de_travail.errors" class="invalid-feedback d-block">
+                                        <div *ngIf="f.lieu_de_travail.errors.required">
                                            Le champ lieu de travail est obligatoire.
                                         </div>
                                     </div>

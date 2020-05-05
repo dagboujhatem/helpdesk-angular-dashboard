@@ -13,13 +13,12 @@
                                         formControlName="photo" (change)="preview(file.files)"
                                         [ngClass]="{ 'is-invalid': submitted && f.photo.errors }">
                                     <div *ngIf="submitted && f.photo.errors" class="invalid-feedback d-block">
-                                        <div *ngIf="f.photo.errors.required">Le champ photo de profil est obligatoire.
-                                        </div>
+                                        <div *ngIf="f.photo.errors.required">Le champ photo de profil est obligatoire.</div>
+                                        <div *ngIf="f.photo.errors.extension">Le champ photo de profil doit être une image (JPG, PNG, JPEG).</div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <span style="color:red;" *ngIf="message">{{message}}</span>
                                 <img *ngIf="imgURL" [src]="imgURL" class="rounded float-right img-h-200 img-thumbnail">
                             </div>
                             <div class="col-sm-6">
@@ -40,7 +39,7 @@
                                     <select class="form-control" id="role" formControlName="role"
                                             value="{{ userInfo.role }}"
                                         [ngClass]="{ 'is-invalid': submitted && f.role.errors }">
-                                        <option value="Personnel"> Personnel</option>
+                                        <option value="Personnel">Personnel</option>
                                         <option value="Informaticien">Informaticien</option>
                                         <option value="Administrateur">Administrateur</option>
                                         <option value="Fournisseur">Fournisseur</option>
@@ -149,16 +148,16 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="lieux_de_travail">Lieu de travail:</label>
-                                    <select class="form-control" id="lieux_de_travail"
-                                        formControlName="lieux_de_travail" value="{{ userInfo.lieu_de_travail }}"
-                                        [ngClass]="{ 'is-invalid': submitted && f.lieux_de_travail.errors }">
-                                        <option value="Siége"> Siége</option>
-                                        <option value="Agence"> Agence</option>
+                                    <label for="lieu_de_travail">Lieu de travail:</label>
+                                    <select class="form-control" id="lieu_de_travail"
+                                        formControlName="lieu_de_travail" value="{{ userInfo.lieu_de_travail }}"
+                                        [ngClass]="{ 'is-invalid': submitted && f.lieu_de_travail.errors }">
+                                        <option value="Siège">Siège</option>
+                                        <option value="Agence">Agence</option>
                                     </select>
-                                    <div *ngIf="submitted && f.lieux_de_travail.errors"
+                                    <div *ngIf="submitted && f.lieu_de_travail.errors"
                                         class="invalid-feedback d-block">
-                                        <div *ngIf="f.lieux_de_travail.errors.required">
+                                        <div *ngIf="f.lieu_de_travail.errors.required">
                                             Le champ lieu de travail est obligatoire.
                                         </div>
                                     </div>
@@ -168,8 +167,7 @@
                                 <div class="form-group">
                                     <label for="date_d_embauche">Date d'embauche:</label>
                                     <input class="form-control" id="date_d_embauche" type="date"
-                                        formControlName="date_d_embauche"
-                                           value="{{ userInfo.date_d_embauche | date :'shortDate'}}"
+                                        formControlName="date_d_embauche" value="{{ userInfo.date_d_embauche | date :'dd/MM/yyy'}}"
                                         [ngClass]="{ 'is-invalid': submitted && f.date_d_embauche.errors }">
                                     <div *ngIf="submitted && f.date_d_embauche.errors" class="invalid-feedback d-block">
                                         <div *ngIf="f.date_d_embauche.errors.required">

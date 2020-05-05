@@ -65,7 +65,7 @@ export class AccesAddComponent implements OnInit {
         telephone: ['', [Validators.required]],
         adresse: ['', [Validators.required]],
         departement: ['', [Validators.required]],
-        lieux_de_travail: ['', [Validators.required]],
+        lieu_de_travail: ['', [Validators.required]],
         date_d_embauche: ['', [Validators.required]],
 
     });
@@ -92,7 +92,7 @@ export class AccesAddComponent implements OnInit {
     requestBody.append('telephone', this.accesAddForm.get('telephone').value);
     requestBody.append('adresse', this.accesAddForm.get('adresse').value);
     requestBody.append('departement', this.accesAddForm.get('departement').value);
-    requestBody.append('lieu_de_travail', this.accesAddForm.get('lieux_de_travail').value);
+    requestBody.append('lieu_de_travail', this.accesAddForm.get('lieu_de_travail').value);
     requestBody.append('date_d_embauche', this.accesAddForm.get('date_d_embauche').value);
 
     this.accesService.addUser(requestBody).subscribe(
