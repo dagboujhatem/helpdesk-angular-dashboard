@@ -10,6 +10,7 @@
                                 <div class="form-group">
                                     <label for="nom">Organisé par:</label>
                                     <input class="form-control" formControlName="nom" id="nom" type="text"
+                                        placeholder="Saisissez le nom et le prénom ici"
                                         [ngClass]="{ 'is-invalid': submitted && f.nom.errors }">
                                     <div *ngIf="submitted && f.nom.errors" class="invalid-feedback d-block">
                                         <div *ngIf="f.nom.errors.required">Ce champ est obligatoire.</div>
@@ -22,6 +23,7 @@
                                 <div class="form-group">
                                     <label for="fonction">Fonction:</label>
                                     <input class="form-control" formControlName="fonction" id="fonction" type="text"
+                                        placeholder="Saisissez fonction ici"
                                         [ngClass]="{ 'is-invalid': submitted && f.fonction.errors }">
                                     <div *ngIf="submitted && f.fonction.errors" class="invalid-feedback d-block">
                                         <div *ngIf="f.fonction.errors.required">Le champ fonction est obligatoire.</div>
@@ -33,6 +35,7 @@
                                 <div class="form-group">
                                     <label for="mission">Mission:</label>
                                     <input class="form-control" formControlName="mission" id="mission" type="text"
+                                        placeholder="Saisissez mission ici"
                                         [ngClass]="{ 'is-invalid': submitted && f.mission.errors }">
                                     <div *ngIf="submitted && f.mission.errors" class="invalid-feedback d-block">
                                         <div *ngIf="f.mission.errors.required">Le champ mission est obligatoire.</div>
@@ -67,22 +70,27 @@
                                 <div class="form-group">
                                     <label for="description">Description:</label>
                                     <textarea class="form-control" formControlName="description" id="description"
-                                        name="description" rows="8"
+                                        placeholder="Saisissez la description ici" name="description" rows="8"
                                         [ngClass]="{ 'is-invalid': submitted && f.description.errors }">
                                     </textarea>
-                                     <div *ngIf="submitted && f.description.errors" class="invalid-feedback d-block">
-                                        <div *ngIf="f.description.errors.required">Le champ description est obligatoire.</div>
-                                    </div> 
+                                    <div *ngIf="submitted && f.description.errors" class="invalid-feedback d-block">
+                                        <div *ngIf="f.description.errors.required">Le champ description est obligatoire.
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="offset-sm-9 col-sm-3">
-                                <div class="form-group form-actions">
-                                    <button type="submit" class="btn btn-success btn-block">
-                                        <i class="cui-save icons mt-4"></i>Envoyer
-                                    </button>
-                                </div>
-                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="offset-sm-5 col-sm-3 offset-md-7 col-md-2">
+                            <a routerLink="/home/missions/index" class="btn btn-primary btn-pill btn-block">
+                                <i class="cui-arrow-left icons"></i> Retour
+                            </a>
+                        </div>
+                        <div class="col-sm-3 col-md-2 form-group form-actions">
+                            <button type="submit" class="btn btn-success btn-pill btn-block">
+                                <i class="cui-circle-check icons"></i> Ajouter
+                            </button>
                         </div>
                     </div>
                 </form>

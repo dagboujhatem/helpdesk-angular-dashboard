@@ -1,7 +1,7 @@
 <div class="animated fadeIn">
     <div class="card">
       <div class="card-header">
-        Liste des tickets
+        Liste des tickets matériels
       </div>
       <div class="card-body">
         <div class="row mb-3">
@@ -20,11 +20,13 @@
         <table class="table table-striped table-hover table-responsive-lg" datatable [dtOptions]="dtOptions">
           <thead>
           <tr>
-            <th>Identifiant ticket</th>
-            <th>Nom</th>
-            <th>Prénom</th>
-            <th>Département</th>
-            <th>avis</th>
+            <th>Demandeur</th>
+            <th>nouvelle anomalie</th>
+            <th>Objet</th>
+            <th>Date d'ouverture</th>
+            <th>Date d'écheance</th>
+            <th>État</th>
+            <th>Durée</th>
             <th>Actions</th>
           </tr>
           </thead>
@@ -55,3 +57,4 @@
     </div>
   </div>
   
+

@@ -7,13 +7,15 @@ import { MissionsRoutingModule } from './missions-routing.module';
 import { MissionIndexComponent } from './mission-index/mission-index.component';
 import { MissionReponseComponent } from './mission-reponse/mission-reponse.component';
 import { MissionConfirmerComponent } from './mission-confirmer/mission-confirmer.component';
+import { IndexMissionFournisseurComponent } from './index-mission-fournisseur/index-mission-fournisseur.component';
 
 @NgModule({
   declarations: [
     MissionAddComponent,
     MissionIndexComponent,
     MissionReponseComponent,
-    MissionConfirmerComponent
+    MissionConfirmerComponent,
+    IndexMissionFournisseurComponent
   ],
   imports: [
     CommonModule,
