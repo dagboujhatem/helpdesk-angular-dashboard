@@ -1,1 +1,72 @@
-<p>categorie-applicatif-show works!</p>
+<div class="fade-in">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <form [formGroup]="categorieApplicatifShowForm">
+          <div class="card-header">
+            <strong> Affichier les détails d'une catégorie applicatif:</strong>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <label for="type">Type:</label>
+                      <select class="form-control" formControlName="type" id="type">
+                        <option value="Émission">Émission</option>
+                        <option value="Affiliation">Affiliation</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <label for="probleme">Problème:</label>
+                      <select class="form-control" formControlName="probleme" id="probleme">
+                        <option value="Création">Création</option>
+                        <option value="Remplacement">Remplacement</option>
+                        <option value="Annulation">Annulation</option>
+                        <option value="Opposition">Opposition</option>
+                        <option value="Acceptation">Acceptation</option>
+                        <option value="Retrait">Retrait</option>
+                        <option value="Achat">Achat</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <label for="solutionFile">Solution de problème:</label>
+                      <br>
+                      <a href="{{solutionFile}}" target="_blank" id="solutionFile"
+                         class="btn btn-success">
+                        <i class="fa fa-download"></i> Télécharger le fichier
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="description">Description:</label>
+                  <textarea class="form-control" formControlName="description" id="description"
+                            name="description" placeholder="Description" name="description"
+                            rows="12" placeholder="Saisissez la description ici ...">
+                  </textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="offset-sm-5 col-sm-3 offset-md-7 col-md-2">
+            </div>
+            <div class="col-sm-3 col-md-2 form-group form-actions">
+              <a routerLink="/home//categories/applicatif/index" class="btn btn-primary btn-pill btn-block">
+                <i class="cui-arrow-left icons"></i> Retour
+              </a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
