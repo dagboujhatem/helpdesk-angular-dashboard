@@ -12,27 +12,27 @@ export class CategorieApplicatifService {
 
   // Get all categories applicatifs from the REST API
   getAllCategorieApplicatif() {
-    return this.http.get(this.url + 'categories');
+    return this.http.get(this.url + 'categorieApplicatifs');
   }
 
   // Get categorie applicatif by ID from the REST API
   getCategorieApplicatifById(id) {
-    return this.http.get(this.url + 'categories/' + id);
+    return this.http.get(this.url + 'categorieApplicatifs/' + id);
   }
 
   // Add a categorie applicatif from the REST API
   addCategorieApplicatif( categorieApplicatifData) {
-   return  this.http.post(this.url + 'categories', categorieApplicatifData);
+   return  this.http.post(this.url + 'categorieApplicatifs', categorieApplicatifData);
   }
 
   // Update a categorie applicatif  from the REST API
   updateCategorieApplicatif(categorieApplicatifID , categorieApplicatifNewData) {
-    return this.http.put(this.url + 'categories/' + categorieApplicatifID, categorieApplicatifNewData);
+    return this.http.put(this.url + 'categorieApplicatifs/' + categorieApplicatifID, categorieApplicatifNewData);
   }
 
   // Delete a categorie applicatif  from the REST API
   deleteCategorieApplicatif(categorieApplicatifID) {
-    return this.http.delete(this.url + 'categories/' + categorieApplicatifID);
+    return this.http.delete(this.url + 'categorieApplicatifs/' + categorieApplicatifID);
   }
 
 }

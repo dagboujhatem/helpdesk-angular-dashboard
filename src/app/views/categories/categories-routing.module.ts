@@ -4,6 +4,10 @@ import {CategorieApplicatifIndexComponent} from './categorie-applicatif-index/ca
 import {CategorieMaterielIndexComponent} from './categorie-materiel-index/categorie-materiel-index.component';
 import {CategorieApplicatifAddComponent} from './categorie-applicatif-add/categorie-applicatif-add.component';
 import {CategorieMaterielAddComponent} from './categorie-materiel-add/categorie-materiel-add.component';
+import {CategorieApplicatifShowComponent} from './categorie-applicatif-show/categorie-applicatif-show.component';
+import {CategorieMaterielShowComponent} from './categorie-materiel-show/categorie-materiel-show.component';
+import {CategorieMaterielUpdateComponent} from './categorie-materiel-update/categorie-materiel-update.component';
+import {CategorieApplicatifUpdateComponent} from './categorie-applicatif-update/categorie-applicatif-update.component';
 
 
 const routes: Routes = [
@@ -43,6 +47,34 @@ const routes: Routes = [
         component: CategorieMaterielAddComponent,
         data: {
           title: 'Ajouter une catégorie matériel'
+        }
+      },
+      {
+        path: 'applicatif/show/:id',
+        component: CategorieApplicatifShowComponent,
+        data: {
+          title: 'Affichier les détails d\'une catégorie applicatif'
+        }
+      },
+      {
+        path: 'materiel/show/:id',
+        component: CategorieMaterielShowComponent,
+        data: {
+          title: 'Ajouter les détails d\'une catégorie matériel'
+        }
+      },
+      {
+        path: 'applicatif/update/:id',
+        component: CategorieApplicatifUpdateComponent,
+        data: {
+          title: 'Modifier une catégorie applicatif'
+        }
+      },
+      {
+        path: 'materiel/update/:id',
+        component: CategorieMaterielUpdateComponent,
+        data: {
+          title: 'Modifier une catégorie matériel'
         }
       }
     ]

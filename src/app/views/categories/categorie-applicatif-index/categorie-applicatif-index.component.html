@@ -17,29 +17,29 @@
                 <thead>
                 <tr>
                   <th>Type</th>
-                  <th>Probléme</th>
-                  <th>Description</th>
+                  <th>Problème</th>
                   <th>Solution</th>
                   <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let ticket of ticketsData">
-                  <td class="text-center"><img src="{{ ticket.photo}}" width="30" height="30"></td>
-                  <td>{{ticket.identifiant}}</td>
-                  <td>{{ticket.nom}}</td>
-                  <td>{{ticket.prenom}}</td>
-                  <td>{{ticket.email}}</td>
-                  <td>{{ticket.role}}</td>
+                <tr *ngFor="let categorieApplicatif of categoriesApplicatifsData">
+                  <td>{{categorieApplicatif.type}}</td>
+                  <td>{{categorieApplicatif.probleme}}</td>
                   <td>
-                    <a [routerLink]="['/home/users/show/', ticket.id]" class="btn btn-info btn-sm">
-                      <i class="fa fa-eye"></i>
+                    <a href="{{categorieApplicatif.solution_file}}" target="_blank" class="btn btn-success btn-sm">
+                      <i class="fa fa-download"></i> Télécharger le fichier
                     </a>
-                    <a [routerLink]="['/home/users/update/', ticket.id]" class="btn btn-warning btn-sm">
-                      <i class="fa fa-edit"></i>
+                  </td>
+                  <td>
+                    <a [routerLink]="['/home/categories/applicatif/show/', categorieApplicatif.id]" class="btn btn-info btn-sm">
+                      <i class="fa fa-eye fa-white"></i>
                     </a>
-                    <button class="btn btn-danger btn-sm" (click)="deleteTicket(ticket.id)">
-                      <i class="fa fa-trash"></i>
+                    <a [routerLink]="['/home/categories/applicatif/update/', categorieApplicatif.id]" class="btn btn-warning btn-sm">
+                      <i class="fa fa-edit fa-white"></i>
+                    </a>
+                    <button class="btn btn-danger btn-sm" (click)="deleteCategorieApplicatif(categorieApplicatif.id)">
+                      <i class="fa fa-trash fa-white"></i>
                     </button>
                   </td>
                 </tr>
