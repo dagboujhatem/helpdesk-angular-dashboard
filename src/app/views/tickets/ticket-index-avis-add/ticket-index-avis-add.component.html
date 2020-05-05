@@ -1,1 +1,95 @@
-<p>ticket-index-avis-add works!</p>
+<div class="fade-in">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <form [formGroup]="avisAddForum" (ngSubmit)="onSubmit()">
+                    <div class="card-header"><strong>Ajouter un avis:</strong> </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                       
+                                            <div class="form-group">
+                                                <label for="identifiant">Identifiant du ticket:</label>
+                                                <input class="form-control" id="identifiant" type="number" readonly>
+                                            </div>
+                                
+                                    </div>
+                                    <div class="col-sm-12">
+                                        
+                                            <div class="form-group">
+                                                <label for="nom">Nom:</label>
+                                                <input class="form-control" id="nom" type="text" readonly>
+                                                
+                                            </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label for="prenom">Prénom:</label>
+                                            <input class="form-control" id="prenom" type="text" readonly>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label for="departement">Département:</label>
+                                            <input class="form-control"  id="departement" type="text" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label for="avis">Avis:</label>
+                                            <select class="form-control" id="avis" formControlName="avis"
+                                                [ngClass]="{ 'is-invalid': submitted && f.avis.errors }">
+                                                <option value="Satisfait"> Satisfait</option>
+                                                <option value="Normal">Normal</option>
+                                                <option value="Insatisfait">Insatisfait</option>
+                                            </select>
+                                            <div *ngIf="submitted && f.avis.errors" class="invalid-feedback d-block">
+                                                <div *ngIf="f.avis.errors.required"> L'avis est obligatoire.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="description">Description:</label>
+                                    <textarea class="form-control" formControlName="description" id="description"
+                                        name="description" placeholder="Description" name="description" rows="16"
+                                        placeholder="Saisissez la description ici ..."
+                                        [ngClass]="{ 'is-invalid': submitted && f.description.errors }">
+                                    </textarea>
+                                    <div *ngIf="submitted && f.description.errors" class="invalid-feedback d-block">
+                                        <div *ngIf="f.description.errors.required">Le champ description est obligatoire.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="offset-sm-5 col-sm-3 offset-md-7 col-md-2">
+                          <a routerLink="/home/tickets/mestickets" class="btn btn-primary btn-pill btn-block">
+                            <i class="cui-arrow-left icons"></i> Retour
+                          </a>
+                        </div>
+                        <div class="col-sm-3 col-md-2 form-group form-actions">
+                            <button type="submit" class="btn btn-success btn-pill btn-block">
+                              <i class="cui-circle-check icons"></i> Envoyer
+                            </button>
+                        </div>
+                      </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

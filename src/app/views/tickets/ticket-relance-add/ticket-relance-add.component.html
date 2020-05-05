@@ -1,1 +1,127 @@
-<p>ticket-relance-add works!</p>
+<div class="fade-in">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <form [formGroup]="ticketAddForm" (ngSubmit)="onSubmit()">
+                    <div class="card-header"><strong> relancer ticket </strong> </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="nom">Créer par:</label>
+                                    <input class="form-control" id="nom" type="text">
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="nouv">Une nouvelle anomalie ?</label>
+                                    <select class="form-control" id="nouv">
+                                        <option value="Oui">Oui</option>
+                                        <option value="Non">Non</option>
+                                    </select>
+
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="objet">Objet:</label>
+                                    <input class="form-control" id="objet" type="text"
+                                        placeholder="Saisissez l'objet ici">
+
+                                </div>
+                            </div>
+                            
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="date_d_ouverture">Date d'ouverture:</label>
+                                    <input class="form-control" id="date_d_ouverture" type="date"
+                                        placeholder="Saisissez la date d'ouverture ici">
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="date_d_echeance">Date d'écheance:</label>
+                                    <input class="form-control" id="date_d_echeance" type="date"
+                                        placeholder="Saisissez la date d'écheance ici">
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="categorie">Catégorie:</label>
+                                    <select class="form-control" id="categorie"
+                                        [ngClass]="{ 'is-invalid': submitted && f.categorie.errors }">
+                                        <option value="Applicatif">Applicatif</option>
+                                        <option value="Matériel">Matériel</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="impact">Impact:</label>
+                                    <select class="form-control" id="impact">
+                                        <option value="Élevé">Élevé</option>
+                                        <option value="Normale">Normale</option>
+                                        <option value="Bas">Bas</option>
+                                        <option value="Trés bas">Trés bas</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="etat">État:</label>
+                                    <select class="form-control" id="etat">
+                                        <option value="Ouvret">Ouvret</option>
+                                        <option value="En traitement">En traitement</option>
+                                        <option value="Clos">Clos</option>
+                                        <option value="En retard">En retard</option>
+                                    </select>
+
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label for="description">Description du probléme :</label>
+                                    <textarea class="form-control" id="description" name="description" rows="12"
+                                        placeholder="Description">
+                                    </textarea>
+                                </div>
+
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="file">Piéce-jointe:</label>
+                                    <input class="form-control-file" id="file" type="file" #file
+                                        (change)="loadSelectedFile(file.files)">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--  Button retour & submit -->
+                    <div class="row">
+                        <div class="offset-sm-5 col-sm-3 offset-md-7 col-md-2">
+                            <a routerLink="/home/tickets/mestickets" class="btn btn-primary btn-pill btn-block">
+                                <i class="cui-arrow-left icons"></i> Retour
+                            </a>
+                        </div>
+                        <div class="col-sm-3 col-md-2 form-group form-actions">
+                            <button type="submit" class="btn btn-success btn-pill btn-block">
+                                <i class="cui-circle-check icons"></i> Relancer
+                            </button>
+                        </div>
+                    </div>
+                    <!-- / Button retour & submit-->
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>

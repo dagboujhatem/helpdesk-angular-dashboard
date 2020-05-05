@@ -1,1 +1,74 @@
-<p>mission-confirmer works!</p>
+<div class="fade-in">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header"><strong>Confirmer la mission de fournnisuer </strong> </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="nom">Nom:</label>
+                                <input class="form-control"  id="nom" type="text" readonly>
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="collaborateurs">Collaborateurs:</label>
+                                <input class="form-control"  id="collaborateurs"  type="text" readonly>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="mission">Mission:</label>
+                                <input class="form-control" id="mission" type="text" readonly>
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="date_debut">Date début:</label>
+                                <input class="form-control"  id="date_debut" type="date" readonly>
+
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="date_fin">Date fin:</label>
+                                <input class="form-control" id="date_fin" type="date" readonly>
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="reponse">Réponse:</label>
+                                <textarea class="form-control"  id="reponse" name="reponse" rows="8" readonly>
+                                    </textarea>
+
+                            </div>
+                        </div>
+
+                       
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="offset-sm-5 col-sm-3 offset-md-7 col-md-2">
+                        <a routerLink="/home/missions/index" class="btn btn-primary btn-pill btn-block">
+                            <i class="cui-arrow-left icons"></i> Retour
+                        </a>
+                    </div>
+                    <div class="col-sm-3 col-md-2 form-group form-actions">
+                        <button type="submit" class="btn btn-success btn-pill btn-block">
+                            <i class="cui-circle-check icons"></i> Confirmation 
+                        </button>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
