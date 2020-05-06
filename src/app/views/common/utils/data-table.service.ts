@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {SweetAlertService} from 'angular-sweetalert-service';
 
 @Injectable({
   providedIn: 'root'
@@ -7,24 +8,15 @@ export class DataTableService {
 
   dtOptions: DataTables.Settings = {};
 
-  constructor() { }
+  constructor(private alertService: SweetAlertService) { }
 
   getDataTableOptions() {
     this.dtOptions =    this.dtOptions = {
       pagingType: 'full_numbers',
-      pageLength: 10,
+      pageLength: 5,
       processing: true,
-      // Declare the use of the extension in the dom parameter
       dom: 'Bfrtip',
-      // Configure the buttons
-      // buttons: [
-      //   'print',
-      //   'excel',
-      // ],
-      // Use this attribute to enable the responsive extension
-      responsive: false,
-      /* below is the relevant part, e.g. translated to spanish */
-      /*language: {
+      language: {
         processing: 'Traitement...',
         search: 'Rechercher :',
         lengthMenu: 'Afficher _MENU_ éléments',
@@ -45,8 +37,22 @@ export class DataTableService {
           sortAscending: ': activer pour trier la colonne par ordre croissant',
           sortDescending: ': activer pour trier la colonne par ordre décroissant'
         }
-      }*/
+      }
     };
     return this.dtOptions;
+  }
+
+  confirmDeleteMessage() {
+    const options = {
+      title: 'Êtes-vous sûr?',
+      text: 'Voulez-vous vraiment supprimer cette enregistrement?',
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#4dbd74',
+      cancelButtonColor: '#f86c6b',
+      confirmButtonText: '<i class="fa fa-check" aria-hidden="true"></i> Oui, supprimez-le',
+      cancelButtonText: '<i class="fa fa-times" aria-hidden="true"></i> Non, annuler'
+    };
+   return this.alertService.confirm(options);
   }
 }

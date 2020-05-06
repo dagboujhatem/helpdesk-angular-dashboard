@@ -48,6 +48,7 @@ import { DataTablesModule } from 'angular-datatables';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {TokenInterceptor} from './views/common/security/token-interceptor';
 import {ResponseInterceptor} from './views/common/security/response-interceptor';
+import {SweetAlertService} from 'angular-sweetalert-service';
 
 @NgModule({
   imports: [
@@ -93,7 +94,8 @@ import {ResponseInterceptor} from './views/common/security/response-interceptor'
       provide: HTTP_INTERCEPTORS,
       useClass: ResponseInterceptor,
       multi: true
-    }
+    },
+    SweetAlertService
   ],
   bootstrap: [ AppComponent ]
 })
