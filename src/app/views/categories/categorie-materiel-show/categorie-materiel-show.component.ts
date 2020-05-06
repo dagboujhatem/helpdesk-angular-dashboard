@@ -18,20 +18,18 @@ export class CategorieMaterielShowComponent implements OnInit {
 
   ngOnInit(): void {
     this.categorieMaterielShowForm = this.formBuilder.group({
-     objet: [{value: '', disabled: true}, ],
+      objet: [{value: '', disabled: true}, ],
       probleme: [{value: '', disabled: true}, ],
       description: [{value: '', disabled: true}, ]
     });
     this.categirieMaterielID = this.route.snapshot.paramMap.get('id');
     this.categorieMaterielService.getCategorieMaterielById(this.categirieMaterielID).subscribe(
-      (bodyResponse) => { this.loadCategorieData(bodyResponse); }
-    );
+      (bodyResponse) => { this.loadCategorieData(bodyResponse); });
   }
 
   loadCategorieData(bodyResponse) {
     const data = bodyResponse.data;
     this.categorieMaterielShowForm.patchValue(data);
     this.solutionFile = data.solution_file;
-
-}
+  }
 }

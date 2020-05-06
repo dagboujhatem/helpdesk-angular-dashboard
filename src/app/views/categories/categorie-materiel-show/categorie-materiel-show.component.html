@@ -2,8 +2,10 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="card">
-                <form [formGroup]="categorieMaterielAddForm" >
-                    <div class="card-header"><strong>Afficher les détails d'une catégorie matériel:</strong> </div>
+                <form [formGroup]="categorieMaterielShowForm" >
+                    <div class="card-header">
+                      <strong>Afficher les détails d'une catégorie matériel:</strong>
+                    </div>
                     <div class="card-body">
                       <div class="row">
                         <div class="col-sm-6">
@@ -11,17 +13,13 @@
                             <div class="col-sm-12">
                               <div class="form-group">
                                 <label for="Objet">Objet:</label>
-                                <input class="form-control" formControlName="objet" id="objet" type="text"
-                                      >
-                               
+                                <input class="form-control" formControlName="objet" id="objet" type="text">
                               </div>
                             </div>
                             <div class="col-sm-12">
                               <div class="form-group">
                                 <label for="probleme">Problème:</label>
-                                <input class="form-control" formControlName="probleme" id="probleme" type="text"
-                                    >
-                                
+                                <input class="form-control" formControlName="probleme" id="probleme" type="text">
                               </div>
                             </div>
                             <div class="col-sm-12">
@@ -40,9 +38,8 @@
                             <div class="form-group">
                               <label for="description">Description:</label>
                               <textarea class="form-control" formControlName="description" id="description"
-                                        name="description" rows="12" 
-                                    >  </textarea>
-                              
+                                        name="description" rows="12">
+                              </textarea>
                             </div>
                         </div>
                       </div>
@@ -50,7 +47,7 @@
                         <div class="offset-sm-5 col-sm-3 offset-md-7 col-md-2">
                         </div>
                         <div class="col-sm-3 col-md-2 form-group form-actions">
-                          <a routerLink="/home//categories/applicatif/index" class="btn btn-primary btn-pill btn-block">
+                          <a routerLink="/home//categories/materiel/index" class="btn btn-primary btn-pill btn-block">
                             <i class="cui-arrow-left icons"></i> Retour
                           </a>
                         </div>
