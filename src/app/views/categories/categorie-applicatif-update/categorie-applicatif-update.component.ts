@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {CategorieApplicatifService} from '../categorie-applicatif.service';
+import {ToasterService} from 'angular2-toaster';
+import {ValidationService} from '../../common/utils/validation.service';
 
 @Component({
   selector: 'app-categorie-applicatif-update',
@@ -10,12 +12,16 @@ import {CategorieApplicatifService} from '../categorie-applicatif.service';
 })
 export class CategorieApplicatifUpdateComponent implements OnInit {
   categirieApplicatifID = null ;
+  selectedFile = null;
   categorieApplicatifUpdateForm: FormGroup;
   submitted = false;
 
   constructor(private formBuilder: FormBuilder,
               private route: ActivatedRoute,
-              private categorieApplicatifService: CategorieApplicatifService) { }
+              private categorieApplicatifService: CategorieApplicatifService,
+              private toasterService: ToasterService,
+              private validationService: ValidationService,
+              private router: Router) { }
 
   ngOnInit() {
     this.categirieApplicatifID = this.route.snapshot.paramMap.get('id');
@@ -35,6 +41,13 @@ export class CategorieApplicatifUpdateComponent implements OnInit {
     this.categorieApplicatifUpdateForm.patchValue(data);
   }
 
+  changeSelectedFile(files) {
+    if (files.length === 0) {
+      return;
+    }
+    this.selectedFile = files[0];
+  }
+
   // convenience getter for easy access to form fields
   get f() { return this.categorieApplicatifUpdateForm.controls; }
 
@@ -46,5 +59,24 @@ export class CategorieApplicatifUpdateComponent implements OnInit {
     if (this.categorieApplicatifUpdateForm.invalid) {
       return;
     }
+
+    // Create a request body data
+    const requestBody = new FormData();
+    requestBody.append('_method', 'put');
+    requestBody.append('type', this.categorieApplicatifUpdateForm.get('type').value);
+    requestBody.append('probleme', this.categorieApplicatifUpdateForm.get('probleme').value);
+    requestBody.append('description', this.categorieApplicatifUpdateForm.get('description').value);
+    if (this.selectedFile !== undefined && this.selectedFile !== null) {
+      requestBody.append('solution_file', this.selectedFile, this.selectedFile.name);
+    }
+    this.categorieApplicatifService.updateCategorieApplicatif(this.categirieApplicatifID, requestBody).subscribe(
+      (bodyResponse) => { this.processResponse(bodyResponse); },
+      (error) => { this.validationService.showValidationsMessagesInToast(error); }
+    );
+  }
+
+  processResponse(bodyResponse) {
+    this.toasterService.pop('success', 'Catégorie applicatif modifiée:', bodyResponse.message);
+    this.router.navigate(['/home/categories/applicatif/index']);
   }
 }

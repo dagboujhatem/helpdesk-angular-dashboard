@@ -42,7 +42,8 @@
                   <div class="col-sm-12">
                     <div class="form-group">
                       <label for="solutionFile">Solution de problème:</label>
-                      <input class="form-control-file" formControlName="solutionFile" id="solutionFile" type="file">
+                      <input class="form-control-file" formControlName="solutionFile" id="solutionFile" type="file"
+                             #file (change)="changeSelectedFile(file.files)">
                     </div>
                   </div>
                 </div>

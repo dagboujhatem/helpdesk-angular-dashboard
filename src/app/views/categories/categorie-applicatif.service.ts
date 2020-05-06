@@ -27,7 +27,7 @@ export class CategorieApplicatifService {
 
   // Update a categorie applicatif  from the REST API
   updateCategorieApplicatif(categorieApplicatifID , categorieApplicatifNewData) {
-    return this.http.put(this.url + 'categorieApplicatifs/' + categorieApplicatifID, categorieApplicatifNewData);
+    return this.http.post(this.url + 'categorieApplicatifs/' + categorieApplicatifID, categorieApplicatifNewData);
   }
 
   // Delete a categorie applicatif  from the REST API
