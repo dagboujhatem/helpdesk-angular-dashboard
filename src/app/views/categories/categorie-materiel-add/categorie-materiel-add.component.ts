@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./categorie-materiel-add.component.css']
 })
 export class CategorieMaterielAddComponent implements OnInit {
-  
+
   selectedFile = null;
   categorieMaterielAddForm: FormGroup;
   submitted = false;
@@ -51,7 +51,7 @@ export class CategorieMaterielAddComponent implements OnInit {
         return;
     }
 
-    // Create a request body data 
+    // Create a request body data
     const requestBody = new FormData();
     requestBody.append('objet', this.categorieMaterielAddForm.get('objet').value);
     requestBody.append('probleme', this.categorieMaterielAddForm.get('probleme').value);
@@ -60,8 +60,7 @@ export class CategorieMaterielAddComponent implements OnInit {
 
     this.categorieMaterielService.addCategorieMateriel(requestBody).subscribe(
       (bodyResponse) => { this.processResponse(bodyResponse); },
-      (error) => { this.validationService.showValidationsMessagesInToast(error);}
-    );
+      (error) => { this.validationService.showValidationsMessagesInToast(error); });
   }
 
   processResponse(bodyResponse) {

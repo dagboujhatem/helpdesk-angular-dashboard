@@ -34,6 +34,7 @@
                               <div class="form-group">
                                 <label for="solutionFile">Solution de problème:</label>
                                 <input class="form-control-file" formControlName="solutionFile" id="solutionFile" type="file"
+                                       #file (change)="changeSelectedFile(file.files)"
                                        [ngClass]="{ 'is-invalid': submitted && f.solutionFile.errors }">
                                 <div *ngIf="submitted && f.solutionFile.errors" class="invalid-feedback d-block">
                                   <div *ngIf="f.solutionFile.errors.required">Le champ solution de problème est obligatoire.</div>
