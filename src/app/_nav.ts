@@ -88,7 +88,6 @@ export const navItems: INavData[] = [
         icon: 'icon-list'
       }
      ]
-     
   },
   {
     name: 'Mes tickets résolus',
@@ -115,4 +114,9 @@ export const navItems: INavData[] = [
     url: '/home/tickets/indexreponseinfo',
     icon: 'icon-list'
   },
+  {
+    name: 'Paramètres',
+    url: '/home/settings',
+    icon: 'icon-wrench'
+  }
 ];

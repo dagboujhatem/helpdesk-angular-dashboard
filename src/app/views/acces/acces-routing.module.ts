@@ -4,7 +4,6 @@ import {AccesIndexComponent} from './acces-index/acces-index.component';
 import {AccesAddComponent} from './acces-add/acces-add.component';
 import {AccesUpdateComponent} from './acces-update/acces-update.component';
 import {AccesShowComponent} from './acces-show/acces-show.component';
-import {ProfileSettingsComponent} from './profile-settings/profile-settings.component';
 
 
 const routes: Routes = [
@@ -45,14 +44,7 @@ const routes: Routes = [
         data: {
           title: 'Afficher un utilisateur'
         }
-      },
-      {
-        path: 'settings',
-        component: ProfileSettingsComponent,
-        data: {
-          title: 'Paramètres de mon compte'
-        }
-      },
+      }
     ]
   }
 ];

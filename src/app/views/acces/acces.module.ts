@@ -8,7 +8,6 @@ import {AccesUpdateComponent} from './acces-update/acces-update.component';
 import {DataTablesModule} from 'angular-datatables';
 import { AccesShowComponent } from './acces-show/acces-show.component';
 import {RxReactiveFormsModule} from '@rxweb/reactive-form-validators';
-import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
 import { SweetAlertService } from 'angular-sweetalert-service';
 
 @NgModule({
@@ -16,8 +15,7 @@ import { SweetAlertService } from 'angular-sweetalert-service';
     AccesIndexComponent,
     AccesAddComponent,
     AccesUpdateComponent,
-    AccesShowComponent,
-    ProfileSettingsComponent
+    AccesShowComponent
   ],
   imports: [
     CommonModule,
