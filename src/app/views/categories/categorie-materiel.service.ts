@@ -11,8 +11,8 @@ export class CategorieMaterielService {
 
   constructor(private http: HttpClient) { }
 
-  // Get all  categories materiels from the REST API
-  getCategorieMateriel() {
+  // Get all categories materiels from the REST API
+  getAllCategorieMateriel() {
     return this.http.get(this.url + 'categorieMateriels');
   }
 
