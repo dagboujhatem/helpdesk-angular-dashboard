@@ -41,6 +41,18 @@ export const navItems: INavData[] = [
     name: 'Gestion des missions',
     url: '/home/missions',
     icon: 'icon-list',
+    children: [
+      {
+        name: 'Liste des missions',
+        url: '/home/missions',
+        icon: 'icon-list'
+      },
+      {
+        name: 'Les missions',
+        url: '/home/missions/missionindexfrs',
+        icon: 'icon-list'
+      }
+    ]
   },
   {
     name: 'Mes tickets',
@@ -56,11 +68,6 @@ export const navItems: INavData[] = [
     name: 'Tickets matériels',
     url: '/home/tickets/materiels',
     icon: 'icon-list',
-  },
-   {
-    name: 'Les missions',
-    url: '/home/missions/missionindexfrs',
-    icon: 'icon-list'
   },
   {
     name: 'Tickets relancés',
