@@ -59,6 +59,8 @@ export class AccesUpdateComponent implements OnInit {
   }
   private processResponseBody(responseBody) {
     this.userInfo = responseBody.data;
+    // image
+    this.imgURL = this.userInfo.photo;
     // Reset password value
     this.userInfo.password = '';
     // Reset date d'embauche value
@@ -101,6 +103,7 @@ export class AccesUpdateComponent implements OnInit {
 
     // send updated info to REST API
     const requestBody = new FormData();
+    requestBody.append('_method', 'put');
     requestBody.append('role', this.accesUpdateForm.get('role').value);
     requestBody.append('identifiant', this.accesUpdateForm.get('identifiant').value);
     requestBody.append('nom', this.accesUpdateForm.get('nom').value);
