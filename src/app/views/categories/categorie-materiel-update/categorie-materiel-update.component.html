@@ -1,1 +1,75 @@
-<p>categorie-materiel-update works!</p>
+<div class="fade-in">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <form [formGroup]="categorieMaterielAddForm" (ngSubmit)="onSubmit()">
+                    <div class="card-header"><strong>Ajouter une catégorie matériel:</strong> </div>
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <div class="row">
+                            <div class="col-sm-12">
+                              <div class="form-group">
+                                <label for="Objet">Objet:</label>
+                                <input class="form-control" formControlName="objet" id="objet" type="text"
+                                       placeholder="Saisissez le l'objet ici"
+                                       [ngClass]="{ 'is-invalid': submitted && f.objet.errors }">
+                                <div *ngIf="submitted && f.objet.errors" class="invalid-feedback d-block">
+                                  <div *ngIf="f.objet.errors.required">Le champ objet est obligatoire.</div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-sm-12">
+                              <div class="form-group">
+                                <label for="probleme">Problème:</label>
+                                <input class="form-control" formControlName="probleme" id="probleme" type="text"
+                                       placeholder="Saisissez le problème ici"
+                                       [ngClass]="{ 'is-invalid': submitted && f.probleme.errors }">
+                                <div *ngIf="submitted && f.probleme.errors" class="invalid-feedback d-block">
+                                  <div *ngIf="f.probleme.errors.required">Le champ problème est obligatoire.</div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-sm-12">
+                              <div class="form-group">
+                                <label for="solutionFile">Solution de problème:</label>
+                                <input class="form-control-file" formControlName="solutionFile" id="solutionFile" type="file"
+                                       [ngClass]="{ 'is-invalid': submitted && f.solutionFile.errors }">
+                                <div *ngIf="submitted && f.solutionFile.errors" class="invalid-feedback d-block">
+                                  <div *ngIf="f.solutionFile.errors.required">Le champ solution de problème est obligatoire.</div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                              <label for="description">Description:</label>
+                              <textarea class="form-control" formControlName="description" id="description"
+                                        name="description" rows="12" placeholder="Saisissez la description ici ..."
+                                        [ngClass]="{ 'is-invalid': submitted && f.description.errors }">  </textarea>
+                              <div *ngIf="submitted && f.description.errors" class="invalid-feedback d-block">
+                                <div *ngIf="f.description.errors.required">Le champ description est obligatoire.</div>
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="offset-sm-5 col-sm-3 offset-md-7 col-md-2">
+                          <a routerLink="/home/categories/materiel/index" class="btn btn-primary btn-pill btn-block">
+                            <i class="cui-arrow-left icons"></i> Retour
+                          </a>
+                        </div>
+                        <div class="col-sm-3 col-md-2 form-group form-actions">
+                            <button type="submit" class="btn btn-success btn-pill btn-block">
+                              <i class="cui-circle-check icons"></i> Modifier
+                            </button>
+                        </div>
+                      </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
