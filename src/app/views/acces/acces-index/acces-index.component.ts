@@ -17,6 +17,7 @@ export class AccesIndexComponent implements OnDestroy, OnInit {
   dtOptions: DataTables.Settings = {};
   // @ts-ignore
   dtTrigger: Subject = new Subject();
+
   constructor(private accesService: AccesService,
               private toasterService: ToasterService,
               private dataTableService: DataTableService) { }
