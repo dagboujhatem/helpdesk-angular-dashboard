@@ -28,7 +28,7 @@ export class CategorieMaterielService {
 
   // Update a categorie materiel from the REST API
   updateCategorieMateriel(CategorieMaterielID , CategorieMaterielNewData) {
-    return this.http.put(this.url + 'categorieMateriels/' + CategorieMaterielID, CategorieMaterielNewData);
+    return this.http.post(this.url + 'categorieMateriels/' + CategorieMaterielID, CategorieMaterielNewData);
   }
 
   // Delete a categorie materiel from the REST API

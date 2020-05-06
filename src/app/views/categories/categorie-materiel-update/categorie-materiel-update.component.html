@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="card">
-                <form [formGroup]="categorieMaterielAddForm" (ngSubmit)="onSubmit()">
+                <form [formGroup]="categorieMaterielUpdateForm" (ngSubmit)="onSubmit()">
                     <div class="card-header"><strong>Ajouter une catégorie matériel:</strong> </div>
                     <div class="card-body">
                       <div class="row">
@@ -34,10 +34,7 @@
                               <div class="form-group">
                                 <label for="solutionFile">Solution de problème:</label>
                                 <input class="form-control-file" formControlName="solutionFile" id="solutionFile" type="file"
-                                       [ngClass]="{ 'is-invalid': submitted && f.solutionFile.errors }">
-                                <div *ngIf="submitted && f.solutionFile.errors" class="invalid-feedback d-block">
-                                  <div *ngIf="f.solutionFile.errors.required">Le champ solution de problème est obligatoire.</div>
-                                </div>
+                                       #file (change)="changeSelectedFile(file.files)">
                               </div>
                             </div>
                           </div>
