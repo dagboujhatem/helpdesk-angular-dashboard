@@ -63,8 +63,6 @@ export class MissionUpdateComponent implements OnInit {
     requestBody.append('date_debut', this.missionUpdateForm.get('date_debut').value);
     requestBody.append('date_fin', this.missionUpdateForm.get('date_fin').value);
     requestBody.append('description', this.missionUpdateForm.get('description').value);
-    
-    
 
     this.missionService.updateMissionReponse(this.missionID, requestBody).subscribe(
       (bodyResponse) => { this.processResponse(bodyResponse); },
@@ -73,7 +71,7 @@ export class MissionUpdateComponent implements OnInit {
   }
 
   processResponse(bodyResponse) {
-    this.toasterService.pop('success', 'La mission a été bien modifiée:', bodyResponse.message);
+    this.toasterService.pop('success', 'La mission modifiée:', bodyResponse.message);
     this.router.navigate(['/home/missions/index']);
   }
 
