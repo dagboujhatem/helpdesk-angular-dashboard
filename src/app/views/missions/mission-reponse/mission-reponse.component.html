@@ -83,7 +83,7 @@
                                 <div class="form-group">
                                     <label for="collaborateurs">Collaborateurs:</label>
                                     <input class="form-control" formControlName="collaborateurs" id="collaborateurs" type="text"
-                                     placeholder="Saisissez le nom et le prénom ici"
+                                     placeholder="Saisissez les collaborateurs ici"
                                         [ngClass]="{ 'is-invalid': submitted && f.collaborateurs.errors }">
                                     <div *ngIf="submitted && f.collaborateurs.errors" class="invalid-feedback d-block">
                                         <div *ngIf="f.collaborateurs.errors.required">Le champ collaborateurs est obligatoire.</div>
@@ -95,7 +95,7 @@
                                 <div class="form-group">
                                     <label for="mission">Mission:</label>
                                     <input class="form-control" formControlName="mission" id="mission" type="text"
-                                     placeholder="Saisissez le nom et le prénom ici"
+                                     placeholder="Saisissez mission ici"
                                         [ngClass]="{ 'is-invalid': submitted && f.mission.errors }">
                                     <div *ngIf="submitted && f.mission.errors" class="invalid-feedback d-block">
                                         <div *ngIf="f.mission.errors.required">Le champ mission est obligatoire.</div>
@@ -130,7 +130,7 @@
                                 <div class="form-group">
                                     <label for="reponse">Réponse:</label>
                                     <textarea class="form-control" formControlName="reponse" id="reponse"
-                                     placeholder="Saisissez le nom et le prénom ici"
+                                     placeholder="Saisissez la réponse ici"
                                         name="reponse" rows="8"
                                         [ngClass]="{ 'is-invalid': submitted && f.reponse.errors }">
                                     </textarea>

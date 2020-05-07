@@ -43,7 +43,7 @@ export const navItems: INavData[] = [
     icon: 'icon-list',
     children: [
       {
-        name: 'Liste des missions',
+        name: 'Mes missions',
         url: '/home/missions',
         icon: 'icon-list'
       },
@@ -111,11 +111,7 @@ export const navItems: INavData[] = [
     url: '/home/tickets/indexticketfrs',
     icon: 'icon-list'
   },
-  {
-    name: 'Bna Bank',
-    url: '/home/tickets/indexticketfrs',
-    icon: 'icon-list'
-  },
+  
   {
     name: 'Tickets fournisseur',
     url: '/home/tickets/indexreponseinfo',

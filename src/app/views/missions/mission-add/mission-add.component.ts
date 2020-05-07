@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {ToasterService} from 'angular2-toaster';
+import {ValidationService} from '../../common/utils/validation.service';
+import {Router} from '@angular/router';
+import { MissionService } from '../mission.service';
 
 @Component({
   selector: 'app-mission',
@@ -11,7 +15,11 @@ export class MissionAddComponent implements OnInit {
   missionForum: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,
+    private missionService: MissionService,
+    private toasterService: ToasterService,
+    private validationService: ValidationService,
+    private router: Router) { }
 
 
   ngOnInit() {
@@ -36,8 +44,25 @@ export class MissionAddComponent implements OnInit {
         return;
     }
 
-    // display form values on success
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.missionForum.value, null, 4));
-  }
+     // Create a request body data
+     const requestBody = new FormData();
+     requestBody.append('nom', this.missionForum.get('nom').value);
+     requestBody.append('fonction', this.missionForum.get('fonction').value);
+     requestBody.append('mission', this.missionForum.get('mission').value);
+     requestBody.append('date_debut', this.missionForum.get('date_debut').value);
+     requestBody.append('date_fin', this.missionForum.get('date_fin').value);
+     requestBody.append('description', this.missionForum.get('description').value);
 
+ 
+     this.missionService.addMissionReponse(requestBody).subscribe(
+       (bodyResponse) => { this.processResponse(bodyResponse); },
+       (error) => { this.validationService.showValidationsMessagesInToast(error);}
+     );
+   }
+ 
+   processResponse(bodyResponse) {
+     this.toasterService.pop('success', 'Catégorie applicatif ajoutée:', bodyResponse.message);
+     this.router.navigate(['/home/missions/index']);
+   }
+    
 }

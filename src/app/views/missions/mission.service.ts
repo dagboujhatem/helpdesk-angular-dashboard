@@ -6,12 +6,12 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class MissionService {
-
+// pour ne pas  écrire tjrs environment.serveurUrl
   url = environment.serverUrl;
 
   constructor(private http: HttpClient) { }
 
-  // Get all  missions materiels from the REST API
+  // méthode  Get all  missions  from the REST API
   getMissionReponse() {
     return this.http.get(this.url + 'missions');
   }
@@ -22,8 +22,8 @@ export class MissionService {
   }
 
   // Add a mission from the REST API
-  addMissionReponse(MissionReponseData) {
-   return  this.http.post(this.url + 'missions', MissionReponseData);
+  addMissionReponse(MissionData) {
+   return  this.http.post(this.url + 'missions', MissionData);
   }
 
   // Update a mission from the REST API
