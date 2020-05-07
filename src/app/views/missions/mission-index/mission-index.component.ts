@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import { ToasterService } from 'angular2-toaster';
 import { DataTableService } from '../../common/utils/data-table.service';
 import { DataTableDirective } from 'angular-datatables';
@@ -10,7 +10,7 @@ import {Subject} from 'rxjs';
   templateUrl: './mission-index.component.html',
   styleUrls: ['./mission-index.component.css']
 })
-export class MissionIndexComponent implements OnInit {
+export class MissionIndexComponent implements OnDestroy, OnInit {
 
   // datatabale triggers
   @ViewChild(DataTableDirective, {static: false})
@@ -32,43 +32,19 @@ export class MissionIndexComponent implements OnInit {
     this.loadMissionReponse();
   }
 
-  // pour charger les catégories Materiel from REST API
+  // pour charger les missions from REST API
   loadMissionReponse() {
       this.missionService.getMissionReponse().subscribe(
   (bodyResponse) => { this.getMissionReponseData(bodyResponse); });
   }
 
-  // get catégorie data from bodyresponse
+  // get mission data from body response
   getMissionReponseData(bodyResponse) {
       this.missionsData = bodyResponse.data;
       this.dtTrigger.next();
   }
-  // delete catégorie
-  deleteMissionReponse (id) {
-    this.dataTableService.confirmDeleteMessage().then((result) => {
-      // delete the category from rest api
-      this.missionService.deleteMissionReponse(id).subscribe(
-        (bodyResponse) => { this.getMessage(bodyResponse); });
-    }).catch(() => {});
-  }
-
-  getMessage(bodyResponse) {
-      this.toasterService.pop('success', 'Supprimé avec succès!', bodyResponse.message);
-      this.rerender();
-  }
-
 
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
   }
-
-  rerender(): void {
-    this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
-      // Destroy the table first
-      dtInstance.destroy();
-      // Call the rest api again
-      this.loadMissionReponse();
-    });
-  }
-
 }

@@ -12,7 +12,7 @@
                 </a>
             </div>
           </div>
-      
+
 
         <table class="table table-striped table-hover table-responsive-lg"  datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
           <thead>
@@ -32,13 +32,12 @@
             <td>{{mission.mission}}</td>
             <td>{{mission.date_debut}}</td>
             <td>{{mission.date_fin}}</td>
-            <td>{{mission.role}}</td>
             <td>
                 <a [routerLink]="['/home/missions/show/', mission.id]" class="btn btn-info btn-sm">
-                  <i class="fa fa-eye"></i>
+                  <i class="fa fa-eye fa-white"></i>
                 </a>
                 <a [routerLink]="['/home/missions/update/', mission.id]" class="btn btn-warning btn-sm">
-                  <i class="fa fa-edit"></i>
+                  <i class="fa fa-edit fa-white"></i>
                 </a>
             </td>
           </tr>
