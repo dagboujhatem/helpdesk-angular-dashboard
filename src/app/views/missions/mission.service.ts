@@ -28,11 +28,6 @@ export class MissionService {
 
   // Update a mission from the REST API
   updateMissionReponse(MissionReponseID , MissionReponseNewData) {
-    return this.http.put(this.url + 'missions/' + MissionReponseID, MissionReponseNewData);
-  }
-
-  // Delete a mission from the REST API
-  deleteMissionReponse(MissionReponseID) {
-    return this.http.delete(this.url + 'missions/' + MissionReponseID);
+    return this.http.post(this.url + 'missions/' + MissionReponseID, MissionReponseNewData);
   }
 }
