@@ -53,16 +53,14 @@ export class MissionAddComponent implements OnInit {
      requestBody.append('date_fin', this.missionForum.get('date_fin').value);
      requestBody.append('description', this.missionForum.get('description').value);
 
- 
      this.missionService.addMissionReponse(requestBody).subscribe(
        (bodyResponse) => { this.processResponse(bodyResponse); },
        (error) => { this.validationService.showValidationsMessagesInToast(error);}
      );
    }
- 
+
    processResponse(bodyResponse) {
-     this.toasterService.pop('success', 'Catégorie applicatif ajoutée:', bodyResponse.message);
+     this.toasterService.pop('success', 'Mission ajoutée:', bodyResponse.message);
      this.router.navigate(['/home/missions/index']);
    }
-    
 }
