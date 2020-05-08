@@ -50,7 +50,7 @@ export class AccesIndexComponent implements OnDestroy, OnInit {
   }
 
   private deleteResponseBody(responseBody) {
-    this.toasterService.pop('success', 'Supprimé avec succès!', responseBody.message);
+    this.toasterService.pop('success', 'Supprimé avec succès:', responseBody.message);
     this.rerender();
   }
 
