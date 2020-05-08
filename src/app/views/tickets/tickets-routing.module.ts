@@ -11,8 +11,6 @@ import { TicketIndexAvisComponent } from './ticket-index-avis/ticket-index-avis.
 import { TicketIndexMaterielInformaticienComponent } from './ticket-index-materiel-informaticien/ticket-index-materiel-informaticien.component';
 import { TicketIndexApplicatifInformaticienComponent } from './ticket-index-applicatif-informaticien/ticket-index-applicatif-informaticien.component';
 import { TicketIndexRelancerInformaticienComponent } from './ticket-index-relancer-informaticien/ticket-index-relancer-informaticien.component';
-import { TicketIndexSolutionApplicatifComponent } from './ticket-index-solution-applicatif/ticket-index-solution-applicatif.component';
-import { TicketIndexSolutionMaterielComponent } from './ticket-index-solution-materiel/ticket-index-solution-materiel.component';
 import { TicketReponseMaterielInformaticienComponent } from './ticket-reponse-materiel-informaticien/ticket-reponse-materiel-informaticien.component';
 import { TicketReponseApplicatifInformaticienComponent } from './ticket-reponse-applicatif-informaticien/ticket-reponse-applicatif-informaticien.component';
 import { TicketRelanceAddComponent } from './ticket-relance-add/ticket-relance-add.component';
@@ -69,7 +67,7 @@ const routes: Routes = [
         data: {
           title: 'Affecter la priorité'
         }
-        
+
       },
       {
         path: 'mestickets',
@@ -77,7 +75,7 @@ const routes: Routes = [
         data: {
           title: 'La liste des tickets'
         }
-        
+
       },
       {
         path: 'addavis',
@@ -85,7 +83,7 @@ const routes: Routes = [
         data: {
           title: 'Ajouter un avis'
         }
-        
+
       },
       {
         path: 'indexavis',
@@ -93,7 +91,7 @@ const routes: Routes = [
         data: {
           title: 'Liste des avis du personnel'
         }
-        
+
       },
       {
         path: 'applicatifs',
@@ -101,7 +99,7 @@ const routes: Routes = [
         data: {
           title: 'Liste des tickets applicatifs'
         }
-        
+
       },
       {
         path: 'materiels',
@@ -109,7 +107,7 @@ const routes: Routes = [
         data: {
           title: ' Liste des tickets matériels'
         }
-        
+
       },
       {
         path: 'ticketsrelances',
@@ -117,23 +115,7 @@ const routes: Routes = [
         data: {
           title: ' Liste des tickets relancés'
         }
-        
-      },
-      {
-        path: 'solutionsapplicatifs',
-        component:TicketIndexSolutionApplicatifComponent,
-        data: {
-          title: ' Liste des solutions applicatifs'
-        }
-        
-      },
-      {
-        path: 'solutionsmateriels',
-        component:TicketIndexSolutionMaterielComponent,
-        data: {
-          title: ' Liste des solutions matériels'
-        }
-        
+
       },
       {
         path: 'reponsemat',
@@ -141,7 +123,7 @@ const routes: Routes = [
         data: {
           title: 'Formulaire de la réponse'
         }
-        
+
       },
       {
         path: 'reponseapp',
@@ -149,7 +131,7 @@ const routes: Routes = [
         data: {
           title: 'Formulaire de la réponse'
         }
-        
+
       },
       {
         path: 'relance',
@@ -157,16 +139,16 @@ const routes: Routes = [
         data: {
           title: 'relancer'
         }
-        
+
       },
-     
+
       {
         path: 'reponserelance',
         component:     TicketReponseRelanceInformaticienComponent,
         data: {
           title: 'Répondre'
         }
-        
+
       },
       {
         path: 'indexresolu',
@@ -174,7 +156,7 @@ const routes: Routes = [
         data: {
           title: 'Répondre'
         }
-        
+
       },
       {
         path: 'indexrelance',
@@ -182,7 +164,7 @@ const routes: Routes = [
         data: {
           title: 'Répondre'
         }
-        
+
       },
       {
         path: 'reponsefrs',
@@ -190,7 +172,7 @@ const routes: Routes = [
         data: {
           title: 'Répondre'
         }
-        
+
       },
       {
         path: 'indexticketfrs',
@@ -198,7 +180,7 @@ const routes: Routes = [
         data: {
           title: 'Index des tickets'
         }
-        
+
       },
       {
         path: 'indexreponseinfo',
@@ -206,10 +188,10 @@ const routes: Routes = [
         data: {
           title: 'Index des  tickets résolu par fournnisseur '
         }
-        
+
       }
-         
-        
+
+
     ]
   }
 ];

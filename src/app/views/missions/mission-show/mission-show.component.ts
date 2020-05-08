@@ -12,7 +12,6 @@ export class MissionShowComponent implements OnInit {
 
   missionID = null ;
   missionShowForm: FormGroup;
-  solutionFile = null;
   constructor(private route: ActivatedRoute,
               private formBuilder: FormBuilder,
               private missionService: MissionService) { }
@@ -34,6 +33,5 @@ export class MissionShowComponent implements OnInit {
   loadMissionData(bodyResponse) {
     const data = bodyResponse.data;
     this.missionShowForm.patchValue(data);
-    this.solutionFile = data.solution_file;
   }
 }

@@ -21,7 +21,7 @@ export const navItems: INavData[] = [
     icon: 'icon-list'
   },
   {
-    name: 'Catégories',
+    name: 'Les catégories',
     url: '/home/categories',
     icon: 'icon-list',
     children: [
@@ -38,21 +38,9 @@ export const navItems: INavData[] = [
     ]
   },
   {
-    name: 'Missions',
+    name: 'Les missions',
     url: '/home/missions',
-    icon: 'icon-list',
-    children: [
-      {
-        name: 'Mes missions',
-        url: '/home/missions/index',
-        icon: 'icon-list'
-      },
-      {
-        name: 'Liste des missions',
-        url: '/home/missions/fournisseur',
-        icon: 'icon-list'
-      }
-    ]
+    icon: 'icon-list'
   },
   {
     name: 'Mes tickets',
@@ -86,12 +74,12 @@ export const navItems: INavData[] = [
     children: [
       {
         name: 'Solutions applicatifs',
-        url: '/home/tickets/solutionsapplicatifs',
+        url: '/home/categories/solutions/applicatifs',
         icon: 'icon-screen-desktop'
       },
       {
         name: 'Solutions matériels',
-        url: '/home/tickets/solutionsmateriels',
+        url: '/home/categories/solutions/materiels',
         icon: 'icon-layers'
       }
      ]

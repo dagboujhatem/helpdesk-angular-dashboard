@@ -4,7 +4,6 @@ import {MissionAddComponent} from './mission-add/mission-add.component';
 import {MissionIndexComponent} from './mission-index/mission-index.component';
 import {MissionReponseComponent} from './mission-reponse/mission-reponse.component';
 import { MissionConfirmerComponent } from './mission-confirmer/mission-confirmer.component';
-import { IndexMissionFournisseurComponent } from './index-mission-fournisseur/index-mission-fournisseur.component';
 import { MissionShowComponent } from './mission-show/mission-show.component';
 import { MissionUpdateComponent } from './mission-update/mission-update.component';
 
@@ -55,17 +54,10 @@ const routes: Routes = [
         }
       },
       {
-        path: 'confirmer',
+        path: 'confirmer/:id',
         component: MissionConfirmerComponent,
         data: {
           title: 'Répondre à une mission'
-        }
-      },
-      {
-        path: 'fournisseur',
-        component: IndexMissionFournisseurComponent,
-        data: {
-          title: 'liste des missions à répondre'
         }
       }
     ]

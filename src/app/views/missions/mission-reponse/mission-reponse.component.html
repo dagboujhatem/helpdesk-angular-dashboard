@@ -1,63 +1,60 @@
 <div class="fade-in">
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="card">
-                <div class="card-header"><strong>Détails de la mission</strong> </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="nom">Organisé par:</label>
-                                <input class="form-control" id="nom" type="text" readonly>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="fonction">Fonction:</label>
-                                <input class="form-control" id="fonction" type="text" readonly>
-
-                            </div>
-                        </div>
-
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <label for="mission">Mission:</label>
-                                <input class="form-control" id="mission" type="text" readonly>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <label for="date_debut">Date début:</label>
-                                <input class="form-control" id="date_debut" type="date" readonly>
-
-                            </div>
-                        </div>
-
-
-                        <div class="col-sm-4">
-                            <div class="form-group">
-                                <label for="date_fin">Date fin:</label>
-                                <input class="form-control" id="date_fin" type="date" readonly>
-
-                            </div>
-                        </div>
-
-                        <div class="col-sm-12">
-                            <div class="form-group">
-                                <label for="reponse">reponse:</label>
-                                <textarea class="form-control" id="reponse" name="reponse" rows="8" readonly>
-                                </textarea>
-                            </div>
-                        </div>
-                    </div>
-
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <form [formGroup]="missionShowForm">
+          <div class="card-header">
+            <strong>Détails de mission</strong>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="nom">Organisé par:</label>
+                  <input class="form-control" formControlName="nom" id="nom" type="text">
                 </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="fonction">Fonction:</label>
+                  <input class="form-control" formControlName="fonction" id="fonction" type="text">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label for="mission">Mission:</label>
+                  <input class="form-control" formControlName="mission" id="mission" type="text">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label for="date_debut">Date début:</label>
+                  <input class="form-control" formControlName="date_debut" id="date_debut"
+                         type="date">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label for="date_fin">Date fin:</label>
+                  <input class="form-control" formControlName="date_fin" id="date_fin" type="date">
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label for="description">Description:</label>
+                  <textarea class="form-control" formControlName="description" id="description"
+                            name="description" rows="8">
+                  </textarea>
+                </div>
+              </div>
             </div>
-        </div>
+          </div>
+        </form>
+      </div>
     </div>
+  </div>
 </div>
+
 <div class="fade-in">
     <div class="row">
         <div class="col-sm-12">
@@ -143,7 +140,7 @@
                     </div>
                     <div class="row">
                         <div class="offset-sm-5 col-sm-3 offset-md-7 col-md-2">
-                            <a routerLink="/home/missions/fournisseur" class="btn btn-primary btn-pill btn-block">
+                            <a routerLink="/home/missions/index" class="btn btn-primary btn-pill btn-block">
                                 <i class="cui-arrow-left icons"></i> Retour
                             </a>
                         </div>

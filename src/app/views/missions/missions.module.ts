@@ -7,7 +7,6 @@ import { MissionsRoutingModule } from './missions-routing.module';
 import { MissionIndexComponent } from './mission-index/mission-index.component';
 import { MissionReponseComponent } from './mission-reponse/mission-reponse.component';
 import { MissionConfirmerComponent } from './mission-confirmer/mission-confirmer.component';
-import { IndexMissionFournisseurComponent } from './index-mission-fournisseur/index-mission-fournisseur.component';
 import {DataTablesModule} from 'angular-datatables';
 import { MissionShowComponent } from './mission-show/mission-show.component';
 import { MissionUpdateComponent } from './mission-update/mission-update.component';
@@ -18,7 +17,6 @@ import { MissionUpdateComponent } from './mission-update/mission-update.componen
     MissionIndexComponent,
     MissionReponseComponent,
     MissionConfirmerComponent,
-    IndexMissionFournisseurComponent,
     MissionShowComponent,
     MissionUpdateComponent
   ],

@@ -4,6 +4,7 @@ import { DataTableService } from '../../common/utils/data-table.service';
 import { DataTableDirective } from 'angular-datatables';
 import { MissionService } from '../../missions/mission.service';
 import {Subject} from 'rxjs';
+import {AuthorizationService} from '../../common/security/authorization.service';
 
 @Component({
   selector: 'app-mission-index',
@@ -21,13 +22,17 @@ export class MissionIndexComponent implements OnDestroy, OnInit {
   dtTrigger: Subject = new Subject();
   // datatable options
   dtOptions: DataTables.Settings = {};
+  // auth role
+  role = null;
 
   constructor(
     private missionService: MissionService,
     private toasterService: ToasterService,
-    private dataTableService: DataTableService) { }
+    private dataTableService: DataTableService,
+    private authorizationService: AuthorizationService) { }
 
   ngOnInit(): void {
+    this.role = this.authorizationService.getRole();
     this.dtOptions = this.dataTableService.getDataTableOptions();
     this.loadMissionReponse();
   }

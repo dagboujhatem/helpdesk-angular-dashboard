@@ -19,13 +19,11 @@ import { TicketIndexApplicatifInformaticienComponent } from './ticket-index-appl
 import { TicketIndexMaterielInformaticienComponent } from './ticket-index-materiel-informaticien/ticket-index-materiel-informaticien.component';
 import { TicketReponseMaterielInformaticienComponent } from './ticket-reponse-materiel-informaticien/ticket-reponse-materiel-informaticien.component';
 import { TicketIndexRelancerInformaticienComponent } from './ticket-index-relancer-informaticien/ticket-index-relancer-informaticien.component';
-import { TicketIndexSolutionApplicatifComponent } from './ticket-index-solution-applicatif/ticket-index-solution-applicatif.component';
-import { TicketIndexSolutionMaterielComponent } from './ticket-index-solution-materiel/ticket-index-solution-materiel.component';
 import { TicketReponseApplicatifInformaticienComponent } from './ticket-reponse-applicatif-informaticien/ticket-reponse-applicatif-informaticien.component';
 import { TicketReponseRelanceInformaticienComponent } from './ticket-reponse-relance-informaticien/ticket-reponse-relance-informaticien.component';
 import { TicketResoluIndexComponent } from './ticket-resolu-index/ticket-resolu-index.component';
 import { TicketRelanceIndexComponent } from './ticket-relance-index/ticket-relance-index.component';
-import { TicketReponseIndexInformaticienComponent } from './ticket-reponse-index-informaticien/ticket-reponse-index-informaticien.component';
+
 @NgModule({
   declarations: [
     TicketIndexComponent,
@@ -43,13 +41,10 @@ import { TicketReponseIndexInformaticienComponent } from './ticket-reponse-index
     TicketIndexMaterielInformaticienComponent,
     TicketReponseMaterielInformaticienComponent,
     TicketIndexRelancerInformaticienComponent,
-    TicketIndexSolutionApplicatifComponent,
-    TicketIndexSolutionMaterielComponent,
     TicketReponseApplicatifInformaticienComponent,
     TicketReponseRelanceInformaticienComponent,
     TicketResoluIndexComponent,
     TicketRelanceIndexComponent,
-    TicketReponseIndexInformaticienComponent  ,
 
   ],
   imports: [

@@ -25,7 +25,8 @@ export class AppSidebarService {
       // filter only the items of Administrateur
       const filtredItems = this.navItems.filter((item) => {
         return item.url === '/home/dashboard' || item.name === 'Menu' || item.url === '/home/settings'
-          || item.url === '/home/users' || item.url === '/home/categories' || item.url === '/home/missions';
+          || item.url === '/home/users' || item.url === '/home/categories' || item.url === '/home/missions'
+          || item.url === '/home/tickets';
       });
       return of(filtredItems);
     } else if (this.role === 'Informaticien') {
@@ -37,13 +38,15 @@ export class AppSidebarService {
     } else if (this.role === 'Personnel') {
       // filter only the items of Personnel
       const filtredItems = this.navItems.filter((item) => {
-        return item.url === '/home/dashboard' || item.name === 'Menu' || item.url === '/home/settings';
+        return item.url === '/home/dashboard' || item.name === 'Menu'  || item.url === '/home/solutions'
+          || item.url === '/home/settings';
       });
       return of(filtredItems);
     } else if (this.role === 'Fournisseur') {
       // filter only the items of Fournisseur
       const filtredItems = this.navItems.filter((item) => {
-        return item.url === '/home/dashboard' || item.name === 'Menu' || item.url === '/home/settings';
+        return item.url === '/home/dashboard' || item.name === 'Menu' || item.url === '/home/missions'
+          || item.url === '/home/settings';
       });
       return of(filtredItems);
     } else {
