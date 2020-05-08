@@ -5,6 +5,7 @@ import {AuthenticationService} from '../security/authentication.service';
 import {Router} from '@angular/router';
 import {AuthorizationService} from '../security/authorization.service';
 import {ValidationService} from '../utils/validation.service';
+import {AppSidebarService} from '../utils/app-sidebar.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,7 +21,8 @@ export class LoginComponent {
               private validationService: ValidationService,
               private authentificationService: AuthenticationService,
               private authorizationService: AuthorizationService,
-              private router: Router) { }
+              private router: Router,
+              private appSidebarService: AppSidebarService) { }
 
 
   // tslint:disable-next-line:use-lifecycle-interface
@@ -64,6 +66,8 @@ export class LoginComponent {
     localStorage.setItem('authenticationObject', JSON.stringify(authenticationObject));
     // Show toast message
     this.toasterService.pop('success', 'Connecté avec succès!', bodyResponse.message);
+    // reload nav item
+    this.appSidebarService.reloadNavItem();
     // redirection  to dashboard
     this.router.navigate(['/home/dashboard']);
   }

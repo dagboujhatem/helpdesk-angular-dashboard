@@ -16,7 +16,8 @@ export class AppComponent implements OnInit {
       animation: 'fade',
       showCloseButton: false,
       tapToDismiss: true,
-      timeout: 5000
+      timeout: 5000,
+      mouseoverTimerStop: true
     });
 
   constructor(private router: Router) { }

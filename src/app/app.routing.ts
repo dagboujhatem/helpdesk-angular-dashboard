@@ -46,7 +46,6 @@ export const routes: Routes = [
       title: 'Tableau de bord'
     },
     canActivate: [AuthorizationService],
-    // canActivateChild: [AuthorizationService],
     children: [
       // Angular Lazy loading
       {

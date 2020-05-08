@@ -1,10 +1,8 @@
-import {Component } from '@angular/core';
-import { navItems } from '../../_nav';
-import {FormBuilder} from '@angular/forms';
-import {ToasterService} from 'angular2-toaster';
+import {Component} from '@angular/core';
 import {AuthenticationService} from '../../views/common/security/authentication.service';
 import {AuthorizationService} from '../../views/common/security/authorization.service';
 import {Router} from '@angular/router';
+import {AppSidebarService} from '../../views/common/utils/app-sidebar.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,11 +10,14 @@ import {Router} from '@angular/router';
 })
 export class DefaultLayoutComponent {
   public sidebarMinimized = false;
-  public navItems = navItems;
+  public navItems;
 
   constructor(private authentificationService: AuthenticationService,
               private authorizationService: AuthorizationService,
-              private router: Router) { }
+              private router: Router,
+              private appSidebarService: AppSidebarService) {
+    this.navItems = this.appSidebarService.items$;
+  }
 
   toggleMinimize(e) {
     this.sidebarMinimized = e;
@@ -24,12 +25,9 @@ export class DefaultLayoutComponent {
 
   private logout() {
       this.authentificationService.logout().subscribe(
-        response => {
+        (response) => {
             this.authorizationService.removeLocalStorageItems();
             this.router.navigate(['/login']);
-        },
-        error => {
-        console.log(error);
-        });
+        }, (error) => {console.log(error); });
   }
 }

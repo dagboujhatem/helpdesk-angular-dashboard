@@ -34,6 +34,20 @@ const routes: Routes = [
         }
       },
       {
+        path: 'show/:id',
+        component: MissionShowComponent,
+        data: {
+          title: 'Afficher les détails d\'une mission'
+        }
+      },
+      {
+        path: 'update/:id',
+        component: MissionUpdateComponent,
+        data: {
+          title: 'Modifier les informations d\'une mission'
+        }
+      },
+      {
         path: 'repondre/:id',
         component: MissionReponseComponent,
         data: {
@@ -52,20 +66,6 @@ const routes: Routes = [
         component: IndexMissionFournisseurComponent,
         data: {
           title: 'liste des missions à répondre'
-        }
-      },
-      {
-        path: 'show/:id',
-        component: MissionShowComponent,
-        data: {
-          title: 'Afficher les détails d\'une mission'
-        }
-      },
-      {
-        path: 'update/:id',
-        component: MissionUpdateComponent,
-        data: {
-          title: 'Modifier les informations d\'une mission'
         }
       }
     ]

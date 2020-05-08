@@ -1,13 +1,14 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterStateSnapshot} from '@angular/router';
 import * as crypto from 'crypto-js';
+import {ToasterService} from 'angular2-toaster';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthorizationService implements CanActivate, CanActivateChild {
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private toasterService: ToasterService) {
   }
 
   // save role in localStorage and encrypt the role
@@ -153,26 +154,20 @@ export class AuthorizationService implements CanActivate, CanActivateChild {
     const role = this.getRole();
     const routeUrl = state.url;
     if (routeUrl !== null && routeUrl !== undefined) {
-      if (routeUrl.startsWith('/home/users')) {
+      if (routeUrl.startsWith('/home/dashboard')) {
+        return this.authorizeRouteByRoles(role, ['Administrateur', 'Informaticien', 'Personnel', 'Fournisseur']);
+      } else if (routeUrl.startsWith('/home/users')) {
         return this.authorizeRouteByRoles(role, ['Administrateur']);
-      } else if (routeUrl.startsWith('/dashboard/zonemanager') ||
-        routeUrl.startsWith('/dashboard/midmile/admin') ||
-        routeUrl.startsWith('/dashboard/humanitypositions') ||
-        routeUrl.startsWith('/dashboard/laborplaninput') ||
-        routeUrl.startsWith('/dashboard/headcountinput')) {
-        return this.authorizeRouteByRoles(role, ['ROLE_SUPERADMIN', 'ROLE_ADMIN', 'ROLE_SCHEDULER']);
-      } else if (routeUrl.startsWith('/dashboard/tips') || routeUrl.startsWith('/dashboard/datareimbursement') ||
-        routeUrl.startsWith('/dashboard/wearandtear') || routeUrl.startsWith('/dashboard/tipscredit') ) {
-        return this.authorizeRouteByRoles(role, ['ROLE_SUPERADMIN', 'ROLE_ADMIN', 'ROLE_PAYROLL']);
-      } else if (routeUrl.startsWith('/dashboard/midmile') && routeUrl.endsWith('/dashboard/midmile')) {
-        return this.authorizeRouteByRoles(role, ['ROLE_SUPERADMIN', 'ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_DISPATCHER', 'ROLE_COORDINATOR']);
-      } else if (routeUrl.startsWith('/dashboard/weeklypdr') || routeUrl.startsWith('/dashboard/pdrperdeliveryagent') ||
-        routeUrl.startsWith('/dashboard/firstdeliverysuccess') || routeUrl.startsWith('/dashboard/cyclebacktime')) {
-        return this.authorizeRouteByRoles(role, ['ROLE_SUPERADMIN', 'ROLE_ADMIN', 'ROLE_MANAGER',
-          'ROLE_DISPATCHER', 'ROLE_COORDINATOR']);
+      } else if (routeUrl.startsWith('/home/missions')) {
+        return this.authorizeRouteByRoles(role, ['Administrateur', 'Informaticien', 'Personnel', 'Fournisseur']);
+      } else if (routeUrl.startsWith('/home/tickets')) {
+        return this.authorizeRouteByRoles(role, ['Administrateur', 'Informaticien', 'Personnel', 'Fournisseur']);
+      } else if (routeUrl.startsWith('/home/categories')) {
+        return this.authorizeRouteByRoles(role, ['Administrateur', 'Informaticien', 'Personnel', 'Fournisseur']);
       } else {
-        return this.authorizeRouteByRoles(role, ['ROLE_SUPERADMIN', 'ROLE_ADMIN', 'ROLE_MANAGER', 'ROLE_DISPATCHER',
-          'ROLE_PAYROLL', 'ROLE_SCHEDULER', 'ROLE_COORDINATOR']);
+        // console.log(routeUrl);
+        // all others routes means ==> /home/settings
+        return this.authorizeRouteByRoles(role, ['Administrateur', 'Informaticien', 'Personnel', 'Fournisseur']);
       }
 
     } else {
@@ -187,7 +182,10 @@ export class AuthorizationService implements CanActivate, CanActivateChild {
     if (authorizedRolesArray.indexOf(userRole) !== -1) {
       return true;
     } else {
-      this.router.navigate(['/404']);
+      this.toasterService.pop('info',
+        'Désolé, vous n\'êtes pas autorisé à accéder à cette page!',
+        'Cette notification signifie simplement qu’il y a un réglage de rôle qui vous bloque à accéder à une certaine zone.');
+      this.router.navigate(['/home/dashboard']);
       return false;
     }
 
