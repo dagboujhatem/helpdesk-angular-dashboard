@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="card">
-                <div class="card-header"><strong>BNA bank</strong> </div>
+                <div class="card-header"><strong>Détails de la mission</strong> </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-sm-6">
@@ -63,14 +63,14 @@
         <div class="col-sm-12">
             <div class="card">
                 <form [formGroup]="missionReponseForm" (ngSubmit)="onSubmit()">
-                    <div class="card-header"><strong></strong> </div>
+                    <div class="card-header"><strong> La réponse</strong> </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="nom">Nom:</label>
                                     <input class="form-control" formControlName="nom" id="nom" type="text"
-                                     placeholder="Saisissez le nom et le prénom ici"
+                                        placeholder="Saisissez le nom et le prénom ici"
                                         [ngClass]="{ 'is-invalid': submitted && f.nom.errors }">
                                     <div *ngIf="submitted && f.nom.errors" class="invalid-feedback d-block">
                                         <div *ngIf="f.nom.errors.required">Le nom champ est obligatoire.</div>
@@ -82,11 +82,12 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="collaborateurs">Collaborateurs:</label>
-                                    <input class="form-control" formControlName="collaborateurs" id="collaborateurs" type="text"
-                                     placeholder="Saisissez les collaborateurs ici"
+                                    <input class="form-control" formControlName="collaborateurs" id="collaborateurs"
+                                        type="text" placeholder="Saisissez les collaborateurs ici"
                                         [ngClass]="{ 'is-invalid': submitted && f.collaborateurs.errors }">
                                     <div *ngIf="submitted && f.collaborateurs.errors" class="invalid-feedback d-block">
-                                        <div *ngIf="f.collaborateurs.errors.required">Le champ collaborateurs est obligatoire.</div>
+                                        <div *ngIf="f.collaborateurs.errors.required">Le champ collaborateurs est
+                                            obligatoire.</div>
                                     </div>
                                 </div>
                             </div>
@@ -95,7 +96,7 @@
                                 <div class="form-group">
                                     <label for="mission">Mission:</label>
                                     <input class="form-control" formControlName="mission" id="mission" type="text"
-                                     placeholder="Saisissez mission ici"
+                                        placeholder="Saisissez mission ici"
                                         [ngClass]="{ 'is-invalid': submitted && f.mission.errors }">
                                     <div *ngIf="submitted && f.mission.errors" class="invalid-feedback d-block">
                                         <div *ngIf="f.mission.errors.required">Le champ mission est obligatoire.</div>
@@ -130,23 +131,26 @@
                                 <div class="form-group">
                                     <label for="reponse">Réponse:</label>
                                     <textarea class="form-control" formControlName="reponse" id="reponse"
-                                     placeholder="Saisissez la réponse ici"
-                                        name="reponse" rows="8"
+                                        placeholder="Saisissez la réponse ici" name="reponse" rows="8"
                                         [ngClass]="{ 'is-invalid': submitted && f.reponse.errors }">
                                     </textarea>
-                                     <div *ngIf="submitted && f.reponse.errors" class="invalid-feedback d-block">
+                                    <div *ngIf="submitted && f.reponse.errors" class="invalid-feedback d-block">
                                         <div *ngIf="f.reponse.errors.required">Le champ réponse est obligatoire.</div>
-                                    </div> 
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="offset-sm-9 col-sm-3">
-                                <div class="form-group form-actions">
-                                    <button type="submit" class="btn btn-success btn-block">
-                                        <i class="cui-save icons mt-4"></i>Répondre
-                                    </button>
-                                </div>
-                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="offset-sm-5 col-sm-3 offset-md-7 col-md-2">
+                            <a routerLink="/home/missions/fournisseur" class="btn btn-primary btn-pill btn-block">
+                                <i class="cui-arrow-left icons"></i> Retour
+                            </a>
+                        </div>
+                        <div class="col-sm-3 col-md-2 form-group form-actions">
+                            <button type="submit" class="btn btn-success btn-pill btn-block">
+                                <i class="cui-circle-check icons"></i> Répondre
+                            </button>
                         </div>
                     </div>
                 </form>

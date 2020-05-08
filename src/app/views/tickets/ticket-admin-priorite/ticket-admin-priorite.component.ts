@@ -16,7 +16,7 @@ export class TicketAdminPrioriteComponent implements OnInit {
 
   ngOnInit() {
     this.ticketAdminPrioriteForm = this.formBuilder.group({
-        priorite: ['', [Validators.required]],     
+        priorite: ['', [Validators.required]]
     });
   }
 
