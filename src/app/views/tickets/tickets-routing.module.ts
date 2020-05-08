@@ -53,7 +53,7 @@ const routes: Routes = [
         path: 'show/:id',
         component: TicketShowComponent,
         data: {
-          title: 'Afficher un utilisateur'
+          title: 'Afficher les détails d\'un ticket'
         }
       },
       {

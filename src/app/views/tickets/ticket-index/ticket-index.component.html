@@ -4,20 +4,9 @@
       Liste des tickets
     </div>
     <div class="card-body">
-      <div class="row mb-3">
-        <div class="col-md-4 offset-md-8">
-          <div class="input-group">
-            <div class="input-group-prepend">
-            <span class="input-group-text">
-              <i class="fa fa-search"></i>
-            </span>
-            </div>
-            <input class="form-control ng-untouched ng-pristine ng-valid" placeholder="Search ..." type="text">
-          </div>
-        </div>
-      </div>
-
-      <table class="table table-striped table-hover table-responsive-lg" datatable [dtOptions]="dtOptions">
+  
+      <table class="table table-striped table-hover table-responsive-lg"  datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" >
+        
         <thead>
         <tr>
           <th>Demandeur</th>
@@ -32,23 +21,19 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let ticket of ticketsData">
-          <td class="text-center"><img src="{{ ticket.photo}}" width="30" height="30"></td>
-          <td>{{ticket.identifiant}}</td>
+        <tr *ngFor="let ticket of ticketData">
           <td>{{ticket.nom}}</td>
-          <td>{{ticket.prenom}}</td>
-          <td>{{ticket.email}}</td>
-          <td>{{ticket.role}}</td>
+          <td>{{ticket.categorie}}</td>
+          <td>{{ticket.objet}}</td>
+          <td>{{ticket.date_d_ouverture}}</td>
+          <td>{{ticket.date_d_echeance}}</td>
+          <td>{{ticket.etat}}</td>
+          <td>{{ticket.priorite}}</td>
+          <td>{{ticket.duree}}</td>
           <td>
-            <a [routerLink]="['/home/users/show/', ticket.id]" class="btn btn-info btn-sm">
-              <i class="fa fa-eye"></i>
+            <a [routerLink]="['/home/tickets/priorite/', ticket.id]" class="btn btn-info btn-sm text-white">
+              <i class="" aria-hidden="true"></i> Priorité
             </a>
-            <a [routerLink]="['/home/users/update/', ticket.id]" class="btn btn-warning btn-sm">
-              <i class="fa fa-edit"></i>
-            </a>
-            <button class="btn btn-danger btn-sm" (click)="deleteTicket(ticket.id)">
-              <i class="fa fa-trash"></i>
-            </button>
           </td>
         </tr>
         </tbody>

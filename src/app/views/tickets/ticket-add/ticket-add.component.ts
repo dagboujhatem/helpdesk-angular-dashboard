@@ -85,6 +85,6 @@ export class TicketAddComponent implements OnInit {
 
   private responseBodyProcess(responseBody) {
     this.toasterService.pop('success', 'ticket added successfully!', responseBody.message);
-    this.router.navigate(['/home/tickets/index']);
+    this.router.navigate(['/home/tickets/mestickets']);
   }
 }

@@ -28,7 +28,7 @@ export class TiketsService {
 
   // Update a ticket from the REST API
   updateTicket(ticketID , ticketNewData) {
-    return this.http.put(this.url + 'tickets/' + ticketID, ticketNewData);
+    return this.http.post(this.url + 'tickets/' + ticketID, ticketNewData);
   }
 
   // Delete a ticket from the REST API
