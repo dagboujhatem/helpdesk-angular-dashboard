@@ -10,56 +10,59 @@ import { MissionService } from '../mission.service';
 })
 export class MissionConfirmerComponent implements OnInit {
 
-  missionReponseForm: FormGroup;
-  submitted = false;
-  missionID = null ;
-  missionShowForm: FormGroup;
-  constructor(private route: ActivatedRoute,
-    private formBuilder: FormBuilder,
-    private missionService: MissionService) { }
+    missionShowForm: FormGroup;
+    missionReponseForm: FormGroup;
+    submitted = false;
+    missionID = null ;
+
+    constructor(private route: ActivatedRoute,
+      private formBuilder: FormBuilder,
+      private missionService: MissionService) { }
 
 
-ngOnInit() {
-// mission form
-this.missionShowForm = this.formBuilder.group({
-nom: [{value: '', disabled: true}, ],
-fonction: [{value: '', disabled: true}, ],
-mission: [{value: '', disabled: true}, ],
-date_debut: [{value: '', disabled: true}, ],
-date_fin: [{value: '', disabled: true}, ],
-description: [{value: '', disabled: true},]
-});
-// read id from url
-this.missionID = this.route.snapshot.paramMap.get('id');
-// get mission data
-this.missionService.getMissionById(this.missionID).subscribe(
-(bodyResponse) => { this.loadMissionData(bodyResponse); });
-// réponse form
-this.missionReponseForm = this.formBuilder.group({
-nom: ['', Validators.required],
-collaborateurs: ['', Validators.required],
-mission: ['', Validators.required],
-date_debut: ['', Validators.required],
-date_fin: ['', Validators.required],
-reponse: ['', Validators.required]
-});
-}
+    ngOnInit() {
+      // mission form
+      this.missionShowForm = this.formBuilder.group({
+          nom: [{value: '', disabled: true}, ],
+          fonction: [{value: '', disabled: true}, ],
+          mission: [{value: '', disabled: true}, ],
+          date_debut: [{value: '', disabled: true}, ],
+          date_fin: [{value: '', disabled: true}, ],
+          description: [{value: '', disabled: true}, ]
+      });
+      // read id from url
+      this.missionID = this.route.snapshot.paramMap.get('id');
+      // get mission data
+      this.missionService.getMissionById(this.missionID).subscribe(
+      (bodyResponse) => { this.loadMissionData(bodyResponse); });
+      // réponse form
+      this.missionReponseForm = this.formBuilder.group({
+          nom: [{value: '', disabled: true}, ],
+          collaborateurs: [{value: '', disabled: true}, ],
+          mission: [{value: '', disabled: true}, ],
+          date_debut: [{value: '', disabled: true}, ],
+          date_fin: [{value: '', disabled: true}, ],
+          reponse: [{value: '', disabled: true}, ]
+      });
+    }
 
-loadMissionData(bodyResponse) {
-const data = bodyResponse.data;
-this.missionShowForm.patchValue(data);
-}
+    loadMissionData(bodyResponse) {
+      const missionData = bodyResponse.data;
+      const missionResponseData = missionData.mission_response;
+      this.missionShowForm.patchValue(missionData);
+      this.missionReponseForm.patchValue(missionResponseData);
+    }
 
-// convenience getter for easy access to form fields
-get f() { return this.missionReponseForm.controls; }
+    // convenience getter for easy access to form fields
+    get f() { return this.missionReponseForm.controls; }
 
-onSubmit() {
-this.submitted = true;
+    onSubmit() {
+        this.submitted = true;
 
-// stop here if form is invalid
-if (this.missionReponseForm.invalid) {
-return;
-}
-}
+          // stop here if form is invalid
+          if (this.missionReponseForm.invalid) {
+          return;
+          }
+    }
 
 }
