@@ -55,7 +55,7 @@ export class MissionAddComponent implements OnInit {
 
      this.missionService.addMission(requestBody).subscribe(
        (bodyResponse) => { this.processResponse(bodyResponse); },
-       (error) => { this.validationService.showValidationsMessagesInToast(error);}
+       (error) => { this.validationService.showValidationsMessagesInToast(error); }
      );
    }
 

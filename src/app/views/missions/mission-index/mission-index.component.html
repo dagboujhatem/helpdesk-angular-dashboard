@@ -22,10 +22,11 @@
                 <span *ngIf="role !== null && role !== undefined && role === 'Fournisseur'"> Organisateur</span>
                 <span *ngIf="role !== null && role !== undefined && role === 'Administrateur'"> Nom</span>
             </th>
-            <th>fonction</th>
+            <th>Fonction</th>
             <th>Mission</th>
             <th>Date début</th>
             <th>Date fin</th>
+            <th *ngIf="role === 'Fournisseur'">Status</th>
             <th>Actions</th>
           </tr>
           </thead>
@@ -36,6 +37,17 @@
             <td>{{mission.mission}}</td>
             <td>{{mission.date_debut}}</td>
             <td>{{mission.date_fin}}</td>
+            <td *ngIf="role === 'Fournisseur'">
+              <span class="badge badge-success" *ngIf="mission.hasResponse && mission.isConfirmed">
+                Confirmé
+              </span>
+              <span class="badge badge-info fa-white" *ngIf="!mission.hasResponse && !mission.isConfirmed">
+                En attende de réponse
+              </span>
+              <span class="badge badge-danger" *ngIf="mission.hasResponse && !mission.isConfirmed">
+                En attende de confirmation
+              </span>
+            </td>
             <td>
                 <div *ngIf="role !== null && role !== undefined && role === 'Administrateur'">
                   <a [routerLink]="['/home/missions/show/', mission.id]" class="btn btn-info btn-sm">
@@ -44,7 +56,7 @@
                   <a [routerLink]="['/home/missions/update/', mission.id]" class="btn btn-warning btn-sm">
                     <i class="fa fa-edit fa-white"></i>
                   </a>
-                  <a *ngIf="!mission.isConfirmed" [routerLink]="['/home/missions/confirmer/', mission.id]" class="btn btn-success btn-sm text-white">
+                  <a *ngIf="!mission.isConfirmed && mission.hasResponse" [routerLink]="['/home/missions/confirmer/', mission.id]" class="btn btn-success btn-sm text-white">
                     <i class="fa fa-envelope" aria-hidden="true"></i> Confirmer
                   </a>
                 </div>

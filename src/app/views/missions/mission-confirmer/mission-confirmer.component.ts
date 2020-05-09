@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { MissionService } from '../mission.service';
+import {ToasterService} from 'angular2-toaster';
 
 @Component({
   selector: 'app-mission-confirmer',
@@ -14,10 +15,13 @@ export class MissionConfirmerComponent implements OnInit {
     missionReponseForm: FormGroup;
     submitted = false;
     missionID = null ;
+    missionResponseID = null ;
 
     constructor(private route: ActivatedRoute,
-      private formBuilder: FormBuilder,
-      private missionService: MissionService) { }
+                private formBuilder: FormBuilder,
+                private missionService: MissionService,
+                private toasterService: ToasterService,
+                private router: Router) { }
 
 
     ngOnInit() {
@@ -49,6 +53,7 @@ export class MissionConfirmerComponent implements OnInit {
     loadMissionData(bodyResponse) {
       const missionData = bodyResponse.data;
       const missionResponseData = missionData.mission_response;
+      this.missionResponseID = missionData.mission_response.id;
       this.missionShowForm.patchValue(missionData);
       this.missionReponseForm.patchValue(missionResponseData);
     }
@@ -63,6 +68,14 @@ export class MissionConfirmerComponent implements OnInit {
           if (this.missionReponseForm.invalid) {
           return;
           }
+
+          this.missionService.confirmerMission(this.missionResponseID).subscribe(
+            (bodyResponse) => { this.processResponse(bodyResponse); } );
     }
+
+  processResponse(bodyResponse) {
+    this.toasterService.pop('success', 'Mission confirmée:', bodyResponse.message);
+    this.router.navigate(['/home/missions/index']);
+  }
 
 }

@@ -35,4 +35,8 @@ export class MissionService {
   addMissionResponse(MissionResponseData) {
     return  this.http.post(this.url + 'missionResponses', MissionResponseData);
   }
+  // confirmer la réponse d'une mission
+  confirmerMission(MissionResponseID) {
+    return  this.http.get(this.url + 'missionResponses/confirmer/' + MissionResponseID);
+  }
 }
