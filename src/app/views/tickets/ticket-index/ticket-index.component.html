@@ -4,13 +4,19 @@
       Liste des tickets
     </div>
     <div class="card-body">
-  
-      <table class="table table-striped table-hover table-responsive-lg"  datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" >
-        
+      <div class="row mb-3">
+        <div class="col-lg-4 offset-lg-8 col-md-5 offset-md-7 col-sm-6 offset-sm-6">
+          <a routerLink="/home/tickets/add" class="btn btn-primary btn-block btn-pill">
+            <i class="fa fa-plus"></i>Ajouter un ticket
+          </a>
+        </div>
+      </div>
+      <table class="table table-striped table-hover table-responsive-lg"
+             datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" >
         <thead>
         <tr>
           <th>Demandeur</th>
-          <th>Type</th>
+          <th>Catégorie</th>
           <th>Objet</th>
           <th>Date d'ouverture</th>
           <th>Date d'écheance</th>
@@ -33,6 +39,12 @@
           <td>
             <a [routerLink]="['/home/tickets/priorite/', ticket.id]" class="btn btn-info btn-sm text-white">
               <i class="" aria-hidden="true"></i> Priorité
+            </a>
+            <a [routerLink]="['/home/tickets/show/', ticket.id]" class="btn btn-info btn-sm">
+              <i class="fa fa-eye fa-white"></i>
+            </a>
+            <a [routerLink]="['/home/tickets/update/', ticket.id]" class="btn btn-warning btn-sm">
+              <i class="fa fa-edit fa-white"></i>
             </a>
           </td>
         </tr>

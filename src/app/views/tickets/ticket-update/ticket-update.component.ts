@@ -98,7 +98,7 @@ export class TicketUpdateComponent implements OnInit {
   }
 
   processResponse(bodyResponse) {
-    this.toasterService.pop('success', 'ticket modifiée:', bodyResponse.message);
+    this.toasterService.pop('success', 'Ticket modifiée:', bodyResponse.message);
     this.router.navigate(['/home/tickets/mestickets']);
   }
 

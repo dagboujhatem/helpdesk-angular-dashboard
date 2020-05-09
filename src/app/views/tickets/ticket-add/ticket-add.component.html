@@ -43,7 +43,7 @@
                                 <div class="form-group">
                                     <label for="date_d_ouverture">Date d'ouverture:</label>
                                     <input class="form-control" formControlName="date_d_ouverture" id="date_d_ouverture"
-                                        type="date" placeholder="Saisissez la date d'ouverture ici"
+                                        type="datetime-local" placeholder="Saisissez la date d'ouverture ici"
                                         [ngClass]="{ 'is-invalid': submitted && f.date_d_ouverture.errors }">
                                     <div *ngIf="submitted && f.date_d_ouverture.errors"
                                         class="invalid-feedback d-block">
@@ -56,7 +56,7 @@
                                 <div class="form-group">
                                     <label for="date_d_echeance">Date d'écheance:</label>
                                     <input class="form-control" formControlName="date_d_echeance" id="date_d_echeance"
-                                        type="date" placeholder="Saisissez la date d'écheance ici"
+                                        type="datetime-local" placeholder="Saisissez la date d'écheance ici"
                                         [ngClass]="{ 'is-invalid': submitted && f.date_d_echeance.errors }">
                                     <div *ngIf="submitted && f.date_d_echeance.errors" class="invalid-feedback d-block">
                                         <div *ngIf="f.date_d_echeance.errors.required">Le champ date d'echéance est
@@ -117,8 +117,8 @@
                                           <span>Agence</span>
                                       </label>
                                       <label>
-                                        <input type="radio" value="Siége" formControlName="lieu">
-                                          <span>Siége</span>
+                                        <input type="radio" value="Siège" formControlName="lieu">
+                                          <span>Siège</span>
                                       </label>
                                       <!--  -->
                                 </div>

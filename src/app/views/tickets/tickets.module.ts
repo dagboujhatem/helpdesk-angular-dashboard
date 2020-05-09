@@ -14,7 +14,6 @@ import { TicketIndexFournisseurComponent } from './ticket-index-fournisseur/tick
 import { TicketRelanceAddComponent } from './ticket-relance-add/ticket-relance-add.component';
 import { TicketIndexAvisComponent } from './ticket-index-avis/ticket-index-avis.component';
 import { TicketIndexAvisAddComponent } from './ticket-index-avis-add/ticket-index-avis-add.component';
-import { TicketIndexMesticketsComponent } from './ticket-index-mestickets/ticket-index-mestickets.component';
 import { TicketIndexApplicatifInformaticienComponent } from './ticket-index-applicatif-informaticien/ticket-index-applicatif-informaticien.component';
 import { TicketIndexMaterielInformaticienComponent } from './ticket-index-materiel-informaticien/ticket-index-materiel-informaticien.component';
 import { TicketReponseMaterielInformaticienComponent } from './ticket-reponse-materiel-informaticien/ticket-reponse-materiel-informaticien.component';
@@ -37,7 +36,6 @@ import {TicketReponseIndexInformaticienComponent} from './ticket-reponse-index-i
     TicketRelanceAddComponent,
     TicketIndexAvisComponent,
     TicketIndexAvisAddComponent,
-    TicketIndexMesticketsComponent,
     TicketIndexApplicatifInformaticienComponent,
     TicketIndexMaterielInformaticienComponent,
     TicketReponseMaterielInformaticienComponent,

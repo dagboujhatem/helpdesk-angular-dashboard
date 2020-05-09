@@ -61,7 +61,7 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Mes tickets',
-    url: '/home/tickets/mestickets',
+    url: '/home/tickets/index',
     icon: 'icon-list',
   },
   {

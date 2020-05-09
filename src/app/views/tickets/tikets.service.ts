@@ -31,13 +31,8 @@ export class TiketsService {
     return this.http.post(this.url + 'tickets/' + ticketID, ticketNewData);
   }
 
-  // Delete a ticket from the REST API
-  deleteTicket(ticketID) {
-    return this.http.delete(this.url + 'tickets/' + ticketID);
-  }
-
   // Add priorité to the ticket
   addPrioriteToTicket(ticketId, priorite: string) {
-    return this.http.post(this.url + 'tickets/' + ticketId , { priorite : priorite });
+    return this.http.put(this.url + 'tickets/' + ticketId , { priorite : priorite });
   }
 }

@@ -5,7 +5,6 @@ import {TicketAddComponent} from './ticket-add/ticket-add.component';
 import {TicketUpdateComponent} from './ticket-update/ticket-update.component';
 import {TicketAdminPrioriteComponent} from './ticket-admin-priorite/ticket-admin-priorite.component';
 import {TicketShowComponent} from './ticket-show/ticket-show.component';
-import { TicketIndexMesticketsComponent } from './ticket-index-mestickets/ticket-index-mestickets.component';
 import { TicketIndexAvisAddComponent } from './ticket-index-avis-add/ticket-index-avis-add.component';
 import { TicketIndexAvisComponent } from './ticket-index-avis/ticket-index-avis.component';
 import { TicketIndexMaterielInformaticienComponent } from './ticket-index-materiel-informaticien/ticket-index-materiel-informaticien.component';
@@ -66,14 +65,6 @@ const routes: Routes = [
         component: TicketAdminPrioriteComponent,
         data: {
           title: 'Affecter la priorité'
-        }
-
-      },
-      {
-        path: 'mestickets',
-        component:  TicketIndexMesticketsComponent,
-        data: {
-          title: 'La liste des tickets'
         }
 
       },

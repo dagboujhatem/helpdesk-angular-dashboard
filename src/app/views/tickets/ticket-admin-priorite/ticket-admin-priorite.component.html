@@ -127,8 +127,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="file">Piéce-joint:</label>
-                                    <input class="form-control-file"   formControlName="file" id="file" type="file" #file accept='image/*'
-                                        (change)="preview(file.files)">
+                                    <input class="form-control-file"   formControlName="file" id="file" type="file" >
                                 </div>
                             </div>
                         </div>
@@ -137,10 +136,10 @@
                                 <label for="priorite">Priorité:</label>
                                 <select class="form-control" formControlName="priorite" id="priorite"
                                     [ngClass]="{ 'is-invalid': submitted && f.priorite.errors }">
-                                    <option value="eleve"> Élevé</option>
-                                    <option value="moyenne"> Moyenne </option>
-                                    <option value="basse"> basse </option>
-                                    <option value="tres_basse"> trés basse </option>
+                                    <option value="Élevé">Élevé</option>
+                                    <option value="Moyenne">Moyenne</option>
+                                    <option value="Basse">Basse</option>
+                                    <option value="Trés basse">Trés basse</option>
                                 </select>
                                 <div *ngIf="submitted && f.priorite.errors" class="invalid-feedback d-block">
                                     <div *ngIf="f.priorite.errors.required">Le champ priorité est obligatoire.
