@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CategorieMaterielService } from '../categorie-materiel.service';
+import {AuthorizationService} from '../../common/security/authorization.service';
 
 @Component({
   selector: 'app-categorie-materiel-show',
@@ -12,9 +13,12 @@ export class CategorieMaterielShowComponent implements OnInit {
   categirieMaterielID = null ;
   categorieMaterielShowForm: FormGroup;
   solutionFile = null;
+  // auth role
+  role = null;
   constructor(private route: ActivatedRoute,
               private formBuilder: FormBuilder,
-              private categorieMaterielService: CategorieMaterielService) { }
+              private categorieMaterielService: CategorieMaterielService,
+              private authorizationService: AuthorizationService) { }
 
   ngOnInit(): void {
     this.categorieMaterielShowForm = this.formBuilder.group({
@@ -22,6 +26,7 @@ export class CategorieMaterielShowComponent implements OnInit {
       probleme: [{value: '', disabled: true}, ],
       description: [{value: '', disabled: true}, ]
     });
+    this.role = this.authorizationService.getRole();
     this.categirieMaterielID = this.route.snapshot.paramMap.get('id');
     this.categorieMaterielService.getCategorieMaterielById(this.categirieMaterielID).subscribe(
       (bodyResponse) => { this.loadCategorieData(bodyResponse); });
