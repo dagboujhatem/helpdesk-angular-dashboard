@@ -37,7 +37,6 @@
                                 <div class="form-group">
                                     <label for="role">Rôle:</label>
                                     <select class="form-control" id="role" formControlName="role"
-                                            value="{{ userInfo.role }}"
                                         [ngClass]="{ 'is-invalid': submitted && f.role.errors }">
                                         <option value="Personnel">Personnel</option>
                                         <option value="Informaticien">Informaticien</option>
@@ -150,7 +149,7 @@
                                 <div class="form-group">
                                     <label for="lieu_de_travail">Lieu de travail:</label>
                                     <select class="form-control" id="lieu_de_travail"
-                                        formControlName="lieu_de_travail" value="{{ userInfo.lieu_de_travail }}"
+                                        formControlName="lieu_de_travail"
                                         [ngClass]="{ 'is-invalid': submitted && f.lieu_de_travail.errors }">
                                         <option value="Siège">Siège</option>
                                         <option value="Agence">Agence</option>
@@ -167,7 +166,7 @@
                                 <div class="form-group">
                                     <label for="date_d_embauche">Date d'embauche:</label>
                                     <input class="form-control" id="date_d_embauche" type="date"
-                                        formControlName="date_d_embauche"
+                                           formControlName="date_d_embauche"
                                         [ngClass]="{ 'is-invalid': submitted && f.date_d_embauche.errors }">
                                     <div *ngIf="submitted && f.date_d_embauche.errors" class="invalid-feedback d-block">
                                         <div *ngIf="f.date_d_embauche.errors.required">

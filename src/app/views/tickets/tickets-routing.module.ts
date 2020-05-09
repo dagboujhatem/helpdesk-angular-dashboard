@@ -103,7 +103,7 @@ const routes: Routes = [
       },
       {
         path: 'materiels',
-        component:TicketIndexMaterielInformaticienComponent,
+        component: TicketIndexMaterielInformaticienComponent,
         data: {
           title: ' Liste des tickets matériels'
         }
@@ -111,7 +111,7 @@ const routes: Routes = [
       },
       {
         path: 'ticketsrelances',
-        component:TicketIndexRelancerInformaticienComponent,
+        component: TicketIndexRelancerInformaticienComponent,
         data: {
           title: ' Liste des tickets relancés'
         }
@@ -119,7 +119,7 @@ const routes: Routes = [
       },
       {
         path: 'reponsemat',
-        component:TicketReponseMaterielInformaticienComponent,
+        component: TicketReponseMaterielInformaticienComponent,
         data: {
           title: 'Formulaire de la réponse'
         }

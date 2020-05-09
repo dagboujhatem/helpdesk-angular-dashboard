@@ -23,6 +23,7 @@ import { TicketReponseApplicatifInformaticienComponent } from './ticket-reponse-
 import { TicketReponseRelanceInformaticienComponent } from './ticket-reponse-relance-informaticien/ticket-reponse-relance-informaticien.component';
 import { TicketResoluIndexComponent } from './ticket-resolu-index/ticket-resolu-index.component';
 import { TicketRelanceIndexComponent } from './ticket-relance-index/ticket-relance-index.component';
+import {TicketReponseIndexInformaticienComponent} from './ticket-reponse-index-informaticien/ticket-reponse-index-informaticien.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import { TicketRelanceIndexComponent } from './ticket-relance-index/ticket-relan
     TicketReponseRelanceInformaticienComponent,
     TicketResoluIndexComponent,
     TicketRelanceIndexComponent,
-
+    TicketReponseIndexInformaticienComponent
   ],
   imports: [
     CommonModule,

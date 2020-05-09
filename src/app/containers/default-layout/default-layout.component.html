@@ -6,7 +6,7 @@
     <li class="nav-item dropdown" dropdown placement="bottom right">
       <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"
         dropdownToggle (click)="false">
-        <img src="{{ avatarImage}}" class="img-avatar" alt="admin@bootstrapmaster.com" />
+        <img src="{{ avatarImage | async}}" class="img-avatar" alt="avatar" />
       </a>
       <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
         <div class="dropdown-header text-center"><strong>Mon compte</strong></div>

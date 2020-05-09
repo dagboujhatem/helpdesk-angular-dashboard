@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AccesService} from '../acces.service';
 import {ToasterService} from 'angular2-toaster';
 import {ValidationService} from '../../common/utils/validation.service';
+import {RxwebValidators} from '@rxweb/reactive-form-validators';
+import {AuthorizationService} from '../../common/security/authorization.service';
 
 @Component({
   selector: 'app-acces-update',
@@ -26,6 +28,7 @@ export class AccesUpdateComponent implements OnInit {
               private accesService: AccesService,
               private toasterService: ToasterService,
               private validationService: ValidationService,
+              private authorizationService: AuthorizationService,
               private router: Router) { }
 
 
@@ -63,8 +66,6 @@ export class AccesUpdateComponent implements OnInit {
     this.imgURL = this.userInfo.photo;
     // Reset password value
     this.userInfo.password = '';
-    // Reset date d'embauche value
-    // this.userInfo.date_d_embauche = new Date();
     // set all fields of the form with new values
     this.accesUpdateForm.patchValue(this.userInfo);
   }
@@ -96,6 +97,24 @@ export class AccesUpdateComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
 
+    // update password validation
+    const password = this.accesUpdateForm.get('password').value;
+
+    if (password !== null && password !== undefined && password !== '') {
+      this.accesUpdateForm.setControl('password',
+        new FormControl(password , [Validators.required, Validators.minLength(6)]));
+    } else {
+      this.accesUpdateForm.setControl('password',
+        new FormControl(password , []));
+    }
+    // update selectedFile validation
+    const photo = this.accesUpdateForm.get('photo').value;
+    if (this.selectedFile !== null && this.selectedFile !== undefined) {
+      this.accesUpdateForm.setControl('photo',
+        new FormControl(photo , [Validators.required,
+          RxwebValidators.extension({extensions: ['jpg', 'png', 'jpeg']})]));
+    }
+
     // stop here if form is invalid
     if (this.accesUpdateForm.invalid) {
         return;
@@ -117,7 +136,6 @@ export class AccesUpdateComponent implements OnInit {
     requestBody.append('lieu_de_travail', this.accesUpdateForm.get('lieu_de_travail').value);
     requestBody.append('date_d_embauche', this.accesUpdateForm.get('date_d_embauche').value);
 
-    const password = this.accesUpdateForm.get('password').value;
     if (password !== null && password !== undefined && password !== '') {
       requestBody.append('password', password );
     }
@@ -126,11 +144,25 @@ export class AccesUpdateComponent implements OnInit {
     }
 
     this.accesService.updateUser(this.userID, requestBody).subscribe(
-      (responseBody) => {this.responseBodyProcess(responseBody); },
+      (responseBody) => {
+        this.responseBodyProcess(responseBody);
+        if (this.authorizationService.getEmail() === this.userInfo.email) {
+          this.updateEmailAvatarInLocalStorage(responseBody);
+        }
+        },
       (error) => { this.validationService.showValidationsMessagesInToast(error); });
   }
   private responseBodyProcess(responseBody: any) {
     this.toasterService.pop('success', 'Utilisateur modifié:', responseBody.message);
     this.router.navigate(['/home/users/index']);
+  }
+
+  // update email & avatar localStorage
+  updateEmailAvatarInLocalStorage(responseBody) {
+    const data = responseBody.data;
+    if (data !== null && data !== undefined) {
+      this.authorizationService.setAvatar(data.photo);
+      this.authorizationService.setEmail(data.email);
+    }
   }
 }

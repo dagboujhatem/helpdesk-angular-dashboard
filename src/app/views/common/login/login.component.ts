@@ -62,6 +62,7 @@ export class LoginComponent {
     const authenticationObject = {
       accessToken: token,
       expiredTokenDate: expiredTokenDate,
+      email: this.loginForm.get('email').value
     };
     localStorage.setItem('authenticationObject', JSON.stringify(authenticationObject));
     // Show toast message

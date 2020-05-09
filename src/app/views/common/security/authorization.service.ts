@@ -2,13 +2,16 @@ import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, CanActivateChild, Router, RouterStateSnapshot} from '@angular/router';
 import * as crypto from 'crypto-js';
 import {ToasterService} from 'angular2-toaster';
+import {AvatarService} from '../utils/avatar.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthorizationService implements CanActivate, CanActivateChild {
 
-  constructor(private router: Router, private toasterService: ToasterService) {
+  constructor(private router: Router,
+              private toasterService: ToasterService,
+              private avatarService: AvatarService) {
   }
 
   // save role in localStorage and encrypt the role
@@ -31,15 +34,30 @@ export class AuthorizationService implements CanActivate, CanActivateChild {
   // save avatar url in localStorage
   setAvatar(avatar) {
     localStorage.setItem('avatar', avatar);
+    this.avatarService.reloadAvatar();
   }
-  // get avatar from localStorage
-  getAvatar() {
-    const avatar = localStorage.getItem('avatar');
-    if (avatar !== null && avatar !== undefined) {
-      return avatar;
+
+  // get email from authenticationObject
+  getEmail(): any {
+    const authenticationObject = this.getAuthenticationObject();
+
+    if (authenticationObject !== null && authenticationObject !== undefined) {
+      return authenticationObject['email'];
     } else {
       return '';
     }
+
+  }
+
+  // set email in authenticationObject
+  setEmail(email) {
+    const newAuthenticationObject = {
+      accessToken: this.getAccesToken(),
+      expiredTokenDate: this.getExpiredTokenDate(),
+      email: email
+    };
+    localStorage.removeItem('authenticationObject');
+    localStorage.setItem('authenticationObject', JSON.stringify(newAuthenticationObject));
   }
 
   // save token_type url in localStorage

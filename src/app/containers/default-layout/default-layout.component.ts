@@ -3,6 +3,7 @@ import {AuthenticationService} from '../../views/common/security/authentication.
 import {AuthorizationService} from '../../views/common/security/authorization.service';
 import {Router} from '@angular/router';
 import {AppSidebarService} from '../../views/common/utils/app-sidebar.service';
+import {AvatarService} from '../../views/common/utils/avatar.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,10 +16,11 @@ export class DefaultLayoutComponent {
 
   constructor(private authentificationService: AuthenticationService,
               private authorizationService: AuthorizationService,
+              private avatarService: AvatarService,
               private router: Router,
               private appSidebarService: AppSidebarService) {
     this.navItems = this.appSidebarService.items$;
-    this.avatarImage = this.authorizationService.getAvatar();
+    this.avatarImage = this.avatarService.avatar$;
   }
 
   toggleMinimize(e) {
