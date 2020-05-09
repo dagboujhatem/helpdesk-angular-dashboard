@@ -177,13 +177,23 @@ export class AuthorizationService implements CanActivate, CanActivateChild {
       } else if (routeUrl.startsWith('/home/users')) {
         return this.authorizeRouteByRoles(role, ['Administrateur']);
       } else if (routeUrl.startsWith('/home/missions')) {
-        return this.authorizeRouteByRoles(role, ['Administrateur', 'Informaticien', 'Personnel', 'Fournisseur']);
+        if (routeUrl.startsWith('/home/missions/index')) {
+          return this.authorizeRouteByRoles(role, ['Administrateur', 'Fournisseur']);
+        } else if (routeUrl.startsWith('/home/missions/index') || routeUrl.startsWith('/home/missions/add')
+          || routeUrl.startsWith('/home/missions/show') || routeUrl.startsWith('/home/missions/update')
+          || routeUrl.startsWith('/home/missions/confirmer')) {
+          return this.authorizeRouteByRoles(role, ['Administrateur']);
+        } else if (routeUrl.startsWith('/home/missions/index') || routeUrl.startsWith('/home/missions/repondre')) {
+          return this.authorizeRouteByRoles(role, ['Fournisseur']);
+        } else {
+          return this.authorizeRouteByRoles(role, []);
+        }
       } else if (routeUrl.startsWith('/home/tickets')) {
         return this.authorizeRouteByRoles(role, ['Administrateur', 'Informaticien', 'Personnel', 'Fournisseur']);
       } else if (routeUrl.startsWith('/home/categories')) {
         return this.authorizeRouteByRoles(role, ['Administrateur', 'Informaticien', 'Personnel', 'Fournisseur']);
       } else {
-        // console.log(routeUrl);
+         console.log(routeUrl);
         // all others routes means ==> /home/settings
         return this.authorizeRouteByRoles(role, ['Administrateur', 'Informaticien', 'Personnel', 'Fournisseur']);
       }
