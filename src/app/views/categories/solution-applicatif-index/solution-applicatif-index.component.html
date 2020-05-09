@@ -6,35 +6,29 @@
       <div class="card-body">
           <div class="row">
             <div class="col-sm-12">
-              <table class="table table-striped table-hover table-responsive-lg" datatable [dtOptions]="dtOptions">
+              <table class="table table-striped table-hover table-responsive-lg" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
                 <thead>
                 <tr>
                   <th>Type</th>
                   <th>Probléme</th>
-                  <th>Description</th>
                   <th>Solution</th>
                   <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let ticket of ticketsData">
-                  <td class="text-center"><img src="{{ ticket.photo}}" width="30" height="30"></td>
-                  <td>{{ticket.identifiant}}</td>
-                  <td>{{ticket.nom}}</td>
-                  <td>{{ticket.prenom}}</td>
-                  <td>{{ticket.email}}</td>
-                  <td>{{ticket.role}}</td>
+                <tr *ngFor="let categorie of categoriesApplicatifsData">
+                  <td>{{categorie.type}}</td>
+                  <td>{{categorie.probleme}}</td>
                   <td>
-                    <a [routerLink]="['/home/users/show/', ticket.id]" class="btn btn-info btn-sm">
-                      <i class="fa fa-eye"></i>
+                    <a href="{{categorie.solution_file}}" target="_blank" class="btn btn-success btn-sm">
+                      <i class="fa fa-download"></i> Télécharger le fichier
                     </a>
-                    <a [routerLink]="['/home/users/update/', ticket.id]" class="btn btn-warning btn-sm">
-                      <i class="fa fa-edit"></i>
-                    </a>
-                    <button class="btn btn-danger btn-sm" (click)="deleteTicket(ticket.id)">
-                      <i class="fa fa-trash"></i>
-                    </button>
                   </td>
+                    <td>
+                      <a  [routerLink]="['/home/categories/applicatif/show/', categorie.id]" class="btn btn-info btn-sm">
+                        <i class="fa fa-eye fa-white"></i>
+                      </a>
+                    </td>
                 </tr>
                 </tbody>
               </table>
