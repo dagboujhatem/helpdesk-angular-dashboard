@@ -18,7 +18,7 @@ export const navItems: INavData[] = [
   {
     name: 'Gestion des tickets',
     url: '/home/tickets',
-    icon: 'icon-list'
+    icon: 'icon-credit-card'
   },
   {
     name: 'Les catégories',
@@ -40,7 +40,7 @@ export const navItems: INavData[] = [
   {
     name: 'Les missions',
     url: '/home/missions',
-    icon: 'icon-list'
+    icon: 'icon-bubbles'
   },
   {
     name: 'Mes tickets',
