@@ -24,28 +24,34 @@ export class AppSidebarService {
     if (this.role === 'Administrateur') {
       // filter only the items of Administrateur
       const filtredItems = this.navItems.filter((item) => {
-        return item.url === '/home/dashboard' || item.name === 'Menu' || item.url === '/home/settings'
-          || item.url === '/home/users' || item.url === '/home/categories' || item.url === '/home/missions'
-          || item.url === '/home/tickets';
+        return item.url === '/home/dashboard' || item.name === 'Menu'
+          || item.url === '/home/users'
+          || item.url === '/home/categories'
+          || item.url === '/home/missions'
+          || item.url === '/home/tickets'
+          || item.url === '/home/settings';
       });
       return of(filtredItems);
     } else if (this.role === 'Informaticien') {
       // filter only the items of Informaticien
       const filtredItems = this.navItems.filter((item) => {
-        return item.url === '/home/dashboard' || item.name === 'Menu' || item.url === '/home/settings';
+        return item.url === '/home/dashboard' || item.name === 'Menu'
+          || item.url === '/home/settings';
       });
       return of(filtredItems);
     } else if (this.role === 'Personnel') {
       // filter only the items of Personnel
       const filtredItems = this.navItems.filter((item) => {
-        return item.url === '/home/dashboard' || item.name === 'Menu'  || item.url === '/home/solutions'
+        return item.url === '/home/dashboard' || item.name === 'Menu'
+          || item.url === '/home/categories/solutions/'
           || item.url === '/home/settings';
       });
       return of(filtredItems);
     } else if (this.role === 'Fournisseur') {
       // filter only the items of Fournisseur
       const filtredItems = this.navItems.filter((item) => {
-        return item.url === '/home/dashboard' || item.name === 'Menu' || item.url === '/home/missions'
+        return item.url === '/home/dashboard' || item.name === 'Menu'
+          || item.url === '/home/missions'
           || item.url === '/home/settings';
       });
       return of(filtredItems);

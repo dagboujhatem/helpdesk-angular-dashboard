@@ -16,11 +16,6 @@ export const navItems: INavData[] = [
     icon: 'icon-people'
   },
   {
-    name: 'Gestion des tickets',
-    url: '/home/tickets',
-    icon: 'icon-credit-card'
-  },
-  {
     name: 'Les catégories',
     url: '/home/categories',
     icon: 'icon-list',
@@ -38,9 +33,31 @@ export const navItems: INavData[] = [
     ]
   },
   {
+    name: 'Les solutions',
+    url: '/home/categories/solutions/',
+    icon: 'icon-list',
+    children: [
+      {
+        name: 'Solutions applicatifs',
+        url: '/home/categories/solutions/applicatifs',
+        icon: 'icon-screen-desktop'
+      },
+      {
+        name: 'Solutions matériels',
+        url: '/home/categories/solutions/materiels',
+        icon: 'icon-layers'
+      }
+    ]
+  },
+  {
     name: 'Les missions',
     url: '/home/missions',
     icon: 'icon-bubbles'
+  },
+  {
+    name: 'Gestion des tickets',
+    url: '/home/tickets',
+    icon: 'icon-credit-card'
   },
   {
     name: 'Mes tickets',
@@ -66,23 +83,6 @@ export const navItems: INavData[] = [
     name: 'Avis',
     url: '/home/tickets/indexavis',
     icon: 'icon-list'
-  },
-  {
-    name: 'Les solutions',
-    url: '/home/solutions',
-    icon: 'icon-list',
-    children: [
-      {
-        name: 'Solutions applicatifs',
-        url: '/home/categories/solutions/applicatifs',
-        icon: 'icon-screen-desktop'
-      },
-      {
-        name: 'Solutions matériels',
-        url: '/home/categories/solutions/materiels',
-        icon: 'icon-layers'
-      }
-     ]
   },
   {
     name: 'Mes tickets résolus',

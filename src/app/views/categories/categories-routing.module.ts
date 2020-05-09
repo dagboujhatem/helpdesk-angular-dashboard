@@ -62,7 +62,7 @@ const routes: Routes = [
         path: 'materiel/show/:id',
         component: CategorieMaterielShowComponent,
         data: {
-          title: 'Ajouter les détails d\'une catégorie matériel'
+          title: 'Afficher les détails d\'une catégorie matériel'
         }
       },
       {
@@ -80,18 +80,27 @@ const routes: Routes = [
         }
       },
       {
-        path: 'solutions/applicatifs',
-        component: SolutionApplicatifIndexComponent,
-        data: {
-          title: ' Liste des solutions applicatifs'
-        }
-      },
-      {
-        path: 'solutions/materiels',
-        component: SolutionMaterielIndexComponent,
-        data: {
-          title: ' Liste des solutions matériels'
-        }
+        path: 'solutions',
+        children: [
+          {
+            path: '',
+            redirectTo: 'applicatifs'
+          },
+          {
+            path: 'applicatifs',
+            component: SolutionApplicatifIndexComponent,
+            data: {
+              title: ' Liste des solutions applicatifs'
+            }
+          },
+          {
+            path: 'materiels',
+            component: SolutionMaterielIndexComponent,
+            data: {
+              title: ' Liste des solutions matériels'
+            }
+          },
+        ]
       },
     ]
   }

@@ -172,11 +172,11 @@ export class AuthorizationService implements CanActivate, CanActivateChild {
     const role = this.getRole();
     const routeUrl = state.url;
     if (routeUrl !== null && routeUrl !== undefined) {
-      if (routeUrl.startsWith('/home/dashboard')) {
-        return this.authorizeRouteByRoles(role, ['Administrateur', 'Informaticien', 'Personnel', 'Fournisseur']);
-      } else if (routeUrl.startsWith('/home/users')) {
+      if (routeUrl.startsWith('/home/users')) {
+        // la gestion des utilisateurs
         return this.authorizeRouteByRoles(role, ['Administrateur']);
       } else if (routeUrl.startsWith('/home/missions')) {
+        // la gestion des missions
         if (routeUrl.startsWith('/home/missions/index')) {
           return this.authorizeRouteByRoles(role, ['Administrateur', 'Fournisseur']);
         } else if (routeUrl.startsWith('/home/missions/index') || routeUrl.startsWith('/home/missions/add')
@@ -189,12 +189,26 @@ export class AuthorizationService implements CanActivate, CanActivateChild {
           return this.authorizeRouteByRoles(role, []);
         }
       } else if (routeUrl.startsWith('/home/tickets')) {
+        // la gestion des tickets
         return this.authorizeRouteByRoles(role, ['Administrateur', 'Informaticien', 'Personnel', 'Fournisseur']);
       } else if (routeUrl.startsWith('/home/categories')) {
-        return this.authorizeRouteByRoles(role, ['Administrateur', 'Informaticien', 'Personnel', 'Fournisseur']);
+        // la gestion des catégories et solutions
+        if (routeUrl.startsWith('/home/categories/materiel/show')
+          || routeUrl.startsWith('/home/categories/applicatif/show')) {
+          return this.authorizeRouteByRoles(role, ['Administrateur', 'Personnel']);
+        } else   if (routeUrl.startsWith('/home/categories/materiel')
+          || routeUrl.startsWith('/home/categories/applicatif')) {
+          return this.authorizeRouteByRoles(role, ['Administrateur']);
+        } else if (routeUrl.startsWith('/home/categories/solutions')
+          || routeUrl.startsWith('/home/categories/materiel/show')
+          || routeUrl.startsWith('/home/categories/applicatif/show')) {
+          return this.authorizeRouteByRoles(role, ['Personnel']);
+        } else {
+          return this.authorizeRouteByRoles(role, []);
+        }
       } else {
-         console.log(routeUrl);
-        // all others routes means ==> /home/settings
+        // console.log(routeUrl);
+        // all others routes means ==> /home/settings or /home/dashboard
         return this.authorizeRouteByRoles(role, ['Administrateur', 'Informaticien', 'Personnel', 'Fournisseur']);
       }
 
