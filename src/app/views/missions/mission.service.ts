@@ -12,22 +12,27 @@ export class MissionService {
   constructor(private http: HttpClient) { }
 
   // méthode  Get all  missions  from the REST API
-  getMissionReponse() {
+  getMissions() {
     return this.http.get(this.url + 'missions');
   }
 
   // Get mission by ID from the REST API
-  getMissionReponseById (id) {
+  getMissionById (id) {
     return this.http.get(this.url + 'missions/' + id);
   }
 
   // Add a mission from the REST API
-  addMissionReponse(MissionData) {
+  addMission(MissionData) {
    return  this.http.post(this.url + 'missions', MissionData);
   }
 
   // Update a mission from the REST API
-  updateMissionReponse(MissionReponseID , MissionReponseNewData) {
+  updateMission(MissionReponseID , MissionReponseNewData) {
     return this.http.post(this.url + 'missions/' + MissionReponseID, MissionReponseNewData);
+  }
+
+  // add mission response
+  addMissionResponse(MissionResponseData) {
+    return  this.http.post(this.url + 'missionResponses', MissionResponseData);
   }
 }

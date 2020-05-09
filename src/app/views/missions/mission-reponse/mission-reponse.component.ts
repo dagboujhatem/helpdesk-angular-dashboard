@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {MissionService} from '../mission.service';
+import {ToasterService} from 'angular2-toaster';
+import {ValidationService} from '../../common/utils/validation.service';
 
 @Component({
   selector: 'app-mission-reponse',
@@ -16,7 +18,10 @@ export class MissionReponseComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private formBuilder: FormBuilder,
-              private missionService: MissionService) { }
+              private missionService: MissionService,
+              private toasterService: ToasterService,
+              private validationService: ValidationService,
+              private router: Router) { }
 
 
   ngOnInit() {
@@ -32,7 +37,7 @@ export class MissionReponseComponent implements OnInit {
     // read id from url
     this.missionID = this.route.snapshot.paramMap.get('id');
     // get mission data
-    this.missionService.getMissionReponseById(this.missionID).subscribe(
+    this.missionService.getMissionById(this.missionID).subscribe(
       (bodyResponse) => { this.loadMissionData(bodyResponse); });
     // réponse form
     this.missionReponseForm = this.formBuilder.group({
@@ -60,6 +65,26 @@ get f() { return this.missionReponseForm.controls; }
     if (this.missionReponseForm.invalid) {
         return;
     }
+
+    // Create a request body data
+    const requestBody = new FormData();
+    requestBody.append('nom', this.missionReponseForm.get('nom').value);
+    requestBody.append('collaborateurs', this.missionReponseForm.get('collaborateurs').value);
+    requestBody.append('mission', this.missionReponseForm.get('mission').value);
+    requestBody.append('date_debut', this.missionReponseForm.get('date_debut').value);
+    requestBody.append('date_fin', this.missionReponseForm.get('date_fin').value);
+    requestBody.append('reponse', this.missionReponseForm.get('reponse').value);
+    requestBody.append('mission_id', this.missionID);
+
+    this.missionService.addMissionResponse(requestBody).subscribe(
+      (bodyResponse) => { this.processResponse(bodyResponse); },
+      (error) => { this.validationService.showValidationsMessagesInToast(error);}
+    );
+  }
+
+  processResponse(bodyResponse) {
+    this.toasterService.pop('success', 'Réponse ajoutée:', bodyResponse.message);
+    this.router.navigate(['/home/missions/index']);
   }
 
 }

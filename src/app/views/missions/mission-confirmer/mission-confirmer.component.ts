@@ -32,7 +32,7 @@ description: [{value: '', disabled: true},]
 // read id from url
 this.missionID = this.route.snapshot.paramMap.get('id');
 // get mission data
-this.missionService.getMissionReponseById(this.missionID).subscribe(
+this.missionService.getMissionById(this.missionID).subscribe(
 (bodyResponse) => { this.loadMissionData(bodyResponse); });
 // réponse form
 this.missionReponseForm = this.formBuilder.group({

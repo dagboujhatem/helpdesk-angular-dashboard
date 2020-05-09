@@ -26,7 +26,7 @@ export class MissionShowComponent implements OnInit {
       description: [{value: '', disabled: true},]
     });
     this.missionID = this.route.snapshot.paramMap.get('id');
-    this.missionService.getMissionReponseById(this.missionID).subscribe(
+    this.missionService.getMissionById(this.missionID).subscribe(
       (bodyResponse) => { this.loadMissionData(bodyResponse); });
   }
 

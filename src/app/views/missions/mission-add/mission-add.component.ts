@@ -53,7 +53,7 @@ export class MissionAddComponent implements OnInit {
      requestBody.append('date_fin', this.missionForum.get('date_fin').value);
      requestBody.append('description', this.missionForum.get('description').value);
 
-     this.missionService.addMissionReponse(requestBody).subscribe(
+     this.missionService.addMission(requestBody).subscribe(
        (bodyResponse) => { this.processResponse(bodyResponse); },
        (error) => { this.validationService.showValidationsMessagesInToast(error);}
      );

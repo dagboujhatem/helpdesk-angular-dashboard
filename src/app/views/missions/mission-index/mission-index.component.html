@@ -44,11 +44,11 @@
                   <a [routerLink]="['/home/missions/update/', mission.id]" class="btn btn-warning btn-sm">
                     <i class="fa fa-edit fa-white"></i>
                   </a>
-                  <a [routerLink]="['/home/missions/confirmer/', mission.id]" class="btn btn-success btn-sm text-white">
+                  <a *ngIf="!mission.isConfirmed" [routerLink]="['/home/missions/confirmer/', mission.id]" class="btn btn-success btn-sm text-white">
                     <i class="fa fa-envelope" aria-hidden="true"></i> Confirmer
                   </a>
                 </div>
-                <div *ngIf="role !== null && role !== undefined && role === 'Fournisseur'">
+                <div *ngIf="role !== null && role !== undefined && role === 'Fournisseur' && !mission.hasResponse">
                   <a [routerLink]="['/home/missions/repondre/', mission.id]" class="btn btn-success btn-sm text-white">
                     <i class="fa fa-envelope" aria-hidden="true"></i> Répendre
                   </a>

@@ -39,7 +39,7 @@ export class MissionIndexComponent implements OnDestroy, OnInit {
 
   // pour charger les missions from REST API
   loadMissionReponse() {
-      this.missionService.getMissionReponse().subscribe(
+      this.missionService.getMissions().subscribe(
   (bodyResponse) => { this.getMissionReponseData(bodyResponse); });
   }
 

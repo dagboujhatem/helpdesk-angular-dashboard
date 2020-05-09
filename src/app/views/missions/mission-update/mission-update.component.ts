@@ -23,7 +23,7 @@ export class MissionUpdateComponent implements OnInit {
               private router: Router) { }
    ngOnInit() {
       this.missionID = this.route.snapshot.paramMap.get('id');
-      this.missionService.getMissionReponseById(this.missionID).subscribe(
+      this.missionService.getMissionById(this.missionID).subscribe(
         (bodyResponse) => { this.loadMissionData(bodyResponse); }
       );
       this.missionUpdateForm = this.formBuilder.group({
@@ -64,7 +64,7 @@ export class MissionUpdateComponent implements OnInit {
     requestBody.append('date_fin', this.missionUpdateForm.get('date_fin').value);
     requestBody.append('description', this.missionUpdateForm.get('description').value);
 
-    this.missionService.updateMissionReponse(this.missionID, requestBody).subscribe(
+    this.missionService.updateMission(this.missionID, requestBody).subscribe(
       (bodyResponse) => { this.processResponse(bodyResponse); },
       (error) => { this.validationService.showValidationsMessagesInToast(error); }
     );

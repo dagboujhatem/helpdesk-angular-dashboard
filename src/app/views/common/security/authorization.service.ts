@@ -179,11 +179,10 @@ export class AuthorizationService implements CanActivate, CanActivateChild {
         // la gestion des missions
         if (routeUrl.startsWith('/home/missions/index')) {
           return this.authorizeRouteByRoles(role, ['Administrateur', 'Fournisseur']);
-        } else if (routeUrl.startsWith('/home/missions/index') || routeUrl.startsWith('/home/missions/add')
-          || routeUrl.startsWith('/home/missions/show') || routeUrl.startsWith('/home/missions/update')
-          || routeUrl.startsWith('/home/missions/confirmer')) {
+        } else if (routeUrl.startsWith('/home/missions/add') || routeUrl.startsWith('/home/missions/show')
+          || routeUrl.startsWith('/home/missions/update') || routeUrl.startsWith('/home/missions/confirmer')) {
           return this.authorizeRouteByRoles(role, ['Administrateur']);
-        } else if (routeUrl.startsWith('/home/missions/index') || routeUrl.startsWith('/home/missions/repondre')) {
+        } else if (routeUrl.startsWith('/home/missions/repondre')) {
           return this.authorizeRouteByRoles(role, ['Fournisseur']);
         } else {
           return this.authorizeRouteByRoles(role, []);
