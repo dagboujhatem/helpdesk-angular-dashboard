@@ -11,12 +11,14 @@ import {AppSidebarService} from '../../views/common/utils/app-sidebar.service';
 export class DefaultLayoutComponent {
   public sidebarMinimized = false;
   public navItems;
+  private avatarImage;
 
   constructor(private authentificationService: AuthenticationService,
               private authorizationService: AuthorizationService,
               private router: Router,
               private appSidebarService: AppSidebarService) {
     this.navItems = this.appSidebarService.items$;
+    this.avatarImage = this.authorizationService.getAvatar();
   }
 
   toggleMinimize(e) {

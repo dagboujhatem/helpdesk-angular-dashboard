@@ -167,7 +167,7 @@
                                 <div class="form-group">
                                     <label for="date_d_embauche">Date d'embauche:</label>
                                     <input class="form-control" id="date_d_embauche" type="date"
-                                        formControlName="date_d_embauche" value="{{ userInfo.date_d_embauche | date :'dd/MM/yyy'}}"
+                                        formControlName="date_d_embauche"
                                         [ngClass]="{ 'is-invalid': submitted && f.date_d_embauche.errors }">
                                     <div *ngIf="submitted && f.date_d_embauche.errors" class="invalid-feedback d-block">
                                         <div *ngIf="f.date_d_embauche.errors.required">

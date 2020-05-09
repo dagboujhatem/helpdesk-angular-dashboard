@@ -12,6 +12,13 @@ import {ValidationService} from '../../common/utils/validation.service';
   styleUrls: ['./acces-add.component.css']
 })
 export class AccesAddComponent implements OnInit {
+  //  image preview
+  public imagePath;
+  imgURL: any;
+  // form validation
+  accesAddForm: FormGroup;
+  submitted = false;
+  selectedFile = null;
 
   constructor(private formBuilder: FormBuilder,
               private accesService: AccesService,
@@ -22,19 +29,10 @@ export class AccesAddComponent implements OnInit {
   // convenience getter for easy access to form fields
   get f() { return this.accesAddForm.controls; }
 
-  //  image preview
-  public imagePath;
-  imgURL: any;
-  // form validation
-  accesAddForm: FormGroup;
-  submitted = false;
-  selectedFile = null;
-
   preview(files) {
     if (files.length === 0) {
       return;
     }
-
     const mimeType = files[0].type;
     if (mimeType.match(/image\/*/) == null) {
       this.imgURL = null;
@@ -101,7 +99,7 @@ export class AccesAddComponent implements OnInit {
   }
 
   private responseBodyProcess(responseBody: any) {
-    this.toasterService.pop('success', 'User added successfully!', responseBody.message);
+    this.toasterService.pop('success', 'Utilisateur ajouté:', responseBody.message);
     this.router.navigate(['/home/users/index']);
   }
 }

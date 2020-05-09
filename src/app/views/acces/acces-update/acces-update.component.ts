@@ -64,7 +64,7 @@ export class AccesUpdateComponent implements OnInit {
     // Reset password value
     this.userInfo.password = '';
     // Reset date d'embauche value
-    this.userInfo.date_d_embauche = new Date();
+    // this.userInfo.date_d_embauche = new Date();
     // set all fields of the form with new values
     this.accesUpdateForm.patchValue(this.userInfo);
   }
@@ -104,6 +104,7 @@ export class AccesUpdateComponent implements OnInit {
     // send updated info to REST API
     const requestBody = new FormData();
     requestBody.append('_method', 'put');
+    requestBody.append('id', this.userInfo.id);
     requestBody.append('role', this.accesUpdateForm.get('role').value);
     requestBody.append('identifiant', this.accesUpdateForm.get('identifiant').value);
     requestBody.append('nom', this.accesUpdateForm.get('nom').value);
@@ -117,11 +118,11 @@ export class AccesUpdateComponent implements OnInit {
     requestBody.append('date_d_embauche', this.accesUpdateForm.get('date_d_embauche').value);
 
     const password = this.accesUpdateForm.get('password').value;
+    if (password !== null && password !== undefined && password !== '') {
+      requestBody.append('password', password );
+    }
     if (this.selectedFile !== null && this.selectedFile !== undefined) {
       requestBody.append('photo', this.selectedFile, this.selectedFile.name);
-    }
-    if (password !== null && password !== undefined) {
-      requestBody.append('password', password );
     }
 
     this.accesService.updateUser(this.userID, requestBody).subscribe(
@@ -129,7 +130,7 @@ export class AccesUpdateComponent implements OnInit {
       (error) => { this.validationService.showValidationsMessagesInToast(error); });
   }
   private responseBodyProcess(responseBody: any) {
-    this.toasterService.pop('success', 'User updated successfully!', responseBody.message);
+    this.toasterService.pop('success', 'Utilisateur modifié:', responseBody.message);
     this.router.navigate(['/home/users/index']);
   }
 }
