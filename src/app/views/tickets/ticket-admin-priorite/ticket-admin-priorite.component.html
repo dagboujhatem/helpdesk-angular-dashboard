@@ -9,36 +9,38 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="nom">Demandeur</label>
-                                    <input class="form-control"  formControlName="nom"  id="nom" type="text">
+                                    <input class="form-control" formControlName="nom" id="nom" type="text">
                                 </div>
                             </div>
 
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="objet">Objet:</label>
-                                    <input class="form-control"  formControlName="objet" id="objet" type="text">
+                                    <input class="form-control" formControlName="objet" id="objet" type="text">
                                 </div>
                             </div>
 
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="element">Élément:</label>
-                                    <input class="form-control"  formControlName="element" id="element" type="text">
+                                    <input class="form-control" formControlName="element" id="element" type="text">
                                 </div>
                             </div>
 
+                            
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="date_d_ouverture">Date d'ouverture:</label>
-                                    <input class="form-control"    id="date_d_ouverture" type="date">
+                                    <input class="form-control" formControlName="date_d_ouverture" id="date_d_ouverture"
+                                        type="datetime-local">
                                 </div>
                             </div>
-
 
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="date_d_echeance">Date d'écheance:</label>
-                                    <input class="form-control"  formControlName="date_d_echeance" id="date_d_echeance" type="date">
+                                    <input class="form-control" formControlName="date_d_echeance" id="date_d_echeance"
+                                        type="datetime-local">
                                 </div>
                             </div>
 
@@ -46,9 +48,9 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="categorie">Catégorie:</label>
-                                    <select class="form-control"  formControlName="categorie" id="categorie">
-                                        <option value="applicatif"> Applicatif</option>
-                                        <option value="materiel"> Matériel</option>
+                                    <select class="form-control" formControlName="categorie" id="categorie">
+                                        <option value="Applicatif">Applicatif</option>
+                                        <option value="Matériel">Matériel</option>
                                     </select>
                                 </div>
                             </div>
@@ -57,22 +59,22 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="impact">Impact:</label>
-                                    <select class="form-control"  formControlName="impact" id="impact">
-                                        <option value="eleve"> Élevé</option>
-                                        <option value="normale"> Normale</option>
-                                        <option value="bas"> Bas</option>
-                                        <option value="tres_bas"> Trés bas</option>
+                                    <select class="form-control" formControlName="impact" id="impact">
+                                        <option value="Élevé">Élevé</option>
+                                        <option value="Normale">Normale</option>
+                                        <option value="Bas">Bas</option>
+                                        <option value="Trés bas">Trés bas</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="etat">État:</label>
-                                    <select class="form-control"   formControlName="etat" id="etat" readonly="true">
-                                        <option value="ouvert"> Ouvret</option>
-                                        <option value="en_traitement"> En traitement</option>
-                                        <option value="clos"> clos </option>
-                                        <option value="en_retard"> En retard</option>
+                                    <select class="form-control" formControlName="etat" id="etat">
+                                        <option value="Ouvret">Ouvret</option>
+                                        <option value=" En traitement">En traitement</option>
+                                        <option value="Clos">Clos</option>
+                                        <option value="En retard">En retard</option>
                                     </select>
                                 </div>
                             </div>
@@ -82,12 +84,12 @@
                                     <label>Lieu:</label>
 
                                     <label>
-                                        <input type="radio" value="Agence"  formControlName="lieu" readonly="true">
+                                        <input type="radio" value="Agence" formControlName="lieu">
                                         <span>Agence</span>
                                     </label>
                                     <label>
-                                        <input type="radio" value="Siége"  formControlName="lieu" readonly="true">
-                                        <span>Siége</span>
+                                        <input type="radio" value="siège" formControlName="lieu">
+                                        <span>siège</span>
                                     </label>
 
                                 </div>
@@ -96,21 +98,24 @@
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="departement">Département:</label>
-                                    <input class="form-control" id="departement"   formControlName="departement" type="text" readonly="true">
+                                    <input class="form-control" id="departement" formControlName="departement"
+                                        type="text">
                                 </div>
                             </div>
 
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="num_agence">Numéro d'agence:</label>
-                                    <input class="form-control"  formControlName="num_agence" id="num_agence" type="number" readonly="true">
+                                    <input class="form-control" formControlName="num_agence" id="num_agence"
+                                        type="number">
                                 </div>
                             </div>
 
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <label for="commentaire">Commentaire:</label>
-                                    <textarea class="form-control"  formControlName="commentaire" id="commentaire" type="text" readonly="true">
+                                    <textarea class="form-control" formControlName="commentaire" id="commentaire"
+                                        type="text">
                                        </textarea>
                                 </div>
                             </div>
@@ -118,16 +123,17 @@
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <label for="description">Description:</label>
-                                    <textarea class="form-control"   formControlName="description" id="description" name="description" rows="12"
-                                        readonly="true">
+                                    <textarea class="form-control" formControlName="description" id="description"
+                                        name="description" rows="12">
                                 </textarea>
                                 </div>
                             </div>
-
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="file">Piéce-joint:</label>
-                                    <input class="form-control-file"   formControlName="file" id="file" type="file" >
+                                    <a href="{{file}}" target="_blank" class="btn btn-success btn-sm">
+                                        <i class="fa fa-download"></i> Télécharger le fichier
+                                      </a>
                                 </div>
                             </div>
                         </div>
@@ -148,10 +154,15 @@
                             </div>
                         </div>
 
-                        <div class="offset-sm-9 col-sm-3">
-                            <div class="form-group form-actions">
-                                <button type="submit" class="btn btn-success btn-block">
-                                    <i class="cui-save icons mt-4"></i>Envoyer
+                        <div class="row">
+                            <div class="offset-sm-5 col-sm-3 offset-md-7 col-md-2">
+                                <a routerLink="/home/tickets/index" class="btn btn-primary btn-pill btn-block">
+                                    <i class="cui-arrow-left icons"></i> Retour
+                                </a>
+                            </div>
+                            <div class="col-sm-3 col-md-2 form-group form-actions">
+                                <button type="submit" class="btn btn-success btn-pill btn-block">
+                                    <i class="cui-circle-check icons"></i> Envoyer
                                 </button>
                             </div>
                         </div>

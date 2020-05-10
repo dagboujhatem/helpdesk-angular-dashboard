@@ -4,6 +4,7 @@ import {TiketsService} from '../tikets.service';
 import { DataTableDirective } from 'angular-datatables';
 import { DataTableService } from '../../common/utils/data-table.service';
 import {Subject} from 'rxjs';
+import { AuthorizationService } from '../../common/security/authorization.service';
 
 
 @Component({
@@ -19,12 +20,15 @@ export class TicketIndexComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   // @ts-ignore
   dtTrigger: Subject = new Subject();
-
+  // auth role
+  role = null;
   constructor(private ticketService: TiketsService,
               private toasterService: ToasterService,
-              private dataTableService: DataTableService) { }
+              private dataTableService: DataTableService,
+              private authorizationService: AuthorizationService) { }
 
   ngOnInit(): void {
+    this.role = this.authorizationService.getRole();
     this.dtOptions = this.dataTableService.getDataTableOptions();
     this.loadticket();
   }

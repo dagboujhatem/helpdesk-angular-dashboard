@@ -157,12 +157,16 @@
                                     <div *ngIf="f.description.errors.required">Le champ description est obligatoire.</div>
                                 </div>
                             </div>
+                           
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label for="file">Piéce-jointe:</label>
                                     <input class="form-control-file" formControlName="file" id="file" type="file"
                                         [ngClass]="{ 'is-invalid': submitted && f.file.errors }"
                                            #file (change)="loadSelectedFile(file.files)">
+                                           <a href="{{file}}" target="_blank" class="btn btn-success btn-sm">
+                                            <i class="fa fa-download"></i> Télécharger le fichier
+                                          </a>
                                         <div *ngIf="submitted && f.file.errors" class="invalid-feedback d-block">
                                             <div *ngIf="f.file.errors.required">Le champ pièce-jointe est obligatoire.</div>
                                         </div>

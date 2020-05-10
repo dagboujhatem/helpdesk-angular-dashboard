@@ -30,7 +30,7 @@
                                 <div class="form-group">
                                     <label for="date_d_ouverture">Date d'ouverture:</label>
                                     <input class="form-control" formControlName="date_d_ouverture" id="date_d_ouverture"
-                                        type="date">
+                                        type="datetime-local">
 
                                 </div>
                             </div>
@@ -39,7 +39,7 @@
                                 <div class="form-group">
                                     <label for="date_d_echeance">Date d'écheance:</label>
                                     <input class="form-control" formControlName="date_d_echeance" id="date_d_echeance"
-                                        type="date">
+                                        type="datetime-local">
 
                                 </div>
                             </div>
@@ -86,8 +86,8 @@
                                         <span>Agence</span>
                                     </label>
                                     <label>
-                                        <input type="radio" value="Siége" formControlName="lieu">
-                                        <span>Siége</span>
+                                        <input type="radio" value="siège" formControlName="lieu">
+                                        <span>siège</span>
                                     </label>
                                     <!--  -->
                                 </div>
@@ -110,7 +110,6 @@
                                 <div class="form-group">
                                     <label for="commentaire">Commentaire:</label>
                                     <textarea class="form-control" id="commentaire"
-                                        placeholder="Saisissez un commentaire ici"
                                         formControlName="commentaire"></textarea>
                                 </div>
                             </div>
@@ -118,16 +117,17 @@
                                 <div class="form-group">
                                     <label for="description">Description:</label>
                                     <textarea class="form-control" formControlName="description" id="description"
-                                        name="description" rows="12" placeholder="Description">
+                                        name="description" rows="12">
                                     </textarea>
                                 </div>
 
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="file">Piéce-jointe:</label>
-                                    <input class="form-control-file" formControlName="file" id="file" type="file">
-
+                                    <label for="file">Piéce-joint:</label>
+                                    <a href="{{file}}" target="_blank" class="btn btn-success btn-sm">
+                                        <i class="fa fa-download"></i> Télécharger le fichier
+                                      </a>
                                 </div>
                             </div>
                         </div>
@@ -137,7 +137,7 @@
                         <div class="offset-sm-5 col-sm-3 offset-md-7 col-md-2">
                         </div>
                         <div class="col-sm-3 col-md-2 form-group form-actions">
-                            <a routerLink="/home/tickets/mestickets" class="btn btn-primary btn-pill btn-block">
+                            <a routerLink="/home/tickets/index" class="btn btn-primary btn-pill btn-block">
                                 <i class="cui-arrow-left icons"></i> Retour
                             </a>
                         </div>

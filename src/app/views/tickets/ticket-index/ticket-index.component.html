@@ -21,7 +21,7 @@
           <th>Date d'ouverture</th>
           <th>Date d'écheance</th>
           <th>État</th>
-          <th>Priorité</th>
+          <th *ngIf="role === 'Administrateur'">Priorité</th>
           <th>Durée</th>
           <th>Actions</th>
         </tr>
@@ -33,19 +33,39 @@
           <td>{{ticket.objet}}</td>
           <td>{{ticket.date_d_ouverture}}</td>
           <td>{{ticket.date_d_echeance}}</td>
-          <td>{{ticket.etat}}</td>
+         <!-- <td>{{ticket.etat}}</td>-->
+            
+          <td> <span class="badge badge-success" *ngIf=  "ticket.etat === 'Ouvert' ">
+            {{ticket.etat}}
+          </span>
+          <span class="badge badge-success" *ngIf= "ticket.etat ===  'En traitement'">
+            {{ticket.etat}}
+          </span>
+          <span class="badge badge-success" *ngIf= "ticket.etat === 'Clos' ">
+            {{ticket.etat}}
+          </span>
+          <span class="badge badge-success" *ngIf= "ticket.etat === 'En retard' ">
+            {{ticket.etat}}
+          </span>
+           
+        </td>
+        
           <td>{{ticket.priorite}}</td>
           <td>{{ticket.duree}}</td>
-          <td>
+          <td> 
+            <div *ngIf= "role !== null && role !== undefined && role === 'Administrateur'">
             <a [routerLink]="['/home/tickets/priorite/', ticket.id]" class="btn btn-info btn-sm text-white">
               <i class="" aria-hidden="true"></i> Priorité
             </a>
+          </div>
+            <div *ngIf= "role !== null && role !== undefined && role === 'Personnel'">
             <a [routerLink]="['/home/tickets/show/', ticket.id]" class="btn btn-info btn-sm">
               <i class="fa fa-eye fa-white"></i>
             </a>
             <a [routerLink]="['/home/tickets/update/', ticket.id]" class="btn btn-warning btn-sm">
               <i class="fa fa-edit fa-white"></i>
             </a>
+            </div>
           </td>
         </tr>
         </tbody>

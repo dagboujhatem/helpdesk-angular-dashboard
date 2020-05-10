@@ -43,7 +43,7 @@ export class AppSidebarService {
       // filter only the items of Personnel
       const filtredItems = this.navItems.filter((item) => {
         return item.url === '/home/dashboard' || item.name === 'Menu'
-          || item.url === '/home/categories/solutions/'
+          || item.url === '/home/categories/solutions/' ||  item.url === '/home/tickets/index'
           || item.url === '/home/settings';
       });
       return of(filtredItems);
