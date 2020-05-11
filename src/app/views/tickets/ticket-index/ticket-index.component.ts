@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ToasterService} from 'angular2-toaster';
 import {TiketsService} from '../tikets.service';
 import { DataTableDirective } from 'angular-datatables';
@@ -12,11 +12,11 @@ import { AuthorizationService } from '../../common/security/authorization.servic
   templateUrl: './ticket-index.component.html',
   styleUrls: ['./ticket-index.component.css']
 })
-export class TicketIndexComponent implements OnInit {
+export class TicketIndexComponent implements OnDestroy, OnInit {
 
   @ViewChild(DataTableDirective, {static: false})
-  dtElement: DataTableDirective; 
-  public ticketData: Array<any> = [];
+  dtElement: DataTableDirective;
+  public ticketsData: Array<any> = [];
   dtOptions: DataTables.Settings = {};
   // @ts-ignore
   dtTrigger: Subject = new Subject();
@@ -30,35 +30,30 @@ export class TicketIndexComponent implements OnInit {
   ngOnInit(): void {
     this.role = this.authorizationService.getRole();
     this.dtOptions = this.dataTableService.getDataTableOptions();
-    this.loadticket();
+    this.loadtickets();
   }
 
-  // pour charger les catégories applicatif from REST API
-  loadticket() {
+  // pour charger les tickets from REST API
+  loadtickets() {
     this.ticketService.getAllTickets().subscribe(
-      (bodyResponse) => { this.getTicketData(bodyResponse); });
+      (bodyResponse) => { this.getTicketsData(bodyResponse); });
   }
 
-  // get catégorie data from bodyresponse
-  getTicketData(bodyResponse) {
-    this.ticketData = bodyResponse.data;
+  // get tickets data from body response
+  getTicketsData(bodyResponse) {
+    this.ticketsData = bodyResponse.data;
     this.dtTrigger.next();
   }
-
-
 
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
   }
 
-  rerender(): void {
-    this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
-      // Destroy the table first
-      dtInstance.destroy();
-      // Call the rest api again
-      this.loadticket();
-    });
+  calculateDiff(startDate, endDate) {
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    return Math.floor((Date.UTC(end.getFullYear(), end.getMonth(), end.getDate(), end.getHours(), end.getMinutes())
+      - Date.UTC(start.getFullYear(), start.getMonth(), start.getDate(), start.getHours(), start.getMinutes()) )
+      / (1000 * 60));
   }
-
-
 }
