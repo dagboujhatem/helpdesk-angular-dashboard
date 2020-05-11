@@ -35,8 +35,8 @@
             <td>{{mission.nom}}</td>
             <td>{{mission.fonction}}</td>
             <td>{{mission.mission}}</td>
-            <td>{{mission.date_debut}}</td>
-            <td>{{mission.date_fin}}</td>
+            <td>{{mission.date_debut | date : 'dd-MM-yyyy'}}</td>
+            <td>{{mission.date_fin | date : 'dd-MM-yyyy'}}</td>
             <td *ngIf="role === 'Fournisseur'">
               <span class="badge badge-success" *ngIf="mission.hasResponse && mission.isConfirmed">
                 Confirmé

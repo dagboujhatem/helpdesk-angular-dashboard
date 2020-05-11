@@ -31,8 +31,8 @@
             <td>{{ticket.nom}}</td>
             <td>{{ticket.categorie}}</td>
             <td>{{ticket.objet}}</td>
-            <td>{{ticket.date_d_ouverture | date : 'dd/MM/yyyy hh:mm'}}</td>
-            <td>{{ticket.date_d_echeance  | date : 'dd/MM/yyyy hh:mm'}}</td>
+            <td>{{ticket.date_d_ouverture | date : 'dd-MM-yyyy hh:mm'}}</td>
+            <td>{{ticket.date_d_echeance  | date : 'dd-MM-yyyy hh:mm'}}</td>
             <td>
               <span class="badge badge-primary" *ngIf="ticket.etat === 'Ouvert'">
                 {{ticket.etat}}
