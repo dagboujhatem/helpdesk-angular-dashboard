@@ -14,7 +14,7 @@ export class TicketUpdateComponent implements OnInit {
 
   ticketID = null ;
   file = null;
-    ticketUpdateForm: FormGroup;
+  ticketUpdateForm: FormGroup;
   submitted = false;
 
   constructor(private formBuilder: FormBuilder,
@@ -33,8 +33,8 @@ export class TicketUpdateComponent implements OnInit {
       objet: ['', Validators.required],
       element: ['', Validators.required],
       nom: ['', Validators.required],
-       etat: ['', Validators.required],
-       date_d_ouverture: ['', Validators.required],
+      etat: ['', Validators.required],
+      date_d_ouverture: ['', Validators.required],
       date_d_echeance: ['', Validators.required],
       categorie: ['', Validators.required],
       impact: ['', Validators.required],
@@ -42,8 +42,7 @@ export class TicketUpdateComponent implements OnInit {
       commentaire: ['', ],
       num_agence: ['', ],
       departement: ['', ],
-      description: ['', Validators.required],
-      file: ['',Validators.required ]
+      description: ['', Validators.required]
     });
   }
 
@@ -75,8 +74,8 @@ export class TicketUpdateComponent implements OnInit {
     const requestBody = new FormData();
     requestBody.append('_method', 'put');
     requestBody.append('objet', this.ticketUpdateForm.get('objet').value);
-    requestBody.append('element', this.ticketUpdateForm.get('nom').value);
-    requestBody.append('nom', this.ticketUpdateForm.get('element').value);
+    requestBody.append('nom', this.ticketUpdateForm.get('nom').value);
+    requestBody.append('element', this.ticketUpdateForm.get('element').value);
     requestBody.append('etat', this.ticketUpdateForm.get('etat').value);
     requestBody.append('date_d_ouverture', this.ticketUpdateForm.get('date_d_ouverture').value);
     requestBody.append('date_d_echeance', this.ticketUpdateForm.get('date_d_echeance').value);
@@ -87,9 +86,8 @@ export class TicketUpdateComponent implements OnInit {
     requestBody.append('lieu', this.ticketUpdateForm.get('lieu').value);
     requestBody.append('commentaire', this.ticketUpdateForm.get('commentaire').value);
     requestBody.append('description', this.ticketUpdateForm.get('description').value);
-    requestBody.append('file', this.ticketUpdateForm.get('file').value);
     if (this.file !== undefined && this.file !== null) {
-      requestBody.append('solution_file', this.file, this.file.name);
+      requestBody.append('file', this.file, this.file.name);
     }
     this.ticketService.updateTicket(this.ticketID, requestBody).subscribe(
       (bodyResponse) => { this.processResponse(bodyResponse); },
