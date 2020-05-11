@@ -2,3 +2,50 @@
 .card {
  border: none !important;
 }
+
+/**
+  *   dataTable custom Global CSS
+  */
+
+// search box
+.dataTables_wrapper .dataTables_filter input {
+  width: 350px;
+  padding: .375rem .75rem;
+  font-size: .875rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #5c6873;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #c8ced3;
+  border-radius: .25rem !important;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+// table cell
+table.dataTable thead th, table.dataTable thead td {
+  padding: 10px 18px;
+  border-bottom: 0 !important;
+}
+
+table.dataTable td, table.dataTable th {
+  padding: .75rem;
+  vertical-align: top;
+  border-top: 1px solid #c8ced3;
+}
+
+// footer
+table.dataTable.no-footer {
+   border-bottom: 1px solid #c8ced3 !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  position: relative;
+  display: block;
+  padding: .5rem .75rem ;
+  margin-left: -1px;
+  line-height: 1.25;
+  color: #20a8d8 !important;
+  background-color: #fff;
+  border: 1px solid #c8ced3;
+}

@@ -12,13 +12,18 @@ export class DataTableService {
 
   getDataTableOptions() {
     this.dtOptions =    this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 5,
+      ordering: true,               // Allows ordering
+      searching: true,              // Searchbox
+      paging: true,                 // Pagination
+      info: false,                  // Shows 'Showing X of X' information
+      pagingType: 'simple_numbers', // Shows Previous, page numbers & next buttons only
+      pageLength: 5,                // Defaults number of rows to display in table
       processing: true,
       dom: 'Bfrtip',
       language: {
         processing: 'Traitement...',
-        search: 'Rechercher :',
+        search: '_INPUT_',                      // Removes the 'Search' field label
+        searchPlaceholder: 'Chercher ici ...',  // Placeholder for the search box
         lengthMenu: 'Afficher _MENU_ éléments',
         info: 'Affichage de l\'élément _START_ à _END_ sur _TOTAL_ éléments',
         infoEmpty: 'Affichage de l\'élément 0 à 0 sur 0 élément',
@@ -26,12 +31,12 @@ export class DataTableService {
         infoPostFix: '',
         loadingRecords: 'Chargement...',
         zeroRecords: 'Aucun élément correspondant trouvé',
-       // emptyTable: 'Aucune donnée disponible dans le tableau',
+        emptyTable: 'Aucune donnée disponible dans le tableau',
         paginate: {
           first: 'Premier',
           previous: 'Dernier',
           next: 'Suivant',
-          last: 'Précédent'
+          last: '<i class="fa fa-step-forward"></i>'
         },
         aria: {
           sortAscending: ': activer pour trier la colonne par ordre croissant',
