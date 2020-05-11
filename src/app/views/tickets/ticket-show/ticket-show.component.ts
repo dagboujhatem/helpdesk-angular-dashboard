@@ -24,15 +24,14 @@ export class TicketShowComponent implements OnInit {
       nom: [{value: '', disabled: true}, ],
       date_d_ouverture: [{value: '', disabled: true}, ],
       date_d_echeance: [{value: '', disabled: true}, ],
-      categorie: [{value: '', disabled: true},],
+      categorie: [{value: '', disabled: true}, ],
       impact: [{value: '', disabled: true}, ],
       etat: [{value: '', disabled: true}, ],
       departement: [{value: '', disabled: true}, ],
       num_agence: [{value: '', disabled: true}, ],
       commentaire: [{value: '', disabled: true}, ],
-      lieu: [{value: '', disabled: true},],
-      description: [{value: '', disabled: true},],
-      file: [{value: '', disabled: true},]
+      lieu: [{value: '', disabled: true}, ],
+      description: [{value: '', disabled: true}, ]
     });
     this.ticketID = this.route.snapshot.paramMap.get('id');
     this.ticketService.getTicketById(this.ticketID).subscribe(
