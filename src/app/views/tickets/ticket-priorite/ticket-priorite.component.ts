@@ -7,12 +7,11 @@ import {ToasterService} from 'angular2-toaster';
 import {AuthorizationService} from '../../common/security/authorization.service';
 
 @Component({
-  selector: 'app-ticket-admin-priorite',
-  templateUrl: './ticket-admin-priorite.component.html',
-  styleUrls: ['./ticket-admin-priorite.component.css']
+  selector: 'app-ticket-priorite',
+  templateUrl: './ticket-priorite.component.html',
+  styleUrls: ['./ticket-priorite.component.css']
 })
-export class TicketAdminPrioriteComponent implements OnInit {
-  ticketShowForm: FormGroup;
+export class TicketPrioriteComponent implements OnInit {
   ticketAdminPrioriteForm: FormGroup;
   ticketID = null ;
   submitted = false;
@@ -28,25 +27,24 @@ export class TicketAdminPrioriteComponent implements OnInit {
 
   ngOnInit() {
     this.ticketAdminPrioriteForm = this.formBuilder.group({
-      objet: [{value: '',disabled : true}],
-      element: [{value: '',disabled : true}],
-      nom: [{value: '',disabled : true}],
-      date_d_ouverture: [{value: '',disabled : true}],
-      date_d_echeance: [{value: '',disabled : true}],
-      categorie: [{value: '',disabled : true}],
-      impact: [{value: '',disabled : true}],
-      etat: [{value: '',disabled : true}],
-      departement: [{value: '',disabled : true}],
-      num_agence: [{value: '',disabled : true}],
-      commentaire: [{value: '',disabled : true}],
-      lieu: [{value: '',disabled : true}],
-      description: [{value: '',disabled : true}],
-      file: [{value: '',disabled : true}],
+      objet: [{value: '', disabled : true}],
+      element: [{value: '', disabled : true}],
+      nom: [{value: '', disabled : true}],
+      date_d_ouverture: [{value: '', disabled : true}],
+      date_d_echeance: [{value: '', disabled : true}],
+      categorie: [{value: '', disabled : true}],
+      impact: [{value: '', disabled : true}],
+      etat: [{value: '', disabled : true}],
+      departement: [{value: '', disabled : true}],
+      num_agence: [{value: '', disabled : true}],
+      commentaire: [{value: '' , disabled : true}],
+      lieu: [{value: '', disabled : true}],
+      description: [{value: '', disabled : true}],
       priorite: ['', [Validators.required]]
     });
-    // pour lire l ID de l'url 
+    // pour lire l ID de l'url
     this.ticketID = this.route.snapshot.paramMap.get('id');
-    // get data ticket 
+    // get data ticket
     this.ticketService.getTicketById(this.ticketID).subscribe(
       (bodyResponse) => { this.loadTicketData(bodyResponse); });
   }
@@ -62,13 +60,12 @@ export class TicketAdminPrioriteComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-
     // stop here if form is invalid
     if (this.ticketAdminPrioriteForm.invalid) {
         return;
     }
-     // envoyer les données  à la base 
-   const priorite = this.ticketAdminPrioriteForm.get('priorite').value;
+     // envoyer les données  à la base de données
+    const priorite = this.ticketAdminPrioriteForm.get('priorite').value;
     this.ticketService.addPrioriteToTicket(this.ticketID, priorite).subscribe(
       (responseBody) => {
         this.responseBodyProcess(responseBody); },
@@ -76,7 +73,7 @@ export class TicketAdminPrioriteComponent implements OnInit {
   }
 
   private responseBodyProcess(responseBody) {
-    this.toasterService.pop('success', 'priorité affectée', responseBody.message);
+    this.toasterService.pop('success', 'Priorité affectée', responseBody.message);
     this.router.navigate(['/home/tickets/index']);
   }
 

@@ -1,0 +1,175 @@
+<div class="fade-in">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <form [formGroup]="ticketAdminPrioriteForm" (ngSubmit)="onSubmit()">
+          <div class="card-header">
+            <strong>Détails d'un ticket</strong>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label for="nom">Créer par:</label>
+                  <input class="form-control" formControlName="nom" id="nom" type="text"
+                         placeholder="Saisissez le nom ici">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label for="objet">Objet:</label>
+                  <input class="form-control" formControlName="objet" id="objet" type="text"
+                         placeholder="Saisissez l'objet ici">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label for="element">Élément:</label>
+                  <input class="form-control" formControlName="element" id="element" type="text"
+                         placeholder="Saisissez l'élément ici">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label for="date_d_ouverture">Date d'ouverture:</label>
+                  <input class="form-control" formControlName="date_d_ouverture" id="date_d_ouverture"
+                         type="datetime-local" placeholder="Saisissez la date d'ouverture ici">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label for="date_d_echeance">Date d'écheance:</label>
+                  <input class="form-control" formControlName="date_d_echeance" id="date_d_echeance"
+                         type="datetime-local" placeholder="Saisissez la date d'écheance ici">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label for="categorie">Catégorie:</label>
+                  <select class="form-control" formControlName="categorie" id="categorie">
+                    <option value="Applicatif">Applicatif</option>
+                    <option value="Matériel">Matériel</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label for="impact">Impact:</label>
+                  <select class="form-control" formControlName="impact" id="impact">
+                    <option value="Élevé">Élevé</option>
+                    <option value="Normale">Normale</option>
+                    <option value="Bas">Bas</option>
+                    <option value="Trés bas">Trés bas</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label for="etat">État:</label>
+                  <select class="form-control" formControlName="etat" id="etat">
+                    <option value="Ouvert">Ouvert</option>
+                    <option value="En traitement">En traitement</option>
+                    <option value="Clos">Clos</option>
+                    <option value="En retard">En retard</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label>Lieu:</label>
+                  <div class="form-check">
+                    <input type="radio" id="agence" value="Agence" formControlName="lieu" class="form-check-input">
+                    <label class="form-check-label" for="agence">Agence</label>
+                  </div>
+                  <div class="form-check">
+                    <input type="radio" id="siege" value="Siège" formControlName="lieu" class="form-check-input">
+                    <label class="form-check-label" for="siege">Siège</label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label for="departement">Département:</label>
+                  <input class="form-control" formControlName="departement" id="departement"
+                         type="text" placeholder="Saisissez le département ici">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label for="num_agence">Numéro d'agence:</label>
+                  <input class="form-control" id="num_agence" type="number" placeholder=""
+                         formControlName="num_agence">
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="form-group">
+                  <label for="file">Piéce-jointe:</label>
+                  <br>
+                  <a href="{{file}}" target="_blank" id="file"
+                     class="btn btn-success">
+                    <i class="fa fa-download"></i> Télécharger le fichier
+                  </a>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="commentaire">Commentaire:</label>
+                  <textarea class="form-control" id="commentaire" rows="6"
+                            placeholder="Saisissez un commentaire ici"
+                            formControlName="commentaire"></textarea>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="description">Description:</label>
+                  <textarea class="form-control" formControlName="description" id="description"
+                            name="description" rows="6" placeholder="Description">
+                  </textarea>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                  <fieldset class="scheduler-border">
+                    <legend class="text-center text-success">Affecter la priorité</legend>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label for="priorite">Priorité:</label>
+                          <select class="form-control" formControlName="priorite" id="priorite"
+                                  [ngClass]="{ 'is-invalid': submitted && f.priorite.errors }">
+                            <option value="Élevé">Élevé</option>
+                            <option value="Moyenne">Moyenne</option>
+                            <option value="Basse">Basse</option>
+                            <option value="Trés basse">Trés basse</option>
+                          </select>
+                          <div *ngIf="submitted && f.priorite.errors" class="invalid-feedback d-block">
+                            <div *ngIf="f.priorite.errors.required">Le champ priorité est obligatoire.
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </fieldset>
+                </div>
+            </div>
+          </div>
+          <!--  Button retour & submit -->
+          <div class="row">
+            <div class="offset-sm-5 col-sm-3 offset-md-7 col-md-2">
+              <a routerLink="/home/tickets/index" class="btn btn-primary btn-pill btn-block">
+                <i class="cui-arrow-left icons"></i> Retour
+              </a>
+            </div>
+            <div class="col-sm-3 col-md-2 form-group form-actions">
+              <button type="submit" class="btn btn-success btn-pill btn-block">
+                <i class="fa fa-save"></i> Enregistrer
+              </button>
+            </div>
+          </div>
+          <!-- / Button retour & submit-->
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
