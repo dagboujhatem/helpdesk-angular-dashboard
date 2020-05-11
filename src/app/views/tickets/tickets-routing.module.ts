@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {TicketIndexComponent} from './ticket-index/ticket-index.component';
 import {TicketAddComponent} from './ticket-add/ticket-add.component';
 import {TicketUpdateComponent} from './ticket-update/ticket-update.component';
-import {TicketAdminPrioriteComponent} from './ticket-admin-priorite/ticket-admin-priorite.component';
+import {TicketPrioriteComponent} from './ticket-priorite/ticket-priorite.component';
 import {TicketShowComponent} from './ticket-show/ticket-show.component';
 import { TicketIndexAvisAddComponent } from './ticket-index-avis-add/ticket-index-avis-add.component';
 import { TicketIndexAvisComponent } from './ticket-index-avis/ticket-index-avis.component';
@@ -62,7 +62,7 @@ const routes: Routes = [
       },
       {
         path: 'priorite/:id',
-        component: TicketAdminPrioriteComponent,
+        component: TicketPrioriteComponent,
         data: {
           title: 'Affecter la priorité'
         }

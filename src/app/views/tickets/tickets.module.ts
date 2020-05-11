@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import {TicketIndexComponent} from './ticket-index/ticket-index.component';
 import {TicketAddComponent} from './ticket-add/ticket-add.component';
 import {TicketUpdateComponent} from './ticket-update/ticket-update.component';
-import {TicketAdminPrioriteComponent} from './ticket-admin-priorite/ticket-admin-priorite.component';
+import {TicketPrioriteComponent} from './ticket-priorite/ticket-priorite.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 // Import routing module
 import { TicketsRoutingModule } from './tickets-routing.module';
@@ -29,7 +29,7 @@ import {TicketReponseIndexInformaticienComponent} from './ticket-reponse-index-i
     TicketIndexComponent,
     TicketAddComponent,
     TicketUpdateComponent,
-    TicketAdminPrioriteComponent,
+    TicketPrioriteComponent,
     TicketShowComponent,
     TicketReponseFournisseurComponent,
     TicketIndexFournisseurComponent,
