@@ -35,15 +35,21 @@ export class AppSidebarService {
     } else if (this.role === 'Informaticien') {
       // filter only the items of Informaticien
       const filtredItems = this.navItems.filter((item) => {
-        return item.url === '/home/dashboard' || item.name === 'Menu'
-          || item.url === '/home/settings';
+        return item.url === '/home/dashboard' 
+        || item.url === '/home/tickets/reponseapp/' 
+        ||  item.url === '/home/tickets/reponsemat/' 
+        ||  item.name === 'Menu' 
+        || item.url === '/home/tickets'
+        || item.url === '/home/settings';
       });
       return of(filtredItems);
     } else if (this.role === 'Personnel') {
       // filter only the items of Personnel
       const filtredItems = this.navItems.filter((item) => {
-        return item.url === '/home/dashboard' || item.name === 'Menu'
-          || item.url === '/home/categories/solutions/' ||  item.url === '/home/tickets/index'
+        return item.url === '/home/dashboard' 
+           || item.name === 'Menu'
+          || item.url === '/home/categories/solutions/' 
+          ||  item.url === '/home/tickets/index'
           || item.url === '/home/settings';
       });
       return of(filtredItems);

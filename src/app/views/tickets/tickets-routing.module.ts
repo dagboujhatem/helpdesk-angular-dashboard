@@ -109,7 +109,7 @@ const routes: Routes = [
 
       },
       {
-        path: 'reponsemat',
+        path: 'reponsemat/:id',
         component: TicketReponseMaterielInformaticienComponent,
         data: {
           title: 'Formulaire de la réponse'
@@ -117,7 +117,7 @@ const routes: Routes = [
 
       },
       {
-        path: 'reponseapp',
+        path: 'reponseapp/:id',
         component:  TicketReponseApplicatifInformaticienComponent,
         data: {
           title: 'Formulaire de la réponse'
