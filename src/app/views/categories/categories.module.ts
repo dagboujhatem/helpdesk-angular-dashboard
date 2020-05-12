@@ -13,8 +13,6 @@ import { CategorieApplicatifUpdateComponent } from './categorie-applicatif-updat
 import { CategorieApplicatifShowComponent } from './categorie-applicatif-show/categorie-applicatif-show.component';
 import { CategorieMaterielUpdateComponent } from './categorie-materiel-update/categorie-materiel-update.component';
 import { CategorieMaterielShowComponent } from './categorie-materiel-show/categorie-materiel-show.component';
-import {SolutionMaterielIndexComponent} from './solution-materiel-index/solution-materiel-index.component';
-import {SolutionApplicatifIndexComponent} from './solution-applicatif-index/solution-applicatif-index.component';
 
 @NgModule({
   declarations: [
@@ -26,8 +24,6 @@ import {SolutionApplicatifIndexComponent} from './solution-applicatif-index/solu
     CategorieApplicatifShowComponent,
     CategorieMaterielUpdateComponent,
     CategorieMaterielShowComponent,
-    SolutionApplicatifIndexComponent,
-    SolutionMaterielIndexComponent,
   ],
   imports: [
     CommonModule,

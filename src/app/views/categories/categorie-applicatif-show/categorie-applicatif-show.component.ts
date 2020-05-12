@@ -14,12 +14,9 @@ export class CategorieApplicatifShowComponent implements OnInit {
   categirieApplicatifID = null ;
   categorieApplicatifShowForm: FormGroup;
   solutionFile = null;
-  // auth role
-  role = null;
   constructor(private route: ActivatedRoute,
               private formBuilder: FormBuilder,
-              private categorieApplicatifService: CategorieApplicatifService,
-              private authorizationService: AuthorizationService) { }
+              private categorieApplicatifService: CategorieApplicatifService) { }
 
   ngOnInit(): void {
     this.categorieApplicatifShowForm = this.formBuilder.group({
@@ -27,7 +24,6 @@ export class CategorieApplicatifShowComponent implements OnInit {
       probleme: [{value: '', disabled: true}, ],
       description: [{value: '', disabled: true}, ]
     });
-    this.role = this.authorizationService.getRole();
     this.categirieApplicatifID = this.route.snapshot.paramMap.get('id');
     this.categorieApplicatifService.getCategorieApplicatifById(this.categirieApplicatifID).subscribe(
       (bodyResponse) => { this.loadCategorieData(bodyResponse); }

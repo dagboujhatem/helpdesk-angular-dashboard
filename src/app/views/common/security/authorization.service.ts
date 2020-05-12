@@ -191,20 +191,11 @@ export class AuthorizationService implements CanActivate, CanActivateChild {
         // la gestion des tickets
         return this.authorizeRouteByRoles(role, ['Administrateur', 'Informaticien', 'Personnel', 'Fournisseur']);
       } else if (routeUrl.startsWith('/home/categories')) {
-        // la gestion des catégories et solutions
-        if (routeUrl.startsWith('/home/categories/materiel/show')
-          || routeUrl.startsWith('/home/categories/applicatif/show')) {
-          return this.authorizeRouteByRoles(role, ['Administrateur', 'Personnel']);
-        } else   if (routeUrl.startsWith('/home/categories/materiel')
-          || routeUrl.startsWith('/home/categories/applicatif')) {
-          return this.authorizeRouteByRoles(role, ['Administrateur']);
-        } else if (routeUrl.startsWith('/home/categories/solutions')
-          || routeUrl.startsWith('/home/categories/materiel/show')
-          || routeUrl.startsWith('/home/categories/applicatif/show')) {
-          return this.authorizeRouteByRoles(role, ['Personnel']);
-        } else {
-          return this.authorizeRouteByRoles(role, []);
-        }
+        // la gestion des catégories
+        return this.authorizeRouteByRoles(role, ['Administrateur']);
+      } else if (routeUrl.startsWith('/home/solutions')) {
+        // la gestion des solutions
+        return this.authorizeRouteByRoles(role, ['Personnel']);
       } else {
         // console.log(routeUrl);
         // all others routes means ==> /home/settings or /home/dashboard

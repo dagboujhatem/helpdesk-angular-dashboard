@@ -70,6 +70,10 @@ export const routes: Routes = [
         loadChildren: () => import('./views/categories/categories.module').then(m => m.CategoriesModule)
       },
       {
+        path: 'solutions',
+        loadChildren: () => import('./views/solutions/solutions.module').then(m => m.SolutionsModule)
+      },
+      {
         path: 'settings',
         loadChildren: () => import('./views/settings/settings.module').then(m => m.SettingsModule)
       }

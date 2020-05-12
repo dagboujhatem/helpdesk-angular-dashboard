@@ -16,16 +16,16 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let categorie of categoriesApplicatifsData">
-                  <td>{{categorie.type}}</td>
-                  <td>{{categorie.probleme}}</td>
+                <tr *ngFor="let solution of solutionsApplicatifsData">
+                  <td>{{solution.type}}</td>
+                  <td>{{solution.probleme}}</td>
                   <td>
-                    <a href="{{categorie.solution_file}}" target="_blank" class="btn btn-success btn-sm">
+                    <a href="{{solution.solution_file}}" target="_blank" class="btn btn-success btn-sm">
                       <i class="fa fa-download"></i> Télécharger le fichier
                     </a>
                   </td>
                     <td>
-                      <a  [routerLink]="['/home/categories/applicatif/show/', categorie.id]" class="btn btn-info btn-sm">
+                      <a [routerLink]="['/home/solutions/applicatif/show/', solution.id]" class="btn btn-info btn-sm">
                         <i class="fa fa-eye fa-white"></i>
                       </a>
                     </td>

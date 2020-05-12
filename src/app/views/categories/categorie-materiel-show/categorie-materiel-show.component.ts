@@ -13,12 +13,9 @@ export class CategorieMaterielShowComponent implements OnInit {
   categirieMaterielID = null ;
   categorieMaterielShowForm: FormGroup;
   solutionFile = null;
-  // auth role
-  role = null;
   constructor(private route: ActivatedRoute,
               private formBuilder: FormBuilder,
-              private categorieMaterielService: CategorieMaterielService,
-              private authorizationService: AuthorizationService) { }
+              private categorieMaterielService: CategorieMaterielService) { }
 
   ngOnInit(): void {
     this.categorieMaterielShowForm = this.formBuilder.group({
@@ -26,7 +23,6 @@ export class CategorieMaterielShowComponent implements OnInit {
       probleme: [{value: '', disabled: true}, ],
       description: [{value: '', disabled: true}, ]
     });
-    this.role = this.authorizationService.getRole();
     this.categirieMaterielID = this.route.snapshot.paramMap.get('id');
     this.categorieMaterielService.getCategorieMaterielById(this.categirieMaterielID).subscribe(
       (bodyResponse) => { this.loadCategorieData(bodyResponse); });

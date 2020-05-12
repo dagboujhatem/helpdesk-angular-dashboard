@@ -8,8 +8,6 @@ import {CategorieApplicatifShowComponent} from './categorie-applicatif-show/cate
 import {CategorieMaterielShowComponent} from './categorie-materiel-show/categorie-materiel-show.component';
 import {CategorieMaterielUpdateComponent} from './categorie-materiel-update/categorie-materiel-update.component';
 import {CategorieApplicatifUpdateComponent} from './categorie-applicatif-update/categorie-applicatif-update.component';
-import {SolutionApplicatifIndexComponent} from './solution-applicatif-index/solution-applicatif-index.component';
-import {SolutionMaterielIndexComponent} from './solution-materiel-index/solution-materiel-index.component';
 
 
 const routes: Routes = [
@@ -78,30 +76,7 @@ const routes: Routes = [
         data: {
           title: 'Modifier une catégorie matériel'
         }
-      },
-      {
-        path: 'solutions',
-        children: [
-          {
-            path: '',
-            redirectTo: 'applicatifs'
-          },
-          {
-            path: 'applicatifs',
-            component: SolutionApplicatifIndexComponent,
-            data: {
-              title: ' Liste des solutions applicatifs'
-            }
-          },
-          {
-            path: 'materiels',
-            component: SolutionMaterielIndexComponent,
-            data: {
-              title: ' Liste des solutions matériels'
-            }
-          },
-        ]
-      },
+      }
     ]
   }
 ];

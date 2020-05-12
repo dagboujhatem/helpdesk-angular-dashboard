@@ -34,17 +34,17 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Les solutions',
-    url: '/home/categories/solutions/',
+    url: '/home/solutions',
     icon: 'icon-list',
     children: [
       {
         name: 'Solutions applicatifs',
-        url: '/home/categories/solutions/applicatifs',
+        url: '/home/solutions/applicatifs/index',
         icon: 'icon-screen-desktop'
       },
       {
         name: 'Solutions matériels',
-        url: '/home/categories/solutions/materiels',
+        url: '/home/solutions/materiels/index',
         icon: 'icon-layers'
       }
     ]
