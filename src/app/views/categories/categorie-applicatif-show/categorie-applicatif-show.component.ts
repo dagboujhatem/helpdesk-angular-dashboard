@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {CategorieApplicatifService} from '../categorie-applicatif.service';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {CategorieMaterielService} from '../categorie-materiel.service';
-import {AuthorizationService} from '../../common/security/authorization.service';
+import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-categorie-applicatif-show',

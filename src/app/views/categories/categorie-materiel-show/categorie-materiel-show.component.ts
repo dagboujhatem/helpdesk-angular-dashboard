@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CategorieMaterielService } from '../categorie-materiel.service';
-import {AuthorizationService} from '../../common/security/authorization.service';
 
 @Component({
   selector: 'app-categorie-materiel-show',
