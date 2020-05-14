@@ -66,6 +66,16 @@ export const routes: Routes = [
         loadChildren: () => import('./views/tickets/tickets.module').then(m => m.TicketsModule)
       },
       {
+        path: 'tickets/informaticien',
+        loadChildren: () => import('./views/tickets-informaticien/tickets-informaticien.module')
+          .then(m => m.TicketsInformaticienModule)
+      },
+      {
+        path: 'tickets/fournisseur',
+        loadChildren: () => import('./views/tickets-fournisseur/tickets-fournisseur.module')
+          .then(m => m.TicketsFournisseurModule)
+      },
+      {
         path: 'categories',
         loadChildren: () => import('./views/categories/categories.module').then(m => m.CategoriesModule)
       },

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { TiketsService } from '../tikets.service';
+import { TiketsService } from '../../tickets/tikets.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToasterService } from 'angular2-toaster';
 import { ValidationService } from '../../common/utils/validation.service';
+import {TicketInformaticienService} from '../ticket-informaticien.service';
 
 @Component({
   selector: 'app-ticket-reponse-applicatif-informaticien',
@@ -17,11 +18,11 @@ export class TicketReponseApplicatifInformaticienComponent implements OnInit {
   file = null;
 
   constructor(private formBuilder: FormBuilder ,
-             private ticketService: TiketsService,
-            private validationService: ValidationService,
-            private toasterService: ToasterService,
-            private router: Router,
-            private route: ActivatedRoute){}
+              private ticketInformaticienService: TicketInformaticienService,
+              private validationService: ValidationService,
+              private toasterService: ToasterService,
+              private router: Router,
+              private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.reponeAppform = this.formBuilder.group({
@@ -51,9 +52,9 @@ export class TicketReponseApplicatifInformaticienComponent implements OnInit {
      // pour lire l ID de l'url
      this.ticketID = this.route.snapshot.paramMap.get('id');
      // get data ticket
-     this.ticketService.getTicketById(this.ticketID).subscribe(
+     this.ticketInformaticienService.getTicketById(this.ticketID).subscribe(
        (bodyResponse) => { this.loadTicketData(bodyResponse); });
-       
+
   }
   loadTicketData(bodyResponse) {
     const data = bodyResponse.data;
@@ -79,7 +80,7 @@ export class TicketReponseApplicatifInformaticienComponent implements OnInit {
   // le champ solution file lezem ykoun file ( thabet fiha )hethi lezem tzida fi les deux mat et app
   ticketData.append(' file', this.reponeAppform.get('file').value);
 
-  this.ticketService.addTicketApplicatifResponse(ticketData).subscribe(
+  this.ticketInformaticienService.addTicketApplicatifResponse(ticketData).subscribe(
     (responseBody) => {
     this.responseBodyProcess(responseBody); },
     (error) => {  this.validationService.showValidationsMessagesInToast(error); });

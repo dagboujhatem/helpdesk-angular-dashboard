@@ -96,7 +96,7 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Bna Bank',
-    url: '/home/tickets/indexticketfrs',
+    url: '/home/tickets/fournisseur',
     icon: 'icon-list'
   },
 

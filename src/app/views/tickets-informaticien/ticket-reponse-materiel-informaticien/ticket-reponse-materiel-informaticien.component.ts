@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ValidationService } from '../../common/utils/validation.service';
-import { TiketsService } from '../tikets.service';
 import { ToasterService } from 'angular2-toaster';
+import {TicketInformaticienService} from '../ticket-informaticien.service';
 
 @Component({
   selector: 'app-ticket-reponse-materiel-informaticien',
@@ -19,7 +19,7 @@ export class TicketReponseMaterielInformaticienComponent implements OnInit {
 
 
   constructor(private formBuilder: FormBuilder,
-              private ticketService: TiketsService,
+              private ticketInformaticienService: TicketInformaticienService,
               private validationService: ValidationService,
               private toasterService: ToasterService,
               private router: Router,
@@ -47,17 +47,17 @@ export class TicketReponseMaterielInformaticienComponent implements OnInit {
      // pour lire l ID de l'url
      this.ticketID = this.route.snapshot.paramMap.get('id');
      // get data ticket
-     this.ticketService.getTicketById(this.ticketID).subscribe(
+     this.ticketInformaticienService.getTicketById(this.ticketID).subscribe(
        (bodyResponse) => { this.loadTicketData(bodyResponse); });
-      
+
       // this.ticketService.getPrioriteToTicket(this.ticketID).subscribe(
        // (bodyResponse) => { this.loadTicketData(bodyResponse); });
-       
+
   }
   loadTicketData(bodyResponse) {
     const data = bodyResponse.data;
     this.reponeMatForum.patchValue(data);
-    this.file_solution= data.file_solution;
+    this.file_solution = data.file_solution;
   }
   // convenience getter for easy access to form fields
   get f() { return this.reponeMatForum .controls;}
@@ -78,7 +78,7 @@ export class TicketReponseMaterielInformaticienComponent implements OnInit {
     // le champ solution file lezem ykoun file ( thabet fiha )hethi lezem tzida fi les deux mat et app
     ticketData.append(' file_solution', this.reponeMatForum.get('file_solution').value);
 
-    this.ticketService.addTicketMaterielResponse(ticketData).subscribe(
+    this.ticketInformaticienService.addTicketMaterielResponse(ticketData).subscribe(
       (responseBody) => {
       this.responseBodyProcess(responseBody); },
       (error) => {  this.validationService.showValidationsMessagesInToast(error); });

@@ -34,30 +34,5 @@ export class TiketsService {
   // Add priorité to the ticket
   addPrioriteToTicket(ticketId, priorite: string) {
     return this.http.put(this.url + 'tickets/priorite/' + ticketId , { priorite : priorite });
-    //get ticket Priorité
-    
-    
-  }
-
-  /**
-   *  Les réponses de l'informaticien
-   */
-
-   addTicketMaterielResponse(ticketResponseData) {
-    return this.http.post(this.url + 'ticketResponse', ticketResponseData);
-  }
-
-  //   pour le servie de repondre ticket app
-  addTicketApplicatifResponse(ticketResponseData) {
-    return this.http.post(this.url + 'ticketResponse', ticketResponseData);
-  }
-
-
-/**
- * 
- * Les réponses de fournisseur 
- */
-   addResponseFournisseur(ticketResponseData) {
-    return this.http.post(this.url + 'ticketResponse', ticketResponseData);
   }
 }

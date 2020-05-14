@@ -7,18 +7,9 @@ import {TicketPrioriteComponent} from './ticket-priorite/ticket-priorite.compone
 import {TicketShowComponent} from './ticket-show/ticket-show.component';
 import { TicketIndexAvisAddComponent } from './ticket-index-avis-add/ticket-index-avis-add.component';
 import { TicketIndexAvisComponent } from './ticket-index-avis/ticket-index-avis.component';
-import { TicketIndexMaterielInformaticienComponent } from './ticket-index-materiel-informaticien/ticket-index-materiel-informaticien.component';
-import { TicketIndexApplicatifInformaticienComponent } from './ticket-index-applicatif-informaticien/ticket-index-applicatif-informaticien.component';
-import { TicketIndexRelancerInformaticienComponent } from './ticket-index-relancer-informaticien/ticket-index-relancer-informaticien.component';
-import { TicketReponseMaterielInformaticienComponent } from './ticket-reponse-materiel-informaticien/ticket-reponse-materiel-informaticien.component';
-import { TicketReponseApplicatifInformaticienComponent } from './ticket-reponse-applicatif-informaticien/ticket-reponse-applicatif-informaticien.component';
 import { TicketRelanceAddComponent } from './ticket-relance-add/ticket-relance-add.component';
-import { TicketReponseRelanceInformaticienComponent } from './ticket-reponse-relance-informaticien/ticket-reponse-relance-informaticien.component';
 import { TicketResoluIndexComponent } from './ticket-resolu-index/ticket-resolu-index.component';
 import { TicketRelanceIndexComponent } from './ticket-relance-index/ticket-relance-index.component';
-import { TicketReponseFournisseurComponent } from './ticket-reponse-fournisseur/ticket-reponse-fournisseur.component';
-import { TicketIndexFournisseurComponent } from './ticket-index-fournisseur/ticket-index-fournisseur.component';
-import { TicketReponseIndexInformaticienComponent } from './ticket-reponse-index-informaticien/ticket-reponse-index-informaticien.component';
 
 
 const routes: Routes = [
@@ -66,7 +57,6 @@ const routes: Routes = [
         data: {
           title: 'Affecter la priorité'
         }
-
       },
       {
         path: 'addavis',
@@ -74,7 +64,6 @@ const routes: Routes = [
         data: {
           title: 'Ajouter un avis'
         }
-
       },
       {
         path: 'indexavis',
@@ -82,47 +71,6 @@ const routes: Routes = [
         data: {
           title: 'Liste des avis du personnel'
         }
-
-      },
-      {
-        path: 'applicatifs',
-        component: TicketIndexApplicatifInformaticienComponent,
-        data: {
-          title: 'Liste des tickets applicatifs'
-        }
-
-      },
-      {
-        path: 'materiels',
-        component: TicketIndexMaterielInformaticienComponent,
-        data: {
-          title: ' Liste des tickets matériels'
-        }
-
-      },
-      {
-        path: 'ticketsrelances',
-        component: TicketIndexRelancerInformaticienComponent,
-        data: {
-          title: ' Liste des tickets relancés'
-        }
-
-      },
-      {
-        path: 'reponsemat/:id',
-        component: TicketReponseMaterielInformaticienComponent,
-        data: {
-          title: 'Formulaire de la réponse'
-        }
-
-      },
-      {
-        path: 'reponseapp/:id',
-        component:  TicketReponseApplicatifInformaticienComponent,
-        data: {
-          title: 'Formulaire de la réponse'
-        }
-
       },
       {
         path: 'relance',
@@ -130,16 +78,6 @@ const routes: Routes = [
         data: {
           title: 'relancer'
         }
-
-      },
-
-      {
-        path: 'reponserelance',
-        component:     TicketReponseRelanceInformaticienComponent,
-        data: {
-          title: 'Répondre'
-        }
-
       },
       {
         path: 'indexresolu',
@@ -147,7 +85,6 @@ const routes: Routes = [
         data: {
           title: 'Répondre'
         }
-
       },
       {
         path: 'indexrelance',
@@ -155,34 +92,7 @@ const routes: Routes = [
         data: {
           title: 'Répondre'
         }
-
-      },
-      {
-        path: 'reponsefrs',
-        component:     TicketReponseFournisseurComponent,
-        data: {
-          title: 'Répondre'
-        }
-
-      },
-      {
-        path: 'indexticketfrs',
-        component:     TicketIndexFournisseurComponent,
-        data: {
-          title: 'Index des tickets'
-        }
-
-      },
-      {
-        path: 'indexreponseinfo',
-        component: TicketReponseIndexInformaticienComponent,
-        data: {
-          title: 'Index des  tickets résolu par fournnisseur '
-        }
-
       }
-
-
     ]
   }
 ];

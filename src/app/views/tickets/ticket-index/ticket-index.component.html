@@ -4,7 +4,7 @@
       Liste des tickets
     </div>
     <div class="card-body">
-      <div class="row mb-3" 
+      <div class="row mb-3"
        *ngIf="role !== null && role !== undefined && (role === 'Administrateur' || role === 'Personnel') ">
         <div class="col-lg-4 offset-lg-8 col-md-5 offset-md-7 col-sm-6 offset-sm-6">
           <a routerLink="/home/tickets/add" class="btn btn-primary btn-block btn-pill">
@@ -22,7 +22,7 @@
             <th>Date d'ouverture</th>
             <th>Date d'écheance</th>
             <th>État</th>
-            <th *ngIf="role === 'Administrateur' || role ==='Informaticien'">Priorité</th>
+            <th *ngIf="role === 'Administrateur'">Priorité</th>
             <th>Durée</th>
             <th>Actions</th>
           </tr>
@@ -48,7 +48,7 @@
                 {{ticket.etat}}
               </span>
             </td>
-            <td *ngIf="role === 'Administrateur' && role === 'informaticien'">{{ticket.priorite}}</td>
+            <td *ngIf="role === 'Administrateur'">{{ticket.priorite}}</td>
             <td>{{ calculateDiff(ticket.date_d_ouverture, ticket.date_d_echeance)}} Minutes</td>
             <td>
               <div *ngIf="role !== null && role !== undefined && (role === 'Administrateur' || role === 'Personnel')">
@@ -61,19 +61,6 @@
                 <a *ngIf="role !== null && role !== undefined && role === 'Administrateur' && ticket.priorite == null"
                   [routerLink]="['/home/tickets/priorite/', ticket.id]" class="btn btn-success btn-sm text-white">
                   <i class="fa fa-share" aria-hidden="true"></i> Priorité
-                </a>
-              </div>
-              <div *ngIf="role !== null && role !== undefined && role === 'Informaticien' ">
-                <!-- lehna bech t7ot deux lien ken app/mat -->
-                 <!-- hetha lien el app -->
-                <a *ngIf="ticket.categorie ==='Applicatif'" [routerLink]="['/home/tickets/reponseapp/', ticket.id]"
-                  class="btn btn-success btn-sm text-white">
-                  <i class="fa fa-share" aria-hidden="true"></i>Répondre
-                </a>
-                <!-- hetha lien el mat -->
-                <a *ngIf="ticket.categorie ==='Matériel'" [routerLink]="['/home/tickets/reponsemat/', ticket.id]"
-                  class="btn btn-success btn-sm text-white">
-                  <i class="fa fa-share" aria-hidden="true"></i>Répondre
                 </a>
               </div>
             </td>
