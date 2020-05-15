@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-import {TiketsService} from '../tikets.service';
+import {TicketsService} from '../tickets.service';
 import {ValidationService} from '../../common/utils/validation.service';
 import {ToasterService} from 'angular2-toaster';
 import {AuthorizationService} from '../../common/security/authorization.service';
@@ -18,7 +18,7 @@ export class TicketPrioriteComponent implements OnInit {
   file = null;
 
   constructor(private formBuilder: FormBuilder,
-              private ticketService: TiketsService,
+              private ticketService: TicketsService,
               private validationService: ValidationService,
               private toasterService: ToasterService,
               private router: Router,

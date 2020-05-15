@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { TiketsService } from '../tikets.service';
+import { TicketsService } from '../tickets.service';
 
 @Component({
   selector: 'app-ticket-show',
@@ -15,7 +15,7 @@ export class TicketShowComponent implements OnInit {
   file = null;
   constructor(private route: ActivatedRoute,
               private formBuilder: FormBuilder,
-              private ticketService: TiketsService) { }
+              private ticketService: TicketsService) { }
 
   ngOnInit(): void {
     this.ticketShowForm = this.formBuilder.group({

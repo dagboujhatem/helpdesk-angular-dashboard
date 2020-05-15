@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {ToasterService} from 'angular2-toaster';
 import {Router} from '@angular/router';
-import {TiketsService} from '../tikets.service';
+import {TicketsService} from '../tickets.service';
 import {ValidationService} from '../../common/utils/validation.service';
 
 @Component({
@@ -17,7 +17,7 @@ export class TicketAddComponent implements OnInit {
   selectedFile = null;
 
   constructor(private formBuilder: FormBuilder,
-              private ticketService: TiketsService,
+              private ticketService: TicketsService,
               private toasterService: ToasterService,
               private validationService: ValidationService,
               private router: Router) { }

@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ToasterService} from 'angular2-toaster';
-import {TiketsService} from '../tikets.service';
+import {TicketsService} from '../tickets.service';
 import { DataTableDirective } from 'angular-datatables';
 import { DataTableService } from '../../common/utils/data-table.service';
 import {Subject} from 'rxjs';
@@ -22,7 +22,7 @@ export class TicketIndexComponent implements OnDestroy, OnInit {
   dtTrigger: Subject = new Subject();
   // auth role
   role = null;
-  constructor(private ticketService: TiketsService,
+  constructor(private ticketService: TicketsService,
               private toasterService: ToasterService,
               private dataTableService: DataTableService,
               private authorizationService: AuthorizationService) { }

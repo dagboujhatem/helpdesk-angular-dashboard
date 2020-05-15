@@ -1,28 +1,28 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DataTableDirective } from 'angular-datatables';
-import { TiketsService } from '../tikets.service';
+import { TicketsService } from '../tickets.service';
 import { ToasterService } from 'angular2-toaster';
 import { DataTableService } from '../../common/utils/data-table.service';
 import {Subject} from 'rxjs';
 import { AuthorizationService } from '../../common/security/authorization.service';
 
 @Component({
-  selector: 'app-ticket-index-avis',
-  templateUrl: './ticket-index-avis.component.html',
-  styleUrls: ['./ticket-index-avis.component.css']
+  selector: 'app-avis-index',
+  templateUrl: './avis-index.component.html',
+  styleUrls: ['./avis-index.component.css']
 })
-export class TicketIndexAvisComponent implements OnInit {
+export class AvisIndexComponent implements OnInit {
 
   @ViewChild(DataTableDirective, {static: false})
   dtElement: DataTableDirective;
-  public AvisData: Array<any> = [];
+  public ticketsData: Array<any> = [];
   dtOptions: DataTables.Settings = {};
   // @ts-ignore
   dtTrigger: Subject = new Subject();
   // auth role
   role = null;
 
-  constructor(private avisService: TiketsService,
+  constructor(private ticketsService: TicketsService,
               private toasterService: ToasterService,
               private dataTableService: DataTableService,
               private authorizationService: AuthorizationService) { }
@@ -30,18 +30,18 @@ export class TicketIndexAvisComponent implements OnInit {
   ngOnInit(): void {
     this.role = this.authorizationService.getRole();
     this.dtOptions = this.dataTableService.getDataTableOptions();
-    this.loadAvis();
+    this.loadTickets();
   }
 
   // pour charger les infor from REST API
-  loadAvis() {
-    this.avisService.getAllAvis().subscribe(
-      (bodyResponse) => { this.getAvisData(bodyResponse); });
+  loadTickets() {
+    this.ticketsService.getAllTickets().subscribe(
+      (bodyResponse) => { this.getTicketsData(bodyResponse); });
   }
 
-  // get avis data from bodyresponse
-  getAvisData(bodyResponse) {
-    this.AvisData = bodyResponse.data;
+  // get tickets data from bodyresponse
+  getTicketsData(bodyResponse) {
+    this.ticketsData = bodyResponse.data;
     this.dtTrigger.next();
   }
 

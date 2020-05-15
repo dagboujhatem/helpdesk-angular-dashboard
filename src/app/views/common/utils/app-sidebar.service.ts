@@ -30,8 +30,7 @@ export class AppSidebarService {
           || item.url === '/home/missions'
           || item.url === '/home/tickets'
           || item.url === '/home/settings'
-          || item.url === '/home/tickets/addavis'
-          || item.url === '/home/tickets/indexavis' ;
+          || item.url === '/home/tickets/avis/index';
       });
       return of(filtredItems);
     } else if (this.role === 'Informaticien') {
@@ -39,12 +38,11 @@ export class AppSidebarService {
       const filtredItems = this.navItems.filter((item) => {
         return item.url === '/home/dashboard'
         || item.name === 'Menu'
-        
         || item.url === '/home/tickets'
         || item.url === '/home/tickets/informaticien/reponseapp/'
         || item.url === '/home/tickets/informaticien/reponsemat/'
         || item.url === '/home/settings'
-        || item.url === '/home/tickets/indexavis' ;
+        || item.url === '/home/tickets/avis/index' ;
       });
       return of(filtredItems);
     } else if (this.role === 'Personnel') {
@@ -54,7 +52,8 @@ export class AppSidebarService {
           || item.name === 'Menu'
           || item.url === '/home/solutions'
           ||  item.url === '/home/tickets'
-          || item.url === '/home/settings';
+          || item.url === '/home/settings'
+          || item.url === '/home/tickets/avis/index';
       });
       return of(filtredItems);
     } else if (this.role === 'Fournisseur') {

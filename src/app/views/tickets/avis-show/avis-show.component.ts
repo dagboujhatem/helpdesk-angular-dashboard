@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { TiketsService } from '../tikets.service';
+import { TicketsService } from '../tickets.service';
 
 @Component({
-  selector: 'app-show-avis',
-  templateUrl: './show-avis.component.html',
-  styleUrls: ['./show-avis.component.css']
+  selector: 'app-avis-show',
+  templateUrl: './avis-show.component.html',
+  styleUrls: ['./avis-show.component.css']
 })
-export class ShowAvisComponent implements OnInit {
+export class AvisShowComponent implements OnInit {
 
   avisID = null ;
  showAvisForm: FormGroup;
   constructor(private route: ActivatedRoute,
               private formBuilder: FormBuilder,
-              private ticketservice : TiketsService) { }
+              private ticketservice : TicketsService) { }
 
   ngOnInit(): void {
     this.showAvisForm= this.formBuilder.group({

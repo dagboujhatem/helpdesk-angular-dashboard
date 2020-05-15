@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TiketsService } from '../tikets.service';
+import { TicketsService } from '../tickets.service';
 import { ToasterService } from 'angular2-toaster';
 import { ValidationService } from '../../common/utils/validation.service';
 
@@ -19,7 +19,7 @@ export class TicketUpdateComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private route: ActivatedRoute,
-              private ticketService: TiketsService,
+              private ticketService: TicketsService,
               private toasterService: ToasterService,
               private validationService: ValidationService,
               private router: Router) { }

@@ -1,25 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { TiketsService } from '../tikets.service';
+import { TicketsService } from '../tickets.service';
 import { ToasterService } from 'angular2-toaster';
 import { DataTableService } from '../../common/utils/data-table.service';
 import { ValidationService } from '../../common/utils/validation.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-ticket-index-avis-add',
-  templateUrl: './ticket-index-avis-add.component.html',
-  styleUrls: ['./ticket-index-avis-add.component.css']
-  
+  selector: 'app-avis-add',
+  templateUrl: './avis-add.component.html',
+  styleUrls: ['./avis-add.component.css']
 })
-export class TicketIndexAvisAddComponent implements OnInit {
+export class AvisAddComponent implements OnInit {
 
   avisAddForum: FormGroup;
   submitted = false;
 
-  constructor( 
+  constructor(
                  private formBuilder: FormBuilder,
-                 private avisService: TiketsService,
+                 private avisService: TicketsService,
                  private toasterService: ToasterService,
                  private dataTableService: DataTableService,
                  private validationService: ValidationService,
@@ -46,16 +45,16 @@ export class TicketIndexAvisAddComponent implements OnInit {
         return;
     }
     const avisData = new FormData();
- 
+
     avisData.append('avis', this.avisAddForum .get('avis').value);
     avisData.append('descriptionavis', this.avisAddForum .get('descriptionavis').value);
 
-    
+
     this.avisService.addTicket(avisData).subscribe(
       (responseBody) => {
       this.responseBodyProcess(responseBody); },
       (error) => {  this.validationService.showValidationsMessagesInToast(error); });
-  
+
 
 
     // display form values on success
