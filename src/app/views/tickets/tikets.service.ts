@@ -35,4 +35,12 @@ export class TiketsService {
   addPrioriteToTicket(ticketId, priorite: string) {
     return this.http.put(this.url + 'tickets/priorite/' + ticketId , { priorite : priorite });
   }
+  // Get all avis from the REST API
+  getAllAvis() {
+    return this.http.get(this.url + 'tickets');
+  }
+   // Get avis by ID from the REST API
+   getavisById(id) {
+    return this.http.get(this.url + 'tickets/' + id);
+  }
 }

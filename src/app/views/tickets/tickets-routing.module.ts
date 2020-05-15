@@ -10,6 +10,7 @@ import { TicketIndexAvisComponent } from './ticket-index-avis/ticket-index-avis.
 import { TicketRelanceAddComponent } from './ticket-relance-add/ticket-relance-add.component';
 import { TicketResoluIndexComponent } from './ticket-resolu-index/ticket-resolu-index.component';
 import { TicketRelanceIndexComponent } from './ticket-relance-index/ticket-relance-index.component';
+import { ShowAvisComponent } from './show-avis/show-avis.component';
 
 
 const routes: Routes = [
@@ -68,6 +69,13 @@ const routes: Routes = [
       {
         path: 'indexavis',
         component:  TicketIndexAvisComponent,
+        data: {
+          title: 'Liste des avis du personnel'
+        }
+      },
+      {
+        path: 'showavis/:id',
+        component:  ShowAvisComponent,
         data: {
           title: 'Liste des avis du personnel'
         }

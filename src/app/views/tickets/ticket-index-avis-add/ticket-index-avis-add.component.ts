@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { TiketsService } from '../tikets.service';
+import { ToasterService } from 'angular2-toaster';
+import { DataTableService } from '../../common/utils/data-table.service';
+import { ValidationService } from '../../common/utils/validation.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ticket-index-avis-add',
@@ -12,12 +17,21 @@ export class TicketIndexAvisAddComponent implements OnInit {
   avisAddForum: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder){}
+  constructor( 
+                 private formBuilder: FormBuilder,
+                 private avisService: TiketsService,
+                 private toasterService: ToasterService,
+                 private dataTableService: DataTableService,
+                 private validationService: ValidationService,
+                 private router: Router){}
 
   ngOnInit() {
     this.avisAddForum = this.formBuilder.group({
-        avis: ['', [Validators.required]],
-        description: ['', [Validators.required]]
+      nom: [{value: '', disabled: true}, ],
+       prenom: [{value: '', disabled: true}, ],
+      depratement: [{value: '', disabled: true}, ],
+      avis: ['', [Validators.required]],
+      descriptionavis: ['', [Validators.required]]
     });
   }
 
@@ -31,9 +45,25 @@ export class TicketIndexAvisAddComponent implements OnInit {
     if (this.avisAddForum .invalid) {
         return;
     }
+    const avisData = new FormData();
+ 
+    avisData.append('avis', this.avisAddForum .get('avis').value);
+    avisData.append('descriptionavis', this.avisAddForum .get('descriptionavis').value);
+
+    
+    this.avisService.addTicket(avisData).subscribe(
+      (responseBody) => {
+      this.responseBodyProcess(responseBody); },
+      (error) => {  this.validationService.showValidationsMessagesInToast(error); });
+  
+
 
     // display form values on success
     alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.avisAddForum .value, null, 4));
+  }
+  private responseBodyProcess(responseBody) {
+    this.toasterService.pop('success', 'Ticket ajouté:', responseBody.message);
+    this.router.navigate(['/home/tickets/index']);
   }
 
 

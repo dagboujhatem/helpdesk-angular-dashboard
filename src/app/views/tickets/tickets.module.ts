@@ -14,6 +14,7 @@ import { TicketIndexAvisComponent } from './ticket-index-avis/ticket-index-avis.
 import { TicketIndexAvisAddComponent } from './ticket-index-avis-add/ticket-index-avis-add.component';
 import { TicketResoluIndexComponent } from './ticket-resolu-index/ticket-resolu-index.component';
 import { TicketRelanceIndexComponent } from './ticket-relance-index/ticket-relance-index.component';
+import { ShowAvisComponent } from './show-avis/show-avis.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { TicketRelanceIndexComponent } from './ticket-relance-index/ticket-relan
     TicketIndexAvisAddComponent,
     TicketResoluIndexComponent,
     TicketRelanceIndexComponent,
+    ShowAvisComponent,
   ],
   imports: [
     CommonModule,
