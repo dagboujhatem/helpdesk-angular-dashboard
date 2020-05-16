@@ -74,7 +74,8 @@
                 </a>
                 <a [routerLink]="['/home/tickets/relance/', ticket.reponse.id]" class="btn btn-danger btn-sm"
                    *ngIf="role !== null && role !== undefined && (role === 'Administrateur' || role === 'Personnel')
-                         && ticket.hasResponse === true && ticket.ticket_isRelanced === false">
+                         && ticket.hasResponse === true && ticket.ticket_isRelanced === false
+                         && ticket.ticket_status === false">
                   <i class="fa fa-refresh fa-white"></i> Relancer
                 </a>
               </div>
