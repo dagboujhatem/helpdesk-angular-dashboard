@@ -39,8 +39,6 @@ export class AppSidebarService {
         return item.url === '/home/dashboard'
         || item.name === 'Menu'
         || item.url === '/home/tickets/informaticien'
-        || item.url === '/home/tickets/informaticien/reponseapp/'
-        || item.url === '/home/tickets/informaticien/reponsemat/'
         || item.url === '/home/settings'
         || item.url === '/home/avis' ;
       });

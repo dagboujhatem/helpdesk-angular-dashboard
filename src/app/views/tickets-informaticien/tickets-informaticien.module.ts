@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import {TicketIndexRelancerInformaticienComponent} from './ticket-index-relancer-informaticien/ticket-index-relancer-informaticien.component';
-
 import {TicketIndexComponent} from './ticket-index/ticket-index.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DataTablesModule} from 'angular-datatables';
@@ -12,7 +10,6 @@ import {TicketReponseShowComponent} from './ticket-reponse-show/ticket-reponse-s
 
 @NgModule({
   declarations: [
-    TicketIndexRelancerInformaticienComponent,
     TicketIndexComponent,
     TicketReponseComponent,
     TicketReponseShowComponent

@@ -75,38 +75,8 @@ export const navItems: INavData[] = [
     icon: 'icon-credit-card'
   },
   {
-    name: 'Tickets applicatifs',
-    url: '/home/tickets/applicatifs',
-    icon: 'icon-list',
-  },
-  {
-    name: 'Tickets matériels',
-    url: '/home/tickets/materiels',
-    icon: 'icon-list',
-  },
-  {
-    name: 'Tickets relancés',
-    url: '/home/tickets/ticketsrelances',
-    icon: 'icon-list'
-  },
-  {
     name: 'Avis',
     url: '/home/avis',
-    icon: 'icon-list'
-  },
-  {
-    name: 'Mes tickets résolus',
-    url: '/home/tickets/indexresolu',
-    icon: 'icon-list'
-  },
-  {
-    name: 'Mes tickets relancés',
-    url: '/home/tickets/indexrelance',
-    icon: 'icon-list'
-  },
-  {
-    name: 'Tickets fournisseur',
-    url: '/home/tickets/indexreponseinfo',
     icon: 'icon-list'
   },
   {

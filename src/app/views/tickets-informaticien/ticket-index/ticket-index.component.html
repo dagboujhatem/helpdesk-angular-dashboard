@@ -10,6 +10,7 @@
         <thead>
           <tr>
             <th>Demandeur</th>
+            <th>Nouvelle anomalie</th>
             <th>Catégorie</th>
             <th>Objet</th>
             <th>Date d'ouverture</th>
@@ -22,6 +23,7 @@
         <tbody>
           <tr *ngFor="let ticket of ticketsData">
             <td>{{ticket.nom}}</td>
+            <td>{{ticket.nouvelle_anomalie}}</td>
             <td>{{ticket.categorie}}</td>
             <td>{{ticket.objet}}</td>
             <td>{{ticket.date_d_ouverture | date : 'dd-MM-yyyy hh:mm'}}</td>

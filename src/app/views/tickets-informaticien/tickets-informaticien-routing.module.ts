@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { TicketIndexRelancerInformaticienComponent } from './ticket-index-relancer-informaticien/ticket-index-relancer-informaticien.component';
 import { TicketIndexComponent } from './ticket-index/ticket-index.component';
 import {TicketReponseComponent} from './ticket-reponse/ticket-reponse.component';
 import {TicketReponseShowComponent} from './ticket-reponse-show/ticket-reponse-show.component';
@@ -36,13 +35,6 @@ const routes: Routes = [
         component: TicketReponseShowComponent,
         data: {
           title: 'Réponse du ticket'
-        }
-      },
-      {
-        path: 'ticketsrelances',
-        component: TicketIndexRelancerInformaticienComponent,
-        data: {
-          title: 'Liste des tickets relancés'
         }
       }
     ]
