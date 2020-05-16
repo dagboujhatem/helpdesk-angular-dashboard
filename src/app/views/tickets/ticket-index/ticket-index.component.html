@@ -67,6 +67,11 @@
                          && (ticket.etat === 'En retard' || ticket.etat === 'Clos') && ticket.hasAvis === false">
                   <i class="fa fa-plus"></i> Avis
                 </a>
+                <a [routerLink]="['/home/tickets/reponse/show/', ticket.reponse.id]" class="btn btn-primary btn-sm"
+                   *ngIf="role !== null && role !== undefined && (role === 'Administrateur' || role === 'Personnel')
+                         && ticket.hasResponse === true">
+                  <i class="fa fa-comment fa-white"></i> Réponse
+                </a>
               </div>
             </td>
           </tr>

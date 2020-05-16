@@ -13,6 +13,7 @@ import { TicketRelanceAddComponent } from './ticket-relance-add/ticket-relance-a
 import { AvisAddComponent } from './avis-add/avis-add.component';
 import { TicketResoluIndexComponent } from './ticket-resolu-index/ticket-resolu-index.component';
 import { TicketRelanceIndexComponent } from './ticket-relance-index/ticket-relance-index.component';
+import { TicketReponseShowComponent } from './ticket-reponse-show/ticket-reponse-show.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { TicketRelanceIndexComponent } from './ticket-relance-index/ticket-relan
     AvisAddComponent,
     TicketResoluIndexComponent,
     TicketRelanceIndexComponent,
+    TicketReponseShowComponent,
   ],
   imports: [
     CommonModule,

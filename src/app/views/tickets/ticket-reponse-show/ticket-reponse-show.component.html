@@ -1,0 +1,55 @@
+<div class="fade-in">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <form [formGroup]="ticketResponseShowForum">
+          <div class="card-header">
+            <strong>Réponse du ticket</strong>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <label for="nom_info">L'informaticien:</label>
+                      <input class="form-control" id="nom_info" type="text"
+                             formControlName="nom_info">
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="file">Piéce-jointe:</label>
+                      <br>
+                      <a *ngIf="ticketResponseData !== null && ticketResponseData !== undefined"
+                         href="{{ticketResponseData.file}}" target="_blank" class="btn btn-success btn-sm" id="file">
+                        <i class="fa fa-download"></i> Télécharger le fichier
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="description_solution">Description de la solution:</label>
+                  <textarea class="form-control" formControlName="description_solution" id="description_solution"
+                            name="description_solution" name="description_solution" rows="16">
+                  </textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="offset-sm-5 col-sm-3 offset-md-7 col-md-2">
+            </div>
+            <div class="col-sm-3 col-md-2 form-group form-actions">
+              <a routerLink="/home/tickets/index" class="btn btn-primary btn-pill btn-block">
+                <i class="cui-arrow-left icons"></i> Retour
+              </a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

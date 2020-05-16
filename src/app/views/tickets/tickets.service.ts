@@ -40,4 +40,9 @@ export class TicketsService {
   addAvis(avisData) {
     return  this.http.post(this.url + 'ticketAvis', avisData);
   }
+
+  // get ticket response by id
+  getTicketResponseById(id) {
+    return this.http.get(this.url + 'ticketResponses/' + id);
+  }
 }

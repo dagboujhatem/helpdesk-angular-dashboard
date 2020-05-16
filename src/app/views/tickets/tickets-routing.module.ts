@@ -9,6 +9,7 @@ import { AvisAddComponent } from './avis-add/avis-add.component';
 import { TicketRelanceAddComponent } from './ticket-relance-add/ticket-relance-add.component';
 import { TicketResoluIndexComponent } from './ticket-resolu-index/ticket-resolu-index.component';
 import { TicketRelanceIndexComponent } from './ticket-relance-index/ticket-relance-index.component';
+import {TicketReponseShowComponent} from './ticket-reponse-show/ticket-reponse-show.component';
 
 
 const routes: Routes = [
@@ -62,6 +63,13 @@ const routes: Routes = [
         component: AvisAddComponent,
         data: {
           title: 'Ajouter un avis'
+        }
+      },
+      {
+        path: 'reponse/show/:id',
+        component: TicketReponseShowComponent,
+        data: {
+          title: 'Réponse du ticket'
         }
       },
       {
