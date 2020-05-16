@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TicketIndexRelancerInformaticienComponent } from './ticket-index-relancer-informaticien/ticket-index-relancer-informaticien.component';
-import { TicketReponseIndexInformaticienComponent } from './ticket-reponse-index-informaticien/ticket-reponse-index-informaticien.component';
+import { TicketIndexComponent } from './ticket-index/ticket-index.component';
+import {TicketReponseComponent} from './ticket-reponse/ticket-reponse.component';
 
 
 const routes: Routes = [
@@ -16,17 +17,24 @@ const routes: Routes = [
         redirectTo: 'index'
       },
       {
-        path: 'indexreponseinformaticien',
-        component: TicketReponseIndexInformaticienComponent,
+        path: 'index',
+        component: TicketIndexComponent,
         data: {
-          title: 'Index des  tickets '
+          title: 'Liste des tickets'
+        }
+      },
+      {
+        path: 'reponse/:id',
+        component: TicketReponseComponent,
+        data: {
+          title: 'Répondre à un ticket'
         }
       },
       {
         path: 'ticketsrelances',
         component: TicketIndexRelancerInformaticienComponent,
         data: {
-          title: ' Liste des tickets relancés'
+          title: 'Liste des tickets relancés'
         }
       }
     ]

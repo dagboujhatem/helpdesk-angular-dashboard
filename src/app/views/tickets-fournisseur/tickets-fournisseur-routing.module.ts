@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TicketReponseFournisseurComponent } from './ticket-reponse-fournisseur/ticket-reponse-fournisseur.component';
-import { TicketIndexFournisseurComponent } from './ticket-index-fournisseur/ticket-index-fournisseur.component';
+import { TicketIndexComponent } from './ticket-index/ticket-index.component';
 
 const routes: Routes = [
   {
@@ -16,7 +16,7 @@ const routes: Routes = [
       },
       {
         path: 'index',
-        component: TicketIndexFournisseurComponent,
+        component: TicketIndexComponent,
         data: {
           title: 'Liste des tickets'
         }

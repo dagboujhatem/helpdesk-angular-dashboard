@@ -38,7 +38,7 @@ export class AppSidebarService {
       const filtredItems = this.navItems.filter((item) => {
         return item.url === '/home/dashboard'
         || item.name === 'Menu'
-        || item.url === '/home/tickets'
+        || item.url === '/home/tickets/informaticien'
         || item.url === '/home/tickets/informaticien/reponseapp/'
         || item.url === '/home/tickets/informaticien/reponsemat/'
         || item.url === '/home/settings'

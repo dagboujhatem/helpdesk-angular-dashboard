@@ -60,6 +60,11 @@ export const navItems: INavData[] = [
     icon: 'icon-credit-card'
   },
   {
+    name: 'Gestion des tickets',
+    url: '/home/tickets/informaticien',
+    icon: 'icon-credit-card'
+  },
+  {
     name: 'Mes tickets',
     url: '/home/tickets/index',
     icon: 'icon-list',

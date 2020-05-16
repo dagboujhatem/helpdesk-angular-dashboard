@@ -21,13 +21,8 @@ export class TicketInformaticienService {
     return this.http.get(this.url + 'tickets/' + id);
   }
 
-  // ajouter un réponse à un ticket materiel
-  addTicketMaterielResponse(ticketResponseData) {
-    return this.http.post(this.url + 'ticketResponse', ticketResponseData);
-  }
-
-  // ajouter un réponse à un ticket applicatif
-  addTicketApplicatifResponse(ticketResponseData) {
-    return this.http.post(this.url + 'ticketResponse', ticketResponseData);
+  // ajouter un réponse à un ticket
+  addTicketResponse(ticketResponseData) {
+    return this.http.post(this.url + 'ticketResponses', ticketResponseData);
   }
 }
