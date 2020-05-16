@@ -9,9 +9,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { TicketsRoutingModule } from './tickets-routing.module';
 import { TicketShowComponent } from './ticket-show/ticket-show.component';
 import {DataTablesModule} from 'angular-datatables';
-import { TicketRelanceAddComponent } from './ticket-relance-add/ticket-relance-add.component';
+import { TicketRelanceComponent } from './ticket-relance/ticket-relance.component';
 import { AvisAddComponent } from './avis-add/avis-add.component';
-import { TicketRelanceIndexComponent } from './ticket-relance-index/ticket-relance-index.component';
 import { TicketReponseShowComponent } from './ticket-reponse-show/ticket-reponse-show.component';
 
 @NgModule({
@@ -21,9 +20,8 @@ import { TicketReponseShowComponent } from './ticket-reponse-show/ticket-reponse
     TicketUpdateComponent,
     TicketPrioriteComponent,
     TicketShowComponent,
-    TicketRelanceAddComponent,
+    TicketRelanceComponent,
     AvisAddComponent,
-    TicketRelanceIndexComponent,
     TicketReponseShowComponent,
   ],
   imports: [

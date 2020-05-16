@@ -45,4 +45,9 @@ export class TicketsService {
   getTicketResponseById(id) {
     return this.http.get(this.url + 'ticketResponses/' + id);
   }
+
+  // get ticket response by id
+  relancerTicket(ticketID , ticketData) {
+    return this.http.post(this.url + 'tickets/relancer/' + ticketID, ticketData);
+  }
 }

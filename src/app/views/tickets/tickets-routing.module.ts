@@ -6,8 +6,7 @@ import {TicketUpdateComponent} from './ticket-update/ticket-update.component';
 import {TicketPrioriteComponent} from './ticket-priorite/ticket-priorite.component';
 import {TicketShowComponent} from './ticket-show/ticket-show.component';
 import { AvisAddComponent } from './avis-add/avis-add.component';
-import { TicketRelanceAddComponent } from './ticket-relance-add/ticket-relance-add.component';
-import { TicketRelanceIndexComponent } from './ticket-relance-index/ticket-relance-index.component';
+import { TicketRelanceComponent } from './ticket-relance/ticket-relance.component';
 import {TicketReponseShowComponent} from './ticket-reponse-show/ticket-reponse-show.component';
 
 
@@ -72,17 +71,10 @@ const routes: Routes = [
         }
       },
       {
-        path: 'relance',
-        component:  TicketRelanceAddComponent,
+        path: 'relance/:id',
+        component: TicketRelanceComponent,
         data: {
           title: 'relancer'
-        }
-      },
-      {
-        path: 'indexrelance',
-        component:     TicketRelanceIndexComponent,
-        data: {
-          title: 'Répondre'
         }
       }
     ]
