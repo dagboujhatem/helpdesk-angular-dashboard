@@ -38,14 +38,14 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <label for="descriptionavis">Description:</label>
-                                    <textarea class="form-control" formControlName="descriptionavis" id="descriptionavis"
-                                        name="descriptionavis"  rows="16"
+                                    <label for="description">Description:</label>
+                                    <textarea class="form-control" formControlName="description" id="description"
+                                        name="description"  rows="16"
                                         placeholder="Saisissez la description ici ..."
-                                        [ngClass]="{ 'is-invalid': submitted && f.descriptionavis.errors }">
+                                        [ngClass]="{ 'is-invalid': submitted && f.description.errors }">
                                     </textarea>
-                                    <div *ngIf="submitted && f.descriptionavis.errors" class="invalid-feedback d-block">
-                                        <div *ngIf="f.descriptionavis.errors.required">Le champ description est obligatoire.
+                                    <div *ngIf="submitted && f.description.errors" class="invalid-feedback d-block">
+                                        <div *ngIf="f.description.errors.required">Le champ description est obligatoire.
                                         </div>
                                     </div>
                                 </div>
@@ -54,7 +54,7 @@
                     </div>
                     <div class="row">
                         <div class="offset-sm-5 col-sm-3 offset-md-7 col-md-2">
-                          <a routerLink="/home/tickets/avis/index" class="btn btn-primary btn-pill btn-block">
+                          <a routerLink="/home/tickets/index" class="btn btn-primary btn-pill btn-block">
                             <i class="cui-arrow-left icons"></i> Retour
                           </a>
                         </div>

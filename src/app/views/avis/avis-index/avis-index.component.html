@@ -1,0 +1,51 @@
+<div class="animated fadeIn">
+    <div class="card">
+      <div class="card-header">
+        Liste des avis
+      </div>
+      <div class="card-body">
+        <div class="row mb-3">
+          <div class="col-lg-4 offset-lg-8 col-md-5 offset-md-7 col-sm-6 offset-sm-6">
+          </div>
+        </div>
+        <table class="table table-striped table-hover table-responsive-lg"
+               datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+          <thead>
+          <tr>
+            <th>Nom et prénom</th>
+            <th>Département</th>
+            <th>Catégorie</th>
+            <th>Lieu</th>
+            <th>Avis</th>
+            <th>Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let avis of avisData">
+            <td>{{avis.ticket.nom}}</td>
+            <td>{{avis.ticket.departement}}</td>
+            <td>{{avis.ticket.categorie}}</td>
+            <td>{{avis.ticket.lieu}}</td>
+            <td>
+              <span class="badge badge-success text-white" *ngIf="avis.avis === 'Satisfait'">
+                {{avis.avis}}
+              </span>
+              <span class="badge badge-info text-white" *ngIf="avis.avis === 'Normal'">
+              {{avis.avis}}
+              </span>
+              <span class="badge badge-danger text-white" *ngIf="avis.avis === 'Insatisfait'">
+              {{avis.avis}}
+              </span>
+            </td>
+            <td>
+              <a [routerLink]="['/home/avis/show', avis.id]" class="btn btn-info btn-sm">
+                <i class="fa fa-eye fa-white"></i>
+              </a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>

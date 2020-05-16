@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { TicketsService } from '../tickets.service';
+import {AvisService} from '../avis.service';
 
 @Component({
   selector: 'app-avis-show',
@@ -14,23 +14,30 @@ export class AvisShowComponent implements OnInit {
  showAvisForm: FormGroup;
   constructor(private route: ActivatedRoute,
               private formBuilder: FormBuilder,
-              private ticketservice : TicketsService) { }
+              private avisService: AvisService) { }
 
   ngOnInit(): void {
-    this.showAvisForm= this.formBuilder.group({
+    this.showAvisForm = this.formBuilder.group({
       nom: [{value: '', disabled: true}, ],
       departement: [{value: '', disabled: true}, ],
       avis: [{value: '', disabled: true}, ],
       description: [{value: '', disabled: true}, ],
     });
     this.avisID = this.route.snapshot.paramMap.get('id');
-    this.ticketservice.getavisById(this.avisID).subscribe(
+    this.avisService.getAvistById(this.avisID).subscribe(
       (bodyResponse) => { this.loadAvisData(bodyResponse); });
   }
 
   loadAvisData(bodyResponse) {
     const data = bodyResponse.data;
-    this.showAvisForm.patchValue(data);
+    // pour ne pas une 2éme requete pour charger les informations d'une ticket
+    const formData = {
+      nom:  data.ticket.nom,
+      departement: data.ticket.departement,
+      avis: data.avis,
+      description: data.description
+    };
+    this.showAvisForm.patchValue(formData);
   }
 
 }

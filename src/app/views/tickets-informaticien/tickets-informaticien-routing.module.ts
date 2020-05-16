@@ -15,28 +15,20 @@ const routes: Routes = [
         path: '',
         redirectTo: 'index'
       },
-     
-      
-      {
-        path: 'ticketsrelances',
-        component: TicketIndexRelancerInformaticienComponent,
-        data: {
-          title: ' Liste des tickets relancés'
-        }
-
-      },
-
-     
       {
         path: 'indexreponseinformaticien',
         component: TicketReponseIndexInformaticienComponent,
         data: {
           title: 'Index des  tickets '
         }
-
+      },
+      {
+        path: 'ticketsrelances',
+        component: TicketIndexRelancerInformaticienComponent,
+        data: {
+          title: ' Liste des tickets relancés'
+        }
       }
-
-
     ]
   }
 ];

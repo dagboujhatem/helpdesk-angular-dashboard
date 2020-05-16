@@ -3,43 +3,36 @@
         <div class="col-sm-12">
             <div class="card">
                 <form [formGroup]="showAvisForm">
-                    <div class="card-header"><strong>Avis:</strong> </div>
+                    <div class="card-header">
+                      <strong>Avis:</strong>
+                    </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="row">
                                     <div class="col-sm-12">
-
                                         <div class="form-group">
                                             <label for="nom">Nom et prénom:</label>
-                                            <input class="form-control" formControlName="nom" id="nom" type="text"
-                                                readonly>
-
+                                            <input class="form-control" formControlName="nom" id="nom" type="text">
                                         </div>
                                     </div>
-                                   
-
-
-
                                     <div class="col-sm-12">
                                         <div class="form-group">
                                             <label for="departement">Département:</label>
-                                            <input class="form-control" id="departement" type="text" readonly>
+                                            <input class="form-control" id="departement" formControlName="departement"
+                                                   type="text">
                                         </div>
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="form-group">
                                             <label for="avis">Avis:</label>
                                             <select class="form-control" id="avis" formControlName="avis">
-                                                <option value="Satisfait"> Satisfait</option>
+                                                <option value="Satisfait">Satisfait</option>
                                                 <option value="Normal">Normal</option>
                                                 <option value="Insatisfait">Insatisfait</option>
                                             </select>
-
                                         </div>
                                     </div>
-
-
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -48,7 +41,6 @@
                                     <textarea class="form-control" formControlName="description" id="description"
                                         name="description" name="description" rows="16">
                                     </textarea>
-
                                 </div>
                             </div>
                         </div>
@@ -57,7 +49,7 @@
                         <div class="offset-sm-5 col-sm-3 offset-md-7 col-md-2">
                         </div>
                         <div class="col-sm-3 col-md-2 form-group form-actions">
-                            <a routerLink="/home/tickets/indexavis" class="btn btn-primary btn-pill btn-block">
+                            <a routerLink="/home/avis" class="btn btn-primary btn-pill btn-block">
                                 <i class="cui-arrow-left icons"></i> Retour
                             </a>
                         </div>

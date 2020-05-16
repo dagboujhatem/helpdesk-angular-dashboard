@@ -6,11 +6,9 @@ import {TicketUpdateComponent} from './ticket-update/ticket-update.component';
 import {TicketPrioriteComponent} from './ticket-priorite/ticket-priorite.component';
 import {TicketShowComponent} from './ticket-show/ticket-show.component';
 import { AvisAddComponent } from './avis-add/avis-add.component';
-import { AvisIndexComponent } from './avis-index/avis-index.component';
 import { TicketRelanceAddComponent } from './ticket-relance-add/ticket-relance-add.component';
 import { TicketResoluIndexComponent } from './ticket-resolu-index/ticket-resolu-index.component';
 import { TicketRelanceIndexComponent } from './ticket-relance-index/ticket-relance-index.component';
-import { AvisShowComponent } from './avis-show/avis-show.component';
 
 
 const routes: Routes = [
@@ -60,24 +58,10 @@ const routes: Routes = [
         }
       },
       {
-        path: 'avis/add',
+        path: 'avis/add/:ticketID',
         component: AvisAddComponent,
         data: {
           title: 'Ajouter un avis'
-        }
-      },
-      {
-        path: 'avis/index',
-        component:  AvisIndexComponent,
-        data: {
-          title: 'Liste des avis'
-        }
-      },
-      {
-        path: 'avis/show/:id',
-        component:  AvisShowComponent,
-        data: {
-          title: 'Détails d\'une avis'
         }
       },
       {

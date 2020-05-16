@@ -66,6 +66,10 @@ export const routes: Routes = [
         loadChildren: () => import('./views/tickets/tickets.module').then(m => m.TicketsModule)
       },
       {
+        path: 'avis',
+        loadChildren: () => import('./views/avis/avis.module').then(m => m.AvisModule)
+      },
+      {
         path: 'tickets/informaticien',
         loadChildren: () => import('./views/tickets-informaticien/tickets-informaticien.module')
           .then(m => m.TicketsInformaticienModule)

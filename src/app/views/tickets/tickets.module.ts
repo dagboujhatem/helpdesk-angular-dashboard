@@ -10,11 +10,9 @@ import { TicketsRoutingModule } from './tickets-routing.module';
 import { TicketShowComponent } from './ticket-show/ticket-show.component';
 import {DataTablesModule} from 'angular-datatables';
 import { TicketRelanceAddComponent } from './ticket-relance-add/ticket-relance-add.component';
-import { AvisIndexComponent } from './avis-index/avis-index.component';
 import { AvisAddComponent } from './avis-add/avis-add.component';
 import { TicketResoluIndexComponent } from './ticket-resolu-index/ticket-resolu-index.component';
 import { TicketRelanceIndexComponent } from './ticket-relance-index/ticket-relance-index.component';
-import { AvisShowComponent } from './avis-show/avis-show.component';
 
 @NgModule({
   declarations: [
@@ -24,11 +22,9 @@ import { AvisShowComponent } from './avis-show/avis-show.component';
     TicketPrioriteComponent,
     TicketShowComponent,
     TicketRelanceAddComponent,
-    AvisIndexComponent,
     AvisAddComponent,
     TicketResoluIndexComponent,
     TicketRelanceIndexComponent,
-    AvisShowComponent,
   ],
   imports: [
     CommonModule,

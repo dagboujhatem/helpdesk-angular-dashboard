@@ -81,7 +81,7 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Avis',
-    url: '/home/tickets/avis/index',
+    url: '/home/avis',
     icon: 'icon-list'
   },
   {
