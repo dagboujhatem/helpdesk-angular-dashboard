@@ -11,7 +11,6 @@ import { TicketShowComponent } from './ticket-show/ticket-show.component';
 import {DataTablesModule} from 'angular-datatables';
 import { TicketRelanceAddComponent } from './ticket-relance-add/ticket-relance-add.component';
 import { AvisAddComponent } from './avis-add/avis-add.component';
-import { TicketResoluIndexComponent } from './ticket-resolu-index/ticket-resolu-index.component';
 import { TicketRelanceIndexComponent } from './ticket-relance-index/ticket-relance-index.component';
 import { TicketReponseShowComponent } from './ticket-reponse-show/ticket-reponse-show.component';
 
@@ -24,7 +23,6 @@ import { TicketReponseShowComponent } from './ticket-reponse-show/ticket-reponse
     TicketShowComponent,
     TicketRelanceAddComponent,
     AvisAddComponent,
-    TicketResoluIndexComponent,
     TicketRelanceIndexComponent,
     TicketReponseShowComponent,
   ],

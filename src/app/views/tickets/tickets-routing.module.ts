@@ -7,7 +7,6 @@ import {TicketPrioriteComponent} from './ticket-priorite/ticket-priorite.compone
 import {TicketShowComponent} from './ticket-show/ticket-show.component';
 import { AvisAddComponent } from './avis-add/avis-add.component';
 import { TicketRelanceAddComponent } from './ticket-relance-add/ticket-relance-add.component';
-import { TicketResoluIndexComponent } from './ticket-resolu-index/ticket-resolu-index.component';
 import { TicketRelanceIndexComponent } from './ticket-relance-index/ticket-relance-index.component';
 import {TicketReponseShowComponent} from './ticket-reponse-show/ticket-reponse-show.component';
 
@@ -77,13 +76,6 @@ const routes: Routes = [
         component:  TicketRelanceAddComponent,
         data: {
           title: 'relancer'
-        }
-      },
-      {
-        path: 'indexresolu',
-        component:      TicketResoluIndexComponent,
-        data: {
-          title: 'Répondre'
         }
       },
       {
