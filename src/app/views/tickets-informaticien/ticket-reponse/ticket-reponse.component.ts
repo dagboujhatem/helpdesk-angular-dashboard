@@ -19,6 +19,7 @@ export class TicketReponseComponent implements OnInit {
   ticketDetailsForum: FormGroup;
   ticketCategory = null;
   selectedFile = null;
+  ticketData = null;
 
   constructor(private formBuilder: FormBuilder,
               private ticketInformaticienService: TicketInformaticienService,
@@ -64,6 +65,7 @@ export class TicketReponseComponent implements OnInit {
     this.ticketDetailsForum.patchValue(data);
     this.file = data.file;
     this.ticketCategory = data.categorie;
+    this.ticketData = data;
   }
 
   // convenience getter for easy access to form fields
@@ -98,9 +100,38 @@ export class TicketReponseComponent implements OnInit {
         this.responseBodyProcess(responseBody); },
       (error) => {  this.validationService.showValidationsMessagesInToast(error); });
   }
+
   private responseBodyProcess(responseBody) {
     this.toasterService.pop('success', 'Réponse ajouté:', responseBody.message);
-    this.router.navigate(['/home/tickets/index']);
+    this.router.navigate(['/home/tickets/informaticien/index']);
+  }
+
+  envoyerFournisseur() {
+    const ticketData = new FormData();
+    ticketData.append('_method', 'put');
+    ticketData.append('file', this.ticketData.file);
+    ticketData.append('objet', this.ticketData.objet);
+    ticketData.append('element', this.ticketData.element);
+    ticketData.append('nom', this.ticketData.nom);
+    ticketData.append('date_d_ouverture', this.ticketData.date_d_ouverture);
+    ticketData.append('date_d_echeance', this.ticketData.date_d_echeance);
+    ticketData.append('categorie', this.ticketData.categorie);
+    ticketData.append('impact', this.ticketData.impact);
+    ticketData.append('etat', this.ticketData.etat);
+    ticketData.append('departement', this.ticketData.departement);
+    ticketData.append('num_agence', this.ticketData.num_agence);
+    ticketData.append('commentaire', this.ticketData.commentaire);
+    ticketData.append('lieu', this.ticketData.lieu);
+    ticketData.append('description', this.ticketData.description);
+    // send to fournisseur data
+    ticketData.append('send_to_fournisseur', '1');
+
+    this.ticketInformaticienService.sendFournisseur(this.ticketID, ticketData)
+      .subscribe((bodyResponse) => {
+        this.toasterService.pop('success', 'Ticket envoyé:',
+          'Cette ticket est envoyé au fournisseur.');
+        this.router.navigate(['/home/tickets/informaticien/index']);
+      });
   }
 
 }

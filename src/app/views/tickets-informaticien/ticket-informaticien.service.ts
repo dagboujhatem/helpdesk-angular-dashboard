@@ -25,4 +25,9 @@ export class TicketInformaticienService {
   addTicketResponse(ticketResponseData) {
     return this.http.post(this.url + 'ticketResponses', ticketResponseData);
   }
+
+  // envoyer vers le fournisseur
+  sendFournisseur(ticketID, ticketData) {
+    return this.http.post(this.url + 'tickets/' + ticketID, ticketData);
+  }
 }
