@@ -21,8 +21,8 @@ export class TicketFournisseurService {
     return this.http.get(this.url + 'tickets/' + id);
   }
 
-  // ajouter la réponse du fournisseur (relative à une ticket matériels)
-  addResponseFournisseur(ticketResponseData) {
-    return this.http.post(this.url + 'ticketResponse', ticketResponseData);
+  // ajouter la réponse du fournisseur (relative à une ticket)
+  addTicketResponse(ticketResponseData) {
+    return this.http.post(this.url + 'ticketResponses', ticketResponseData);
   }
 }

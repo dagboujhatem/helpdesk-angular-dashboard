@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { TicketReponseFournisseurComponent } from './ticket-reponse-fournisseur/ticket-reponse-fournisseur.component';
+import { TicketReponseComponent } from './ticket-reponse/ticket-reponse.component';
 import { TicketIndexComponent } from './ticket-index/ticket-index.component';
 
 const routes: Routes = [
@@ -23,7 +23,7 @@ const routes: Routes = [
       },
       {
         path: 'reponse/:id',
-        component: TicketReponseFournisseurComponent,
+        component: TicketReponseComponent,
         data: {
           title: 'Répondre à un ticket'
         }

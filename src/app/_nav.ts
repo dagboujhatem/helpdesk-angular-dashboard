@@ -67,7 +67,12 @@ export const navItems: INavData[] = [
   {
     name: 'Mes tickets',
     url: '/home/tickets/index',
-    icon: 'icon-list',
+    icon: 'icon-credit-card',
+  },
+  {
+    name: 'Gestion des tickets',
+    url: '/home/tickets/fournisseur',
+    icon: 'icon-credit-card'
   },
   {
     name: 'Tickets applicatifs',
@@ -99,12 +104,6 @@ export const navItems: INavData[] = [
     url: '/home/tickets/indexrelance',
     icon: 'icon-list'
   },
-  {
-    name: 'Bna Bank',
-    url: '/home/tickets/fournisseur',
-    icon: 'icon-list'
-  },
-
   {
     name: 'Tickets fournisseur',
     url: '/home/tickets/indexreponseinfo',

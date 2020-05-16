@@ -2,59 +2,54 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="card">
-                <div class="card-header"><strong>Bna Bank</strong> </div>
-                <div class="card-body">
-
-
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <label for="name"> L'informaticien</label>
-                            <input class="form-control" id="name" type="text" readonly>
-                        </div>
-                    </div>
-
-
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <label for="element"> Élément</label>
-                            <input class="form-control" id="element" type="text" readonly>
-                        </div>
-                    </div>
-
-
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <label for="impact">Impact:</label>
-                            <select class="form-control" id="impact" readonly>
-                                <option value="Élevé">Élevé</option>
-                                <option value="Normale">Normale</option>
-                                <option value="Bas">Bas</option>
-                                <option value="Trés bas">Trés bas</option>
-                            </select>
-                        </div>
-                    </div>
-
-
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <label for="name"> Description du problème</label>
-                            <textarea class="form-control" id="description" name="description" name="description"
-                                rows="4.5" readonly>
-                            </textarea>
-                        </div>
-                    </div>
-
-
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                            <label for="file">Piéce-jointe:</label>
-                            <input class="form-control-file" id="file" type="file">
-
-                        </div>
-                    </div>
-
-
+                <div class="card-header">
+                  <strong>BNA Bank</strong>
                 </div>
+                <form [formGroup]="ticketDetailsForum">
+                  <div class="card-body">
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <label for="categorie">Catégorie:</label>
+                        <input class="form-control" formControlName="categorie" id="categorie" type="text" >
+                      </div>
+                    </div>
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <label for="element">Élément:</label>
+                        <input class="form-control"  formControlName="element" id="element" type="text">
+                      </div>
+                    </div>
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <label for="impact">Impact:</label>
+                        <select class="form-control" formControlName="impact" id="impact" >
+                          <option value="Élevé">Élevé</option>
+                          <option value="Normale">Normale</option>
+                          <option value="Bas">Bas</option>
+                          <option value="Trés bas">Trés bas</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <label for="description_ticket"> Description du problème</label>
+                        <textarea class="form-control" formControlName="description"
+                                  id="description_ticket" rows="4.5">
+                            </textarea>
+                      </div>
+                    </div>
+                    <div class="col-sm-12">
+                      <div class="form-group">
+                        <label for="file_ticket">Piéce-jointe:</label>
+                        <br>
+                        <a *ngIf="ticketData !== null && ticketData !== undefined"
+                            href="{{ticketData.file}}" target="_blank" class="btn btn-success btn-sm" id="file_ticket">
+                          <i class="fa fa-download"></i> Télécharger le fichier
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </form>
             </div>
         </div>
     </div>
@@ -64,19 +59,20 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="card">
-                <form [formGroup]="reponseFrsAddForum" (ngSubmit)="onSubmit()">
-                    <div class="card-header"><strong>Espace fournisseur </strong> </div>
+                <form [formGroup]="ticketReponseForum" (ngSubmit)="onSubmit()">
+                    <div class="card-header">
+                      <strong>Espace fournisseur </strong>
+                    </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="row">
-
                                     <div class="col-sm-12">
-
                                         <div class="form-group">
                                             <label for="observateur">L'observateur:</label>
                                             <input class="form-control" id="observateur" type="text"
-                                                placeholder="Saisissez le observateur et le préobservateur ici"
+                                                   formControlName="observateur"
+                                                   placeholder="Saisissez le observateur et le préobservateur ici"
                                                 [ngClass]="{ 'is-invalid': submitted && f.observateur.errors }">
                                             <div *ngIf="submitted && f.observateur.errors"
                                                 class="invalid-feedback d-block">
@@ -86,8 +82,6 @@
                                             </div>
                                         </div>
                                     </div>
-
-
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="file">Piéce-jointe:</label>
@@ -101,8 +95,6 @@
                                             </div>
                                         </div>
                                     </div>
-
-
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -124,7 +116,7 @@
                     </div>
                     <div class="row">
                         <div class="offset-sm-5 col-sm-3 offset-md-7 col-md-2">
-                            <a routerLink="/home/tickets/materiels" class="btn btn-primary btn-pill btn-block">
+                            <a routerLink="/home/tickets/fournisseur/index" class="btn btn-primary btn-pill btn-block">
                                 <i class="cui-arrow-left icons"></i> Retour
                             </a>
                         </div>
