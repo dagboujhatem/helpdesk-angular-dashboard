@@ -25,4 +25,9 @@ export class TicketFournisseurService {
   addTicketResponse(ticketResponseData) {
     return this.http.post(this.url + 'ticketResponses', ticketResponseData);
   }
+
+  // get ticket response by id
+  getTicketResponseById(id) {
+    return this.http.get(this.url + 'ticketResponses/' + id);
+  }
 }

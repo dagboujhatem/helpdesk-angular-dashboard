@@ -30,4 +30,9 @@ export class TicketInformaticienService {
   sendFournisseur(ticketID, ticketData) {
     return this.http.post(this.url + 'tickets/' + ticketID, ticketData);
   }
+
+  // get ticket response by id
+  getTicketResponseById(id) {
+    return this.http.get(this.url + 'ticketResponses/' + id);
+  }
 }

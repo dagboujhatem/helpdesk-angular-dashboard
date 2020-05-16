@@ -5,11 +5,13 @@ import {TicketIndexComponent} from './ticket-index/ticket-index.component';
 import {TicketsFournisseurRoutingModule} from './tickets-fournisseur-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DataTablesModule} from 'angular-datatables';
+import {TicketReponseShowComponent} from './ticket-reponse-show/ticket-reponse-show.component';
 
 @NgModule({
   declarations: [
     TicketReponseComponent,
     TicketIndexComponent,
+    TicketReponseShowComponent,
   ],
   imports: [
     CommonModule,

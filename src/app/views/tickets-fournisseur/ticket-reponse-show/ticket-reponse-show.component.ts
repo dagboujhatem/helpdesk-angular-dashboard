@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
-import {TicketsService} from '../tickets.service';
+import {TicketFournisseurService} from '../ticket-fournisseur.service';
 
 @Component({
   selector: 'app-ticket-reponse-show',
@@ -15,7 +15,7 @@ export class TicketReponseShowComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private ticketsService: TicketsService,
+    private ticketFournisseurService: TicketFournisseurService,
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -30,7 +30,7 @@ export class TicketReponseShowComponent implements OnInit {
   }
 
   loadResponse() {
-      this.ticketsService.getTicketResponseById(this.responseID)
+      this.ticketFournisseurService.getTicketResponseById(this.responseID)
         .subscribe((bodyResponse) => { this.loadTicketResponseDataFromBodyResponse(bodyResponse); });
   }
 

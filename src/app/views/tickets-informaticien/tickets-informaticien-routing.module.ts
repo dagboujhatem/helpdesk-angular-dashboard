@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { TicketIndexRelancerInformaticienComponent } from './ticket-index-relancer-informaticien/ticket-index-relancer-informaticien.component';
 import { TicketIndexComponent } from './ticket-index/ticket-index.component';
 import {TicketReponseComponent} from './ticket-reponse/ticket-reponse.component';
+import {TicketReponseShowComponent} from './ticket-reponse-show/ticket-reponse-show.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,13 @@ const routes: Routes = [
         component: TicketReponseComponent,
         data: {
           title: 'Répondre à un ticket'
+        }
+      },
+      {
+        path: 'reponse/show/:id',
+        component: TicketReponseShowComponent,
+        data: {
+          title: 'Réponse du ticket'
         }
       },
       {
