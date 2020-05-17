@@ -14,7 +14,7 @@ export class TicketRelanceComponent implements OnInit {
   ticketRelanceForm: FormGroup;
   submitted = false;
   ticketID = null ;
-  priorite = null ;
+  ticketData = null ;
   selectedFile = null;
 
   constructor(private formBuilder: FormBuilder,
@@ -48,8 +48,10 @@ export class TicketRelanceComponent implements OnInit {
 
   loadTicketData(bodyResponse) {
     const data = bodyResponse.data;
-    this.priorite = data.priorite;
-    this.ticketRelanceForm.patchValue(data);
+    this.ticketData = data;
+    // update etat to ouvert
+    this.ticketData.etat = 'Ouvert';
+    this.ticketRelanceForm.patchValue(this.ticketData);
   }
 
   // convenience getter for easy access to form fields
@@ -80,13 +82,22 @@ export class TicketRelanceComponent implements OnInit {
     ticketData.append(' categorie', this.ticketRelanceForm.get('categorie').value);
     ticketData.append(' impact', this.ticketRelanceForm.get('impact').value);
     ticketData.append(' etat', this.ticketRelanceForm.get('etat').value);
-    ticketData.append(' departement', this.ticketRelanceForm.get('departement').value);
-    ticketData.append(' num_agence', this.ticketRelanceForm.get('num_agence').value);
-    ticketData.append(' commentaire', this.ticketRelanceForm.get('commentaire').value);
+    // not required parametres
+    if (this.ticketData.departement !== null && this.ticketData.departement !== undefined) {
+      ticketData.append(' departement', this.ticketRelanceForm.get('departement').value);
+    }
+    if (this.ticketData.num_agence !== null && this.ticketData.num_agence !== undefined) {
+      ticketData.append(' num_agence', this.ticketRelanceForm.get('num_agence').value);
+    }
+    if (this.ticketData.commentaire !== null && this.ticketData.commentaire !== undefined) {
+      ticketData.append(' commentaire', this.ticketRelanceForm.get('commentaire').value);
+    }
     ticketData.append(' lieu', this.ticketRelanceForm.get('lieu').value);
     ticketData.append(' description', this.ticketRelanceForm.get('description').value);
+    // add user id
+    ticketData.append(' user_id', this.ticketData.user_id);
     // priorite
-    ticketData.append(' priorite', this.priorite);
+    ticketData.append(' priorite', this.ticketData.priorite);
     // nouvelle_anomalie
     ticketData.append(' nouvelle_anomalie', this.ticketRelanceForm.get('nouvelle_anomalie').value);
     ticketData.append(' ticket_status', '1');
