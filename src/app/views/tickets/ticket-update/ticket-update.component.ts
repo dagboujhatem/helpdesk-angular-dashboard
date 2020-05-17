@@ -33,7 +33,7 @@ export class TicketUpdateComponent implements OnInit {
       objet: ['', Validators.required],
       element: ['', Validators.required],
       nom: ['', Validators.required],
-      etat: ['', Validators.required],
+      etat: [{value: '', disabled: true}, Validators.required],
       date_d_ouverture: ['', Validators.required],
       date_d_echeance: ['', Validators.required],
       categorie: ['', Validators.required],

@@ -55,7 +55,7 @@
                 <a [routerLink]="['/home/tickets/show/', ticket.id]" class="btn btn-info btn-sm">
                   <i class="fa fa-eye fa-white"></i>
                 </a>
-                <a [routerLink]="['/home/tickets/update/', ticket.id]" class="btn btn-warning btn-sm">
+                <a *ngIf="ticket.hasResponse === false" [routerLink]="['/home/tickets/update/', ticket.id]" class="btn btn-warning btn-sm">
                   <i class="fa fa-edit fa-white"></i>
                 </a>
                 <a *ngIf="role !== null && role !== undefined && role === 'Administrateur' && ticket.priorite == null"

@@ -34,7 +34,7 @@ export class TicketRelanceComponent implements OnInit {
       date_d_echeance: ['', [Validators.required]],
       categorie: ['', [Validators.required]],
       impact: ['', [Validators.required]],
-      etat: ['', [Validators.required]],
+      etat: [{value: 'Ouvert', disabled: true}, [Validators.required]],
       departement: ['', ],
       num_agence: ['', ],
       commentaire: ['', ],
@@ -49,7 +49,6 @@ export class TicketRelanceComponent implements OnInit {
   loadTicketData(bodyResponse) {
     const data = bodyResponse.data;
     this.priorite = data.priorite;
-    console.log(this.priorite);
     this.ticketRelanceForm.patchValue(data);
   }
 
