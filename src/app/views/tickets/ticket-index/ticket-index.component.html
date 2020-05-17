@@ -55,7 +55,8 @@
                 <a [routerLink]="['/home/tickets/show/', ticket.id]" class="btn btn-info btn-sm">
                   <i class="fa fa-eye fa-white"></i>
                 </a>
-                <a *ngIf="ticket.hasResponse === false" [routerLink]="['/home/tickets/update/', ticket.id]" class="btn btn-warning btn-sm">
+                <a *ngIf="ticket.hasResponse === false && ticket.priorite === null && ticket.editable === true"
+                   [routerLink]="['/home/tickets/update/', ticket.id]" class="btn btn-warning btn-sm">
                   <i class="fa fa-edit fa-white"></i>
                 </a>
                 <a *ngIf="role !== null && role !== undefined && role === 'Administrateur' && ticket.priorite == null"
@@ -64,7 +65,8 @@
                 </a>
                 <a [routerLink]="['/home/tickets/avis/add/', ticket.id]" class="btn btn-primary btn-sm"
                    *ngIf="role !== null && role !== undefined && (role === 'Administrateur' || role === 'Personnel')
-                         && (ticket.etat === 'En retard' || ticket.etat === 'Clos') && ticket.hasAvis === false">
+                         && (ticket.etat === 'En retard' || ticket.etat === 'Clos') && ticket.hasAvis === false
+                          && ticket.enable_avis === true">
                   <i class="fa fa-plus"></i> Avis
                 </a>
                 <a [routerLink]="['/home/tickets/reponse/show/', ticket.reponse.id]" class="btn btn-primary btn-sm"
@@ -75,7 +77,7 @@
                 <a [routerLink]="['/home/tickets/relance/', ticket.reponse.id]" class="btn btn-danger btn-sm"
                    *ngIf="role !== null && role !== undefined && (role === 'Administrateur' || role === 'Personnel')
                          && ticket.hasResponse === true && ticket.ticket_isRelanced === false
-                         && ticket.ticket_status === false">
+                         && ticket.ticket_status === false && ticket.enable_relancer === true">
                   <i class="fa fa-refresh fa-white"></i> Relancer
                 </a>
               </div>
