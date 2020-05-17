@@ -48,7 +48,9 @@
                    class="btn btn-success btn-sm text-white">
                   <i class="fa fa-share fa-white"></i> Répondre
                 </a>
-                <a [routerLink]="['/home/tickets/informaticien/reponse/show/', ticket.reponse.id]" class="btn btn-primary btn-sm"
+                <a [routerLink]="['/home/tickets/informaticien/reponse/show/', ticket.reponse.id]"
+                   class="btn btn-sm" [ngClass]="{'btn-primary' : ticket.send_to_fournisseur === true ,
+                    'btn-danger' : ticket.send_to_fournisseur === false }"
                    *ngIf="ticket.hasResponse === true"><i class="fa fa-comment fa-white"></i> Réponse
                 </a>
             </td>
