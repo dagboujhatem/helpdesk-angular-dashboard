@@ -4,6 +4,7 @@ import {ToasterService} from 'angular2-toaster';
 import {Router} from '@angular/router';
 import {TicketsService} from '../tickets.service';
 import {ValidationService} from '../../common/utils/validation.service';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-ticket-add',
@@ -15,12 +16,16 @@ export class TicketAddComponent implements OnInit {
   ticketAddForm: FormGroup;
   submitted = false;
   selectedFile = null;
+  currentDateString: string;
 
   constructor(private formBuilder: FormBuilder,
               private ticketService: TicketsService,
               private toasterService: ToasterService,
               private validationService: ValidationService,
-              private router: Router) { }
+              private router: Router,
+              private datePipe: DatePipe) {
+    this.currentDateString = datePipe.transform(Date.now(), 'yyyy-MM-ddTHH:mm', 'UTC+1');
+  }
 
 
   ngOnInit() {
@@ -28,8 +33,8 @@ export class TicketAddComponent implements OnInit {
         objet: ['', [Validators.required]],
         element: ['', [Validators.required]],
         nom: ['', [Validators.required]],
-        date_d_ouverture: ['', [Validators.required]],
-        date_d_echeance: ['', [Validators.required]],
+        date_d_ouverture: [this.currentDateString, [Validators.required]],
+        date_d_echeance: [this.currentDateString, [Validators.required]],
         categorie: ['', [Validators.required]],
         impact: ['', [Validators.required]],
         etat: [{value: 'Ouvert', disabled: true}, [Validators.required]],

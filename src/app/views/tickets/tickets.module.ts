@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, DatePipe} from '@angular/common';
 import {TicketIndexComponent} from './ticket-index/ticket-index.component';
 import {TicketAddComponent} from './ticket-add/ticket-add.component';
 import {TicketUpdateComponent} from './ticket-update/ticket-update.component';
@@ -30,6 +30,7 @@ import { TicketReponseShowComponent } from './ticket-reponse-show/ticket-reponse
     FormsModule,
     ReactiveFormsModule,
     DataTablesModule,
-  ]
+  ],
+  providers: [DatePipe]
 })
 export class TicketsModule { }
